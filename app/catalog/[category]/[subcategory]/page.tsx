@@ -4,7 +4,7 @@ import { useState, use } from 'react';
 import Link from 'next/link';
 import { ChevronDown, ShieldCheck, Search, ShoppingCart } from 'lucide-react';
 import { catalogData } from '../../../../menu-data';
-import { cameraFilters, recorderFilters } from '../../filters-config';
+import { cameraFilters, recorderFilters, microphoneFilters } from '../../filters-config';
 
 export default function SubcategoryPage({ params }: { params: Promise<{ category: string, subcategory: string }> }) {
   const { subcategory, category } = use(params);
@@ -15,8 +15,11 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
   const currentCategoryData = catalogData.find(c => c.slug === decodedCat);
   const subcategories = currentCategoryData?.sub || [];
 
-  const activeFilters = decodedSub.includes('kamery') || decodedSub.includes('камеры') ? cameraFilters : 
-                        decodedSub.includes('registratory') || decodedSub.includes('регистраторы') ? recorderFilters : [];
+  // ЛОГИКА ВЫБОРА ФИЛЬТРОВ ОБНОВЛЕНА
+  const activeFilters = 
+    decodedSub.includes('kamery') || decodedSub.includes('камеры') ? cameraFilters : 
+    decodedSub.includes('registratory') || decodedSub.includes('регистраторы') ? recorderFilters : 
+    decodedSub.includes('mikrofony') || decodedSub.includes('микрофоны') ? microphoneFilters : [];
 
   const toggleGroup = (id: string) => setOpenGroups(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id]);
   const createSlug = (text: string) => text.toLowerCase().replace(/ /g, '-');
@@ -56,7 +59,6 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
                     {group.options.map((option) => (
                       <label key={option} className="flex items-center gap-3 cursor-pointer group/label">
                         <input type="checkbox" className="w-4 h-4 border border-white/10 rounded bg-white/5 checked:bg-blue-600 transition-all shrink-0" />
-                        {/* ШРИФТ УВЕЛИЧЕН ДО 12PX И СТАЛ ЯРЧЕ */}
                         <span className="text-[12px] font-bold text-white/60 group-hover/label:text-white transition-colors">
                           {option}
                         </span>
