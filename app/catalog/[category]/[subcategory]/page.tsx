@@ -4,7 +4,12 @@ import { useState, use } from 'react';
 import Link from 'next/link';
 import { ChevronDown, ShieldCheck, Search, ShoppingCart } from 'lucide-react';
 import { catalogData } from '../../../../menu-data';
-import { cameraFilters, recorderFilters, microphoneFilters } from '../../filters-config';
+import { 
+  cameraFilters, 
+  recorderFilters, 
+  microphoneFilters,
+  mountingBoxFilters 
+} from '../../filters-config';
 
 export default function SubcategoryPage({ params }: { params: Promise<{ category: string, subcategory: string }> }) {
   const { subcategory, category } = use(params);
@@ -15,11 +20,12 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
   const currentCategoryData = catalogData.find(c => c.slug === decodedCat);
   const subcategories = currentCategoryData?.sub || [];
 
-  // ЛОГИКА ВЫБОРА ФИЛЬТРОВ ОБНОВЛЕНА
+  // ИСПРАВЛЕННАЯ ЛОГИКА: используем дефисы для корректного сравнения со слагами
   const activeFilters = 
     decodedSub.includes('kamery') || decodedSub.includes('камеры') ? cameraFilters : 
     decodedSub.includes('registratory') || decodedSub.includes('регистраторы') ? recorderFilters : 
-    decodedSub.includes('mikrofony') || decodedSub.includes('микрофоны') ? microphoneFilters : [];
+    decodedSub.includes('mikrofony') || decodedSub.includes('микрофоны') ? microphoneFilters :
+    decodedSub.includes('montazhnye-korobki') || decodedSub.includes('монтажные-коробки') ? mountingBoxFilters : [];
 
   const toggleGroup = (id: string) => setOpenGroups(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id]);
   const createSlug = (text: string) => text.toLowerCase().replace(/ /g, '-');
@@ -35,8 +41,17 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
               <span className="text-[9px] font-bold tracking-[0.3em] mt-1 opacity-80 uppercase">Security Solutions</span>
             </div>
           </Link>
-          <div className="hidden lg:flex flex-1 max-w-sm relative"><input type="text" placeholder="Поиск по артикулу..." className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-sm outline-none focus:border-blue-600/30" /><Search className="absolute right-4 top-3 text-slate-500" size={18} /></div>
-          <div className="flex items-center gap-6 font-black"><a href="tel:88000000000" className="text-lg hover:text-blue-500 transition-colors">8 800 000-00-00</a><button className="bg-blue-600 p-3 rounded-xl relative"><ShoppingCart size={20} /><span className="absolute -top-1 -right-1 bg-white text-blue-600 text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span></button></div>
+          <div className="hidden lg:flex flex-1 max-w-sm relative">
+            <input type="text" placeholder="Поиск по артикулу..." className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-sm outline-none focus:border-blue-600/30" />
+            <Search className="absolute right-4 top-3 text-slate-500" size={18} />
+          </div>
+          <div className="flex items-center gap-6 font-black">
+            <a href="tel:88000000000" className="text-lg hover:text-blue-500 transition-colors">8 800 000-00-00</a>
+            <button className="bg-blue-600 p-3 rounded-xl relative">
+              <ShoppingCart size={20} />
+              <span className="absolute -top-1 -right-1 bg-white text-blue-600 text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+            </button>
+          </div>
         </div>
       </header>
 

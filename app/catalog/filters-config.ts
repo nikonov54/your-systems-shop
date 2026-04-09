@@ -41,3 +41,11 @@ export const microphoneFilters = [
   { id: 'akust-dalnost', name: 'Акустическая дальность, м', options: ['1-10', '10-20', '20-40', '40-80', '80-100', '100-150'] },
   { id: 'chastota-hz', name: 'Частота, Гц', options: ['100 - 10\'000', '100 - 12\'000', '100 - 4\'000', '100 - 6\'100', '100 - 7\'200', '100 - 8\'300', '100 - 9\'200', '150 - 12\'000', '20 - 20\'000', '270 - 4\'000', '300 - 4\'000', '300 - 5\'500', '80 - 16\'000'] }
 ];
+
+// НОВЫЙ ЭКСПОРТ ИЗ PDF
+export const mountingBoxFilters = [
+  { id: 'proizvoditeli', name: 'Производители', options: ['KadrOn', 'BOXFORCAM', 'Hikvision', 'Dahua'] },
+  { id: 'material', name: 'Материал', options: ['Пластик', 'Металл'] },
+  { id: 'ip-box', name: 'IP', options: ['IP66', 'IP67', 'нет'] },
+  { id: 'osobennosti-box', name: 'Особенности', options: ['Взрывозащищенные'] }
+];
