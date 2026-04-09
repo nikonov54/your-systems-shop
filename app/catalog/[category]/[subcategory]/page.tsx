@@ -8,7 +8,8 @@ import {
   cameraFilters, 
   recorderFilters, 
   microphoneFilters,
-  mountingBoxFilters 
+  mountingBoxFilters,
+  bracketFilters 
 } from '../../filters-config';
 
 export default function SubcategoryPage({ params }: { params: Promise<{ category: string, subcategory: string }> }) {
@@ -20,12 +21,12 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
   const currentCategoryData = catalogData.find(c => c.slug === decodedCat);
   const subcategories = currentCategoryData?.sub || [];
 
-  // ИСПРАВЛЕННАЯ ЛОГИКА: используем дефисы для корректного сравнения со слагами
   const activeFilters = 
     decodedSub.includes('kamery') || decodedSub.includes('камеры') ? cameraFilters : 
     decodedSub.includes('registratory') || decodedSub.includes('регистраторы') ? recorderFilters : 
     decodedSub.includes('mikrofony') || decodedSub.includes('микрофоны') ? microphoneFilters :
-    decodedSub.includes('montazhnye-korobki') || decodedSub.includes('монтажные-коробки') ? mountingBoxFilters : [];
+    decodedSub.includes('montazhnye-korobki') || decodedSub.includes('монтажные-коробки') ? mountingBoxFilters :
+    decodedSub.includes('kronshteyny') || decodedSub.includes('кронштейны') ? bracketFilters : [];
 
   const toggleGroup = (id: string) => setOpenGroups(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id]);
   const createSlug = (text: string) => text.toLowerCase().replace(/ /g, '-');
