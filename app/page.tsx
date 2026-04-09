@@ -52,7 +52,6 @@ export default function Home() {
                 {activeCat && (
                   <div className="p-10 min-w-[450px] bg-[#0a0c10] border-l border-white/5 animate-in fade-in duration-200">
                     <h3 className="text-3xl font-black mb-8 border-b border-white/5 pb-4 uppercase tracking-tight text-blue-600 font-[family-name:var(--font-inter-tight)]">{activeCat.name}</h3>
-                    {/* ВОЗВРАЩЕН ОРИГИНАЛЬНЫЙ СТИЛЬ: text-slate-400 font-bold text-sm */}
                     <div className="grid grid-cols-2 gap-x-12 gap-y-4 text-slate-400 font-bold text-sm">
                       {activeCat.sub.map((item: string) => (
                         <a key={item} href={`/catalog/${activeCat.slug}/${createSlug(item)}`} className="hover:text-blue-500 transition-all">
@@ -77,8 +76,8 @@ export default function Home() {
           </div>
         </header>
 
-        <section className="flex-1 flex flex-col md:flex-row items-center container mx-auto px-6 overflow-hidden">
-          <div className="w-full md:w-1/2 flex flex-col justify-center py-12 z-20">
+        <section className="flex-1 flex flex-col md:flex-row items-center container mx-auto px-6 overflow-hidden gap-20">
+          <div className="w-full md:w-1/2 flex flex-col justify-center py-12 z-20 md:pl-20">
             <div className="max-w-4xl">
               <h1 className="text-6xl md:text-[94px] font-black leading-[0.85] tracking-tight uppercase mb-10 font-[family-name:var(--font-inter-tight)]">
                 <span className="text-white block">Проектируем</span> 
@@ -95,6 +94,11 @@ export default function Home() {
               </div>
 
               <button className="w-fit bg-blue-600 text-white px-10 py-4 rounded-2xl font-black text-lg hover:bg-blue-700 transition-all flex items-center gap-3 active:scale-95 uppercase shadow-[0_15px_30px_rgba(37,99,235,0.2)]">Стать партнером <ArrowRight size={22} /></button>
+              
+              {/* НАДПИСЬ ПЕРЕНЕСЕНА СЮДА */}
+              <div className="mt-20 text-white/40 text-[9px] font-black tracking-[1em] uppercase">
+                Est. 2020 / YourSystems Engineering
+              </div>
             </div>
           </div>
           <div className="w-full md:w-1/2 h-full flex items-center justify-center relative p-8">
@@ -126,10 +130,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <div className="fixed left-10 bottom-8 z-20 text-white/5 text-[9px] font-black tracking-[1em] uppercase hidden md:block">
-        Est. 2020 / YourSystems Engineering
-      </div>
     </main>
   );
 }
