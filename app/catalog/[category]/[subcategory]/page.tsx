@@ -9,7 +9,9 @@ import {
   recorderFilters, 
   microphoneFilters,
   mountingBoxFilters,
-  bracketFilters 
+  bracketFilters,
+  switchFilters,
+  routerFilters
 } from '../../filters-config';
 
 export default function SubcategoryPage({ params }: { params: Promise<{ category: string, subcategory: string }> }) {
@@ -22,11 +24,13 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
   const subcategories = currentCategoryData?.sub || [];
 
   const activeFilters = 
-    decodedSub.includes('kamery') || decodedSub.includes('камеры') ? cameraFilters : 
-    decodedSub.includes('registratory') || decodedSub.includes('регистраторы') ? recorderFilters : 
-    decodedSub.includes('mikrofony') || decodedSub.includes('микрофоны') ? microphoneFilters :
-    decodedSub.includes('montazhnye-korobki') || decodedSub.includes('монтажные-коробки') ? mountingBoxFilters :
-    decodedSub.includes('kronshteyny') || decodedSub.includes('кронштейны') ? bracketFilters : [];
+    (decodedSub.includes('kamery') || decodedSub.includes('камеры')) ? cameraFilters : 
+    (decodedSub.includes('registratory') || decodedSub.includes('регистраторы')) ? recorderFilters : 
+    (decodedSub.includes('mikrofony') || decodedSub.includes('микрофоны')) ? microphoneFilters :
+    (decodedSub.includes('montazhnye-korobki') || decodedSub.includes('монтажные-коробки')) ? mountingBoxFilters :
+    (decodedSub.includes('kronshteyny') || decodedSub.includes('кронштейны')) ? bracketFilters : 
+    (decodedSub.includes('kommutatory') || decodedSub.includes('коммутаторы')) ? switchFilters :
+    (decodedSub.includes('marshrutizatory') || decodedSub.includes('маршрутизаторы') || decodedSub.includes('routery') || decodedSub.includes('роутеры')) ? routerFilters : [];
 
   const toggleGroup = (id: string) => setOpenGroups(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id]);
   const createSlug = (text: string) => text.toLowerCase().replace(/ /g, '-');
@@ -89,14 +93,16 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
 
         <div className="flex-1 overflow-y-auto no-scrollbar bg-[#020408]" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           <div className="px-12">
-            <div className="h-14 flex items-center border-b border-white/5 sticky top-0 bg-[#020408] z-30">
-              <nav className="flex items-center gap-8 text-[11px] uppercase tracking-[0.3em] font-black overflow-x-auto no-scrollbar">
+            <div className="py-6 border-b border-white/5 sticky top-0 bg-[#020408] z-30">
+              <nav className="flex flex-wrap items-center gap-x-8 gap-y-4 text-[11px] uppercase tracking-[0.3em] font-black">
                 {subcategories.map((sub, idx) => {
                   const subSlug = createSlug(sub);
                   const isActive = decodedSub === subSlug;
                   return (
                     <div key={sub} className="flex items-center gap-8">
-                      <Link href={`/catalog/${decodedCat}/${subSlug}`} className={isActive ? 'text-blue-500 font-bold' : 'text-white/40 hover:text-white'}>{sub}</Link>
+                      <Link href={`/catalog/${decodedCat}/${subSlug}`} className={isActive ? 'text-blue-500 font-bold' : 'text-white/40 hover:text-white transition-colors'}>
+                        {sub}
+                      </Link>
                       {idx !== subcategories.length - 1 && <span className="text-white/10">/</span>}
                     </div>
                   );

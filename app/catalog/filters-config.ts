@@ -49,8 +49,32 @@ export const mountingBoxFilters = [
   { id: 'osobennosti-box', name: 'Особенности', options: ['Взрывозащищенные'] }
 ];
 
-// ДАННЫЕ ИЗ PDF (КРОНШТЕЙНЫ)
 export const bracketFilters = [
   { id: 'proizvoditeli', name: 'Производители', options: ['KadrOn', 'BOXFORCAM', 'Hikvision', 'HiWatch', 'Dahua'] },
   { id: 'tip-kronshteyna', name: 'Тип кронштейна', options: ['Настенный', 'Потолочный', 'Угловой', 'Универсальный', 'Для столба'] }
+];
+
+export const switchFilters = [
+  { id: 'proizvoditeli', name: 'Производители', options: ['Hikvision', 'Trassir', 'Dahua', 'Tiandy', 'Ruijie', 'TFortis', 'Mastermann', 'Tenda', 'Wi-Tek'] },
+  { id: 'tip-kommutatora', name: 'Тип коммутатора', options: ['Неуправляемый', 'Управляемый L2', 'Управляемый L3', 'Smart'] },
+  { id: 'tip-ustanovki', name: 'Тип установки', options: ['Настольный', 'Настенный', 'На DIN-рейку', 'В стойку'] },
+  { id: 'promyshlenny', name: 'Промышленный', options: ['да', 'нет'] },
+  { id: 'poe-ports', name: 'PoE Порты', options: ['4', '6', '8', '16', '24', '48'] },
+  { id: 'lan-ports', name: 'LAN Порты', options: ['4', '6', '8', '16', '24', '48'] },
+  { id: 'up-link-ports', name: 'UP Link Порты', options: ['1', '2', '4', 'нет'] },
+  { id: 'sfp-ports', name: 'SFP Порты', options: ['1', '2', '4', 'нет'] },
+  { id: 'gigabit-ports', name: 'Гигабитные Порты', options: ['Все', 'Downlink', 'Uplink', 'нет'] },
+  { id: 'budget-poe', name: 'Бюджет PoE (Вт)', options: ['до 100', 'до 200', 'до 300', 'до 400', 'нет'] },
+  { id: 'osobennosti-net', name: 'Особенности', options: ['Extend', 'Console Port', 'AI QoS', 'AI VLAN', 'Watchdog', 'Совмещенные Uplink', 'Облачное управление', 'Стекирование', 'Питания через ББП'] },
+  { id: 'pitanie-net', name: 'Питание', options: ['AC 100-240В', 'AC 220В', 'DC 12В', 'DC 48-54В', 'DC 5В'] }
+];
+
+export const routerFilters = [
+  { id: 'proizvoditeli', name: 'Производители', options: ['MikroTik', 'Keenetic', 'TP-Link', 'Cisco', 'Ubiquiti', 'Ruijie', 'Tenda'] },
+  { id: 'wifi-standards', name: 'Стандарты Wi-Fi', options: ['Wi-Fi 4 (802.11n)', 'Wi-Fi 5 (802.11ac)', 'Wi-Fi 6 (802.11ax)', 'Wi-Fi 6E (802.11ax)', 'Wi-Fi 7'] },
+  { id: 'data-rate', name: 'Скорость передачи данных', options: ['до 300 Мбит/с', 'до 1200 Мбит/с', 'до 1800 Мбит/с', 'до 3000 Мбит/с', 'свыше 5000 Мбит/с'] },
+  { id: 'port-types', name: 'Типы портов', options: ['WAN (10/100)', 'WAN (Gigabit)', 'WAN (2.5G/5G)', 'LAN (10/100)', 'LAN (Gigabit)', 'SFP', 'SFP+', 'USB 2.0', 'USB 3.0', 'Console Port'] },
+  { id: 'performance', name: 'Производительность', options: ['Для дома', 'Для малого офиса', 'Enterprise', 'Industrial'] },
+  { id: 'encryption', name: 'Протоколы шифрования', options: ['WPA', 'WPA2-PSK', 'WPA2-Enterprise', 'WPA3', 'AES', 'TKIP'] },
+  { id: 'technologies', name: 'Технологии и поддержка', options: ['Поддержка 3G/4G', 'VPN (IPsec/PPTP/L2TP)', 'MU-MIMO', 'Mesh-системы', 'Beamforming', 'PoE-in', 'PoE-out'] }
 ];
