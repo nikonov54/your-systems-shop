@@ -82,3 +82,15 @@ export const routerFilters = [
   { id: 'vpn-protocols', name: 'Поддержка VPN', options: ['L2TP/PPTP', 'OpenVPN', 'IPsec', 'WireGuard', 'GRE'] },
   { id: 'industrial-features', name: 'Промышленные функции', options: ['Watchdog (Перезагрузка по расписанию)', 'SMS-управление', 'Modbus TCP', 'Диапазон температур -40...+70°C'] }
 ];
+
+export const accessPointFilters = [
+  { id: 'proizvoditeli', name: 'Производители', options: ['Ruijie', 'Ubiquiti', 'TP-Link', 'MikroTik'] },
+  { id: 'wifi-standard', name: 'Стандарт Wi-Fi', options: ['Wi-Fi 7 (802.11be)', 'Wi-Fi 6/6E (802.11ax)', 'Wi-Fi 5 (802.11ac)'] },
+  { id: 'frequency-bands', name: 'Частотные диапазоны', options: ['2.4 ГГц', '5 ГГц', '6 ГГц', 'Трехдиапазонный (Triple-band)'] },
+  { id: 'max-throughput', name: 'Пропускная способность', options: ['до 3000 Мбит/с', 'до 5400 Мбит/с', 'до 9000 Мбит/с', 'свыше 18 Гбит/с'] },
+  { id: 'mimo-tech', name: 'Технология MIMO', options: ['2x2 MIMO', '3x3 MIMO', '4x4 MIMO'] },
+  { id: 'network-ports', name: 'Сетевые порты', options: ['1 x 1G Ethernet', '1 x 2.5G Ethernet', '1 x 10G Ethernet', 'SFP+ порт'] },
+  { id: 'poe-power', name: 'Питание PoE', options: ['PoE (802.3af)', 'PoE+ (802.3at)', 'PoE++ (802.3bt)', 'DC адаптер'] },
+  { id: 'max-clients', name: 'Макс. количество клиентов', options: ['до 100', 'до 256', 'до 512', 'свыше 1000'] },
+  { id: 'special-features', name: 'Особенности', options: ['MLO (Multi-Link Operation)', '4096-QAM', 'Ширина канала 320 МГц', 'Облачное управление', 'Бесшовная Mesh-сеть'] }
+];

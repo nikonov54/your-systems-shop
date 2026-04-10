@@ -11,7 +11,8 @@ import {
   mountingBoxFilters,
   bracketFilters,
   switchFilters,
-  routerFilters
+  routerFilters,
+  accessPointFilters
 } from '../../filters-config';
 
 export default function SubcategoryPage({ params }: { params: Promise<{ category: string, subcategory: string }> }) {
@@ -23,6 +24,7 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
   const currentCategoryData = catalogData.find(c => c.slug === decodedCat);
   const subcategories = currentCategoryData?.sub || [];
 
+  // ИСПРАВЛЕННАЯ ЛОГИКА: Добавлена точная проверка для кириллического слага "wi-fi-точки"
   const activeFilters = 
     (decodedSub.includes('kamery') || decodedSub.includes('камеры')) ? cameraFilters : 
     (decodedSub.includes('registratory') || decodedSub.includes('регистраторы')) ? recorderFilters : 
@@ -30,7 +32,8 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
     (decodedSub.includes('montazhnye-korobki') || decodedSub.includes('монтажные-коробки')) ? mountingBoxFilters :
     (decodedSub.includes('kronshteyny') || decodedSub.includes('кронштейны')) ? bracketFilters : 
     (decodedSub.includes('kommutatory') || decodedSub.includes('коммутаторы')) ? switchFilters :
-    (decodedSub.includes('marshrutizatory') || decodedSub.includes('маршрутизаторы') || decodedSub.includes('routery') || decodedSub.includes('роутеры')) ? routerFilters : [];
+    (decodedSub.includes('marshrutizatory') || decodedSub.includes('маршрутизаторы') || decodedSub.includes('routery') || decodedSub.includes('роутеры')) ? routerFilters : 
+    (decodedSub.includes('wi-fi-tochki') || decodedSub.includes('wi-fi-точки')) ? accessPointFilters : [];
 
   const toggleGroup = (id: string) => setOpenGroups(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id]);
   const createSlug = (text: string) => text.toLowerCase().replace(/ /g, '-');
@@ -68,26 +71,30 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
           </div>
           <div className="flex-1 overflow-y-auto no-scrollbar" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             <style jsx>{`div::-webkit-scrollbar { display: none; }`}</style>
-            {activeFilters.map((group) => (
-              <div key={group.id} className="border-b border-white/5">
-                <button onClick={() => toggleGroup(group.id)} className="w-full px-8 py-2.5 flex items-center justify-between group text-left">
-                  <span className="text-[10px] font-black tracking-widest text-white/60 group-hover:text-blue-500 transition-colors uppercase leading-none">{group.name}</span>
-                  <ChevronDown size={14} className={`text-white/20 transition-transform ${openGroups.includes(group.id) ? 'rotate-180 text-blue-500' : ''}`} />
-                </button>
-                {openGroups.includes(group.id) && (
-                  <div className="px-8 pb-5 space-y-2.5 animate-in fade-in duration-200">
-                    {group.options.map((option) => (
-                      <label key={option} className="flex items-center gap-3 cursor-pointer group/label">
-                        <input type="checkbox" className="w-4 h-4 border border-white/10 rounded bg-white/5 checked:bg-blue-600 transition-all shrink-0" />
-                        <span className="text-[12px] font-bold text-white/60 group-hover/label:text-white transition-colors">
-                          {option}
-                        </span>
-                      </label>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
+            {activeFilters.length > 0 ? (
+              activeFilters.map((group) => (
+                <div key={group.id} className="border-b border-white/5">
+                  <button onClick={() => toggleGroup(group.id)} className="w-full px-8 py-2.5 flex items-center justify-between group text-left">
+                    <span className="text-[10px] font-black tracking-widest text-white/60 group-hover:text-blue-500 transition-colors uppercase leading-none">{group.name}</span>
+                    <ChevronDown size={14} className={`text-white/20 transition-transform ${openGroups.includes(group.id) ? 'rotate-180 text-blue-500' : ''}`} />
+                  </button>
+                  {openGroups.includes(group.id) && (
+                    <div className="px-8 pb-5 space-y-2.5 animate-in fade-in duration-200">
+                      {group.options.map((option) => (
+                        <label key={option} className="flex items-center gap-3 cursor-pointer group/label">
+                          <input type="checkbox" className="w-4 h-4 border border-white/10 rounded bg-white/5 checked:bg-blue-600 transition-all shrink-0" />
+                          <span className="text-[12px] font-bold text-white/60 group-hover/label:text-white transition-colors">
+                            {option}
+                          </span>
+                        </label>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))
+            ) : (
+              <div className="p-8 text-[10px] text-white/20 uppercase font-bold tracking-widest">Нет доступных фильтров</div>
+            )}
           </div>
         </aside>
 
