@@ -70,11 +70,15 @@ export const switchFilters = [
 ];
 
 export const routerFilters = [
-  { id: 'proizvoditeli', name: 'Производители', options: ['MikroTik', 'Keenetic', 'TP-Link', 'Cisco', 'Ubiquiti', 'Ruijie', 'Tenda'] },
-  { id: 'wifi-standards', name: 'Стандарты Wi-Fi', options: ['Wi-Fi 4 (802.11n)', 'Wi-Fi 5 (802.11ac)', 'Wi-Fi 6 (802.11ax)', 'Wi-Fi 6E (802.11ax)', 'Wi-Fi 7'] },
-  { id: 'data-rate', name: 'Скорость передачи данных', options: ['до 300 Мбит/с', 'до 1200 Мбит/с', 'до 1800 Мбит/с', 'до 3000 Мбит/с', 'свыше 5000 Мбит/с'] },
-  { id: 'port-types', name: 'Типы портов', options: ['WAN (10/100)', 'WAN (Gigabit)', 'WAN (2.5G/5G)', 'LAN (10/100)', 'LAN (Gigabit)', 'SFP', 'SFP+', 'USB 2.0', 'USB 3.0', 'Console Port'] },
-  { id: 'performance', name: 'Производительность', options: ['Для дома', 'Для малого офиса', 'Enterprise', 'Industrial'] },
-  { id: 'encryption', name: 'Протоколы шифрования', options: ['WPA', 'WPA2-PSK', 'WPA2-Enterprise', 'WPA3', 'AES', 'TKIP'] },
-  { id: 'technologies', name: 'Технологии и поддержка', options: ['Поддержка 3G/4G', 'VPN (IPsec/PPTP/L2TP)', 'MU-MIMO', 'Mesh-системы', 'Beamforming', 'PoE-in', 'PoE-out'] }
+  { id: 'proizvoditeli', name: 'Производители', options: ['Micro-Drive', 'Keenetic', 'MikroTik', 'TP-Link', 'Teltonika', 'Huawei', 'ZTE'] },
+  { id: 'ispolnenie', name: 'Исполнение', options: ['Внутреннее', 'Уличное (IP65/67)', 'Встраиваемое', 'Промышленное (DIN-рейка)'] },
+  { id: 'lte-category', name: 'Категория LTE (Агрегация)', options: ['LTE Cat.4 (до 150 Мбит/с)', 'LTE Cat.6 (до 300 Мбит/с)', 'LTE Cat.9 (до 450 Мбит/с)', 'LTE Cat.12 (до 600 Мбит/с)', 'LTE Cat.18 (до 1.2 Гбит/с)'] },
+  { id: 'sim-slots', name: 'Слот для SIM-карт', options: ['1 SIM', '2 SIM (Резервирование)', 'Micro-SIM', 'Nano-SIM'] },
+  { id: 'wifi-range', name: 'Диапазон Wi-Fi', options: ['2.4 ГГц', '5 ГГц', 'Двухдиапазонный (Dual-Band)'] },
+  { id: 'wifi-standards', name: 'Стандарты Wi-Fi', options: ['Wi-Fi 4 (802.11n)', 'Wi-Fi 5 (802.11ac)', 'Wi-Fi 6 (802.11ax)'] },
+  { id: 'ethernet-ports', name: 'Порты Ethernet', options: ['1 x LAN', '2 x LAN', '4 x LAN', '10/100 Мбит/с', '1000 Мбит/с (Gigabit)'] },
+  { id: 'antenna-connectors', name: 'Разъемы для антенн', options: ['SMA (4G/LTE)', 'RP-SMA (Wi-Fi)', 'MIMO поддержка', 'Встроенные антенны'] },
+  { id: 'power-type', name: 'Тип питания', options: ['DC 9-36В', 'Passive PoE (24В)', 'PoE (802.3af/at)', 'Micro-USB', 'Блок питания в комплекте'] },
+  { id: 'vpn-protocols', name: 'Поддержка VPN', options: ['L2TP/PPTP', 'OpenVPN', 'IPsec', 'WireGuard', 'GRE'] },
+  { id: 'industrial-features', name: 'Промышленные функции', options: ['Watchdog (Перезагрузка по расписанию)', 'SMS-управление', 'Modbus TCP', 'Диапазон температур -40...+70°C'] }
 ];
