@@ -126,7 +126,6 @@ export const antennaFilters = [
   { id: 'installation', name: 'Способ установки', options: ['На печатную плату', 'Клеевая основа', 'На кронштейн', 'На мачту'] }
 ];
 
-// НОВОЕ: ПОГРУЖНАЯ ТЕЛЕМЕТРИЯ (ДЛЯ СКВАЖИННЫХ СИСТЕМ)
 export const telemetryFilters = [
   { id: 'proizvoditeli', name: 'Производители', options: ['Micro-Drive', 'Сибнефтеавтоматика', 'Борец', 'Новомет', 'Ижевскнефтемаш'] },
   { id: 'module-type', name: 'Тип модуля', options: ['Погружной блок (ПБ)', 'Наземный блок (НБ)', 'Комплект ТМС', 'Скважинный контроллер'] },
@@ -135,4 +134,14 @@ export const telemetryFilters = [
   { id: 'protection-class', name: 'Класс защиты', options: ['IP68 (Погружное)', 'Взрывозащищенное (Ex)', 'Коррозионностойкое'] },
   { id: 'operating-temp', name: 'Рабочая температура', options: ['до +120°C', 'до +150°C', 'до +175°C'] },
   { id: 'max-pressure', name: 'Макс. давление', options: ['до 25 МПа', 'до 40 МПа', 'до 60 МПа'] }
+];
+
+export const scudReaderFilters = [
+  { id: 'proizvoditeli', name: 'Производители', options: ['Hikvision', 'Dahua', 'Iron Logic', 'Proxway', 'Parsec', 'Sigur', 'Tantalos', 'Pironix', 'ZKTeco'] }, // ДОБАВЛЕНО ZKTeco
+  { id: 'card-standard', name: 'Стандарт карт', options: ['Em-Marine (125 кГц)', 'Mifare (13.56 МГц)', 'HID', 'Indala', 'NFC', 'BLE (Bluetooth)'] },
+  { id: 'reading-type', name: 'Тип чтения', options: ['Бесконтактный', 'Кодовая панель', 'Биометрия (Отпечаток)', 'Распознавание лиц', 'QR-код'] },
+  { id: 'interface-reader', name: 'Интерфейс подключения', options: ['Wiegand (26/34)', 'RS-485', 'OSDP', 'USB'] },
+  { id: 'execution-reader', name: 'Исполнение', options: ['Внутреннее', 'Уличное (IP65+)', 'Вандалозащищенное (IK10)', 'Врезное', 'Накладное'] },
+  { id: 'reading-distance', name: 'Дальность считывания', options: ['до 5 см', '5-10 см', 'Дальнего действия (до 10м)', 'Активные метки'] },
+  { id: 'special-reader', name: 'Особенности', options: ['Со встроенным контроллером', 'Световая индикация', 'Звуковой зуммер', 'Антитемпер'] }
 ];

@@ -2,7 +2,7 @@
 
 import { useState, use } from 'react';
 import Link from 'next/link';
-import { ChevronDown, ShieldCheck, Search, ShoppingCart } from 'lucide-react';
+import { ChevronDown, ShieldCheck, Search, ShoppingCart, ChevronRight } from 'lucide-react';
 import { catalogData } from '../../../../menu-data';
 import { 
   cameraFilters, 
@@ -16,7 +16,8 @@ import {
   sfpFilters,
   poeInjectorFilters,
   antennaFilters,
-  telemetryFilters
+  telemetryFilters,
+  scudReaderFilters
 } from '../../filters-config';
 
 export default function SubcategoryPage({ params }: { params: Promise<{ category: string, subcategory: string }> }) {
@@ -40,7 +41,8 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
     (decodedSub.includes('sfp-moduli') || decodedSub.includes('sfp-модули')) ? sfpFilters :
     (decodedSub.includes('poe-inzhektory') || decodedSub.includes('poe-инжекторы')) ? poeInjectorFilters :
     (decodedSub.includes('antenny') || decodedSub.includes('антенны')) ? antennaFilters :
-    (decodedSub.includes('pogruzhnaya-telemetriya') || decodedSub.includes('погружная-телеметрия')) ? telemetryFilters : [];
+    (decodedSub.includes('pogruzhnaya-telemetriya') || decodedSub.includes('погружная-телеметрия')) ? telemetryFilters :
+    (decodedSub.includes('schityvateli') || decodedSub.includes('считыватели')) ? scudReaderFilters : [];
 
   const toggleGroup = (id: string) => setOpenGroups(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id]);
   const createSlug = (text: string) => text.toLowerCase().replace(/ /g, '-');
