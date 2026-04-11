@@ -14,7 +14,8 @@ import {
   routerFilters,
   accessPointFilters,
   sfpFilters,
-  poeInjectorFilters
+  poeInjectorFilters,
+  antennaFilters
 } from '../../filters-config';
 
 export default function SubcategoryPage({ params }: { params: Promise<{ category: string, subcategory: string }> }) {
@@ -36,7 +37,8 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
     (decodedSub.includes('marshrutizatory') || decodedSub.includes('маршрутизаторы') || decodedSub.includes('routery') || decodedSub.includes('роутеры')) ? routerFilters : 
     (decodedSub.includes('wi-fi-tochki') || decodedSub.includes('wi-fi-точки')) ? accessPointFilters : 
     (decodedSub.includes('sfp-moduli') || decodedSub.includes('sfp-модули')) ? sfpFilters :
-    (decodedSub.includes('poe-inzhektory') || decodedSub.includes('poe-инжекторы')) ? poeInjectorFilters : [];
+    (decodedSub.includes('poe-inzhektory') || decodedSub.includes('poe-инжекторы')) ? poeInjectorFilters :
+    (decodedSub.includes('antenny') || decodedSub.includes('антенны')) ? antennaFilters : [];
 
   const toggleGroup = (id: string) => setOpenGroups(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id]);
   const createSlug = (text: string) => text.toLowerCase().replace(/ /g, '-');

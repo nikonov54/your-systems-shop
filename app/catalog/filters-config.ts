@@ -115,3 +115,14 @@ export const poeInjectorFilters = [
   { id: 'execution-poe', name: 'Исполнение', options: ['Внутреннее', 'Уличное (IP66/67)', 'Индустриальное (DIN-рейка)', 'Сплиттер'] },
   { id: 'special-poe', name: 'Особенности', options: ['Встроенный БП', 'Грозозащита', 'Защита от КЗ', 'LED индикация питания/PoE', 'Крепление на стену'] }
 ];
+
+// НОВОЕ: АНТЕННЫ (НА ОСНОВЕ OEM/ВСТРАИВАЕМЫХ РЕШЕНИЙ)
+export const antennaFilters = [
+  { id: 'proizvoditeli', name: 'Производители', options: ['Micro-Drive', 'Антэкс', 'Крокс', 'Laird', 'Pulse'] },
+  { id: 'antenna-type', name: 'Тип антенны', options: ['Встраиваемая (OEM)', 'Направленная (Панельная)', 'Всенаправленная', 'Магнитная', 'Автомобильная'] },
+  { id: 'frequency-range', name: 'Диапазон частот', options: ['4G/LTE (790-2700 МГц)', 'Wi-Fi (2.4/5 ГГц)', '3G/UMTS', 'GSM', 'GNSS (GPS/ГЛОНАСС)'] },
+  { id: 'gain-db', name: 'Усиление, dBi', options: ['до 5 dBi', '5 - 10 dBi', '10 - 15 dBi', '15 - 20 dBi', 'свыше 20 dBi'] },
+  { id: 'connector-type', name: 'Тип разъема', options: ['U.FL (IPEX)', 'SMA-male', 'SMA-female', 'N-type', 'CRC9/TS9', 'Без разъема (под пайку)'] },
+  { id: 'mimo-support', name: 'Поддержка MIMO', options: ['да (2x2)', 'да (4x4)', 'нет'] },
+  { id: 'installation', name: 'Способ установки', options: ['На печатную плату', 'Клеевая основа', 'На кронштейн', 'На мачту'] }
+];
