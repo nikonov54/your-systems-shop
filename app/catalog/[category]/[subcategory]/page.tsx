@@ -21,7 +21,8 @@ import {
   controllerFilters,
   contactlessKeyFilters,
   lockFilters,
-  closerFilters
+  closerFilters,
+  metalDetectorFilters
 } from '../../filters-config';
 
 export default function SubcategoryPage({ params }: { params: Promise<{ category: string, subcategory: string }> }) {
@@ -50,7 +51,8 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
     (decodedSub.includes('kontrollery') || decodedSub.includes('контроллеры')) ? controllerFilters :
     (decodedSub.includes('beskontaktnye-klyuchi') || decodedSub.includes('бесконтактные-ключи')) ? contactlessKeyFilters :
     (decodedSub.includes('zamki') || decodedSub.includes('замки')) ? lockFilters :
-    (decodedSub.includes('dovodchiki') || decodedSub.includes('доводчики')) ? closerFilters : [];
+    (decodedSub.includes('dovodchiki') || decodedSub.includes('доводчики')) ? closerFilters :
+    (decodedSub.includes('metallodetektory') || decodedSub.includes('металлодетекторы')) ? metalDetectorFilters : [];
 
   const toggleGroup = (id: string) => setOpenGroups(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id]);
   const createSlug = (text: string) => text.toLowerCase().replace(/ /g, '-');
