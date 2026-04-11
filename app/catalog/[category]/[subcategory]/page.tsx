@@ -17,7 +17,8 @@ import {
   poeInjectorFilters,
   antennaFilters,
   telemetryFilters,
-  scudReaderFilters
+  scudReaderFilters,
+  controllerFilters
 } from '../../filters-config';
 
 export default function SubcategoryPage({ params }: { params: Promise<{ category: string, subcategory: string }> }) {
@@ -42,7 +43,8 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
     (decodedSub.includes('poe-inzhektory') || decodedSub.includes('poe-инжекторы')) ? poeInjectorFilters :
     (decodedSub.includes('antenny') || decodedSub.includes('антенны')) ? antennaFilters :
     (decodedSub.includes('pogruzhnaya-telemetriya') || decodedSub.includes('погружная-телеметрия')) ? telemetryFilters :
-    (decodedSub.includes('schityvateli') || decodedSub.includes('считыватели')) ? scudReaderFilters : [];
+    (decodedSub.includes('schityvateli') || decodedSub.includes('считыватели')) ? scudReaderFilters :
+    (decodedSub.includes('kontrollery') || decodedSub.includes('контроллеры')) ? controllerFilters : [];
 
   const toggleGroup = (id: string) => setOpenGroups(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id]);
   const createSlug = (text: string) => text.toLowerCase().replace(/ /g, '-');

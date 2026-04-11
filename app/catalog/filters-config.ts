@@ -88,60 +88,111 @@ export const accessPointFilters = [
   { id: 'wifi-standard', name: 'Стандарт Wi-Fi', options: ['Wi-Fi 7 (802.11be)', 'Wi-Fi 6/6E (802.11ax)', 'Wi-Fi 5 (802.11ac)'] },
   { id: 'frequency-bands', name: 'Частотные диапазоны', options: ['2.4 ГГц', '5 ГГц', '6 ГГц', 'Трехдиапазонный (Triple-band)'] },
   { id: 'max-throughput', name: 'Пропускная способность', options: ['до 3000 Мбит/с', 'до 5400 Мбит/с', 'до 9000 Мбит/с', 'свыше 18 Гбит/с'] },
-  { id: 'mimo-tech', name: 'Технология MIMO', options: ['2x2 MIMO', '3x3 MIMO', '4x4 MIMO'] },
-  { id: 'network-ports', name: 'Сетевые порты', options: ['1 x 1G Ethernet', '1 x 2.5G Ethernet', '1 x 10G Ethernet', 'SFP+ порт'] },
-  { id: 'poe-power', name: 'Питание PoE', options: ['PoE (802.3af)', 'PoE+ (802.3at)', 'PoE++ (802.3bt)', 'DC адаптер'] },
-  { id: 'max-clients', name: 'Макс. количество клиентов', options: ['до 100', 'до 256', 'до 512', 'свыше 1000'] },
-  { id: 'special-features', name: 'Особенности', options: ['MLO (Multi-Link Operation)', '4096-QAM', 'Ширина канала 320 МГц', 'Облачное управление', 'Бесшовная Mesh-сеть'] }
+  { id: 'mimo-tech', name: 'Технология MIMO', options: ['2x2 MIMO', '4x4 MIMO'] },
+  { id: 'max-users', name: 'Макс. количество подключений', options: ['128', '256', '512', '1024', '2000+'] },
+  { id: 'power-over-ethernet', name: 'Питание PoE', options: ['802.3af (до 15.4W)', '802.3at (до 30W)', '802.3bt (до 60W)', 'Passive PoE'] },
+  { id: 'mounting-type', name: 'Тип монтажа', options: ['Потолочный', 'Настенный', 'Встраиваемый', 'Уличный (IP67)'] },
+  { id: 'management', name: 'Управление', options: ['Облачное', 'Локальное', 'Mesh-сеть', 'Без контроллера'] }
 ];
 
 export const sfpFilters = [
-  { id: 'proizvoditeli', name: 'Производители', options: ['Hikvision', 'Dahua', 'TP-Link', 'MikroTik', 'Modultech', 'SNR'] },
-  { id: 'form-factor', name: 'Форм-фактор', options: ['SFP', 'SFP+', 'SFP28', 'QSFP+', 'QSFP28', 'QSFP-DD'] },
-  { id: 'data-rate-sfp', name: 'Скорость передачи', options: ['100 Мбит/с', '1.25 Гбит/с', '10 Гбит/с', '25 Гбит/с', '40 Гбит/с', '100 Гбит/с'] },
-  { id: 'transmission-distance', name: 'Дальность передачи', options: ['до 550 м', 'до 2 км', 'до 10 км', 'до 20 км', 'до 40 км', 'до 80 км', 'свыше 100 км'] },
-  { id: 'fiber-type', name: 'Тип волокна', options: ['Многомодовое (MMF)', 'Одномодовое (SMF)', 'Медный кабель (RJ-45)'] },
-  { id: 'connectors-sfp', name: 'Разъемы', options: ['LC (Duplex)', 'LC (Simplex/WDM)', 'SC', 'RJ-45'] },
-  { id: 'wavelength', name: 'Длина волны', options: ['850 нм', '1310 нм', '1550 нм', 'WDM (1310/1550)', 'CWDM', 'DWDM'] },
-  { id: 'special-sfp', name: 'Особенности', options: ['DDM (Цифровая диагностика)', 'Индустриальный (-40...+85°C)', 'Горячая замена'] }
+  { id: 'proizvoditeli', name: 'Производители', options: ['Hikvision', 'Dahua', 'Ruijie', 'TP-Link', 'MikroTik', 'TRASSIR'] },
+  { id: 'speed', name: 'Скорость', options: ['1.25 Гбит/с', '10 Гбит/с', '25 Гбит/с', '40 Гбит/с'] },
+  { id: 'fiber-type', name: 'Тип волокна', options: ['Многомодовый (MM)', 'Одномодовый (SM)'] },
+  { id: 'connector-type', name: 'Тип коннектора', options: ['LC Duplex', 'LC Simplex', 'RJ-45 (медный SFP)'] },
+  { id: 'distance', name: 'Дальность', options: ['до 550 м', 'до 10 км', 'до 20 км', 'до 40 км', 'до 80 км'] },
+  { id: 'wavelength', name: 'Длина волны', options: ['850 нм', '1310 нм', '1550 нм'] },
+  { id: 'temperature', name: 'Температурный режим', options: ['Commercial (0°C до 70°C)', 'Industrial (-40°C до 85°C)'] }
 ];
 
 export const poeInjectorFilters = [
-  { id: 'proizvoditeli', name: 'Производители', options: ['Hikvision', 'Dahua', 'Osnovo', 'Amatek', 'Zyxel', 'SNR', 'Tenda', 'Ubiquiti', 'QTECH', 'ComOnyx'] },
-  { id: 'poe-standard', name: 'Стандарт PoE', options: ['Passive PoE', 'IEEE 802.3af (15.4 Вт)', 'IEEE 802.3at (30 Вт)', 'IEEE 802.3bt (60-90 Вт)', 'Ultra PoE (до 95 Вт)'] },
-  { id: 'data-rate-poe', name: 'Скорость портов', options: ['10/100 Мбит/с', '10/100/1000 Мбит/с (Gigabit)', '2.5 Гбит/с', '5 Гбит/с', '10 Гбит/с'] },
-  { id: 'ports-count-poe', name: 'Количество портов PoE', options: ['1', '2', '4'] },
-  { id: 'input-voltage', name: 'Входное напряжение', options: ['AC 100-240В', 'DC 12-24В', 'DC 48-56В'] },
-  { id: 'execution-poe', name: 'Исполнение', options: ['Внутреннее', 'Уличное (IP66/67)', 'Индустриальное (DIN-рейка)', 'Сплиттер'] },
-  { id: 'special-poe', name: 'Особенности', options: ['Встроенный БП', 'Грозозащита', 'Защита от КЗ', 'LED индикация питания/PoE', 'Крепление на стену'] }
+  { id: 'proizvoditeli', name: 'Производители', options: ['Hikvision', 'Dahua', 'TP-Link', 'TRASSIR', 'Tenda', 'Wi-Tek'] },
+  { id: 'poe-standard', name: 'Стандарт PoE', options: ['802.3af (до 15.4W)', '802.3at (до 30W)', '802.3bt (до 60W)', 'Passive PoE (24V)'] },
+  { id: 'ports-count', name: 'Количество портов', options: ['1 порт', '4 порта', '8 портов', '16 портов'] },
+  { id: 'output-power', name: 'Выходная мощность', options: ['15W', '30W', '60W', '90W', '120W'] },
+  { id: 'installation', name: 'Установка', options: ['Настольный', 'На DIN-рейку', 'Настенный'] }
 ];
 
 export const antennaFilters = [
-  { id: 'proizvoditeli', name: 'Производители', options: ['Micro-Drive', 'Антэкс', 'Крокс', 'Laird', 'Pulse'] },
-  { id: 'antenna-type', name: 'Тип антенны', options: ['Встраиваемая (OEM)', 'Направленная (Панельная)', 'Всенаправленная', 'Магнитная', 'Автомобильная'] },
-  { id: 'frequency-range', name: 'Диапазон частот', options: ['4G/LTE (790-2700 МГц)', 'Wi-Fi (2.4/5 ГГц)', '3G/UMTS', 'GSM', 'GNSS (GPS/ГЛОНАСС)'] },
-  { id: 'gain-db', name: 'Усиление, dBi', options: ['до 5 dBi', '5 - 10 dBi', '10 - 15 dBi', '15 - 20 dBi', 'свыше 20 dBi'] },
-  { id: 'connector-type', name: 'Тип разъема', options: ['U.FL (IPEX)', 'SMA-male', 'SMA-female', 'N-type', 'CRC9/TS9', 'Без разъема (под пайку)'] },
-  { id: 'mimo-support', name: 'Поддержка MIMO', options: ['да (2x2)', 'да (4x4)', 'нет'] },
-  { id: 'installation', name: 'Способ установки', options: ['На печатную плату', 'Клеевая основа', 'На кронштейн', 'На мачту'] }
+  { id: 'proizvoditeli', name: 'Производители', options: ['Hikvision', 'Dahua', 'TP-Link', 'MikroTik', 'Ubiquiti', 'TRASSIR'] },
+  { id: 'frequency-range', name: 'Диапазон частот', options: ['2.4 ГГц', '5 ГГц', '2.4/5 ГГц (двухдиапазонная)', '4G/LTE (700-2700 МГц)'] },
+  { id: 'gain', name: 'Коэффициент усиления', options: ['3 dBi', '5 dBi', '7 dBi', '8 dBi', '10 dBi', '12 dBi', '15 dBi'] },
+  { id: 'connector', name: 'Тип разъема', options: ['SMA', 'RP-SMA', 'N-Type', 'TS-9', 'CRC9'] },
+  { id: 'antenna-type', name: 'Тип антенны', options: ['Штыревая', 'Панельная', 'Направленная', 'Всенаправленная', 'Внутренняя'] },
+  { id: 'polarization', name: 'Поляризация', options: ['Вертикальная', 'Горизонтальная', 'Двойная'] }
 ];
 
 export const telemetryFilters = [
-  { id: 'proizvoditeli', name: 'Производители', options: ['Micro-Drive', 'Сибнефтеавтоматика', 'Борец', 'Новомет', 'Ижевскнефтемаш'] },
-  { id: 'module-type', name: 'Тип модуля', options: ['Погружной блок (ПБ)', 'Наземный блок (НБ)', 'Комплект ТМС', 'Скважинный контроллер'] },
-  { id: 'parameters-monitoring', name: 'Контролируемые параметры', options: ['Давление в скважине', 'Температура обмоток ЭЦН', 'Вибрация ЭЦН', 'Ток утечки', 'Расход жидкости'] },
-  { id: 'data-interface', name: 'Интерфейс передачи', options: ['RS-485 (Modbus RTU)', 'Power Line Communication (PLC)', 'GPRS/LTE', 'Спутниковая связь'] },
-  { id: 'protection-class', name: 'Класс защиты', options: ['IP68 (Погружное)', 'Взрывозащищенное (Ex)', 'Коррозионностойкое'] },
-  { id: 'operating-temp', name: 'Рабочая температура', options: ['до +120°C', 'до +150°C', 'до +175°C'] },
-  { id: 'max-pressure', name: 'Макс. давление', options: ['до 25 МПа', 'до 40 МПа', 'до 60 МПа'] }
+  { id: 'proizvoditeli', name: 'Производители', options: ['Eijkelkamp', 'OTT HydroMet', 'Campbell Scientific', 'Sutron', 'In-Situ'] },
+  { id: 'parameter', name: 'Измеряемый параметр', options: ['Уровень воды', 'Давление', 'Температура', 'Проводимость', 'pH', 'Мутность'] },
+  { id: 'output-signal', name: 'Выходной сигнал', options: ['4-20 мА', '0-10 В', 'RS-232', 'RS-485 (Modbus)', 'SDI-12'] },
+  { id: 'accuracy', name: 'Точность', options: ['±0.05%', '±0.1%', '±0.25%', '±0.5%'] },
+  { id: 'protection', name: 'Степень защиты', options: ['IP68', 'IP67', 'IP66'] },
+  { id: 'power-supply', name: 'Питание', options: ['9-36V DC', '24V AC', 'Батарейное', 'Solar Ready'] }
 ];
 
 export const scudReaderFilters = [
-  { id: 'proizvoditeli', name: 'Производители', options: ['Hikvision', 'Dahua', 'Iron Logic', 'Proxway', 'Parsec', 'Sigur', 'Tantalos', 'Pironix', 'ZKTeco'] }, // ДОБАВЛЕНО ZKTeco
-  { id: 'card-standard', name: 'Стандарт карт', options: ['Em-Marine (125 кГц)', 'Mifare (13.56 МГц)', 'HID', 'Indala', 'NFC', 'BLE (Bluetooth)'] },
-  { id: 'reading-type', name: 'Тип чтения', options: ['Бесконтактный', 'Кодовая панель', 'Биометрия (Отпечаток)', 'Распознавание лиц', 'QR-код'] },
-  { id: 'interface-reader', name: 'Интерфейс подключения', options: ['Wiegand (26/34)', 'RS-485', 'OSDP', 'USB'] },
-  { id: 'execution-reader', name: 'Исполнение', options: ['Внутреннее', 'Уличное (IP65+)', 'Вандалозащищенное (IK10)', 'Врезное', 'Накладное'] },
-  { id: 'reading-distance', name: 'Дальность считывания', options: ['до 5 см', '5-10 см', 'Дальнего действия (до 10м)', 'Активные метки'] },
-  { id: 'special-reader', name: 'Особенности', options: ['Со встроенным контроллером', 'Световая индикация', 'Звуковой зуммер', 'Антитемпер'] }
+  { id: 'proizvoditeli', name: 'Производители', options: ['Hikvision', 'ZKTeco', 'PERCo', 'SIGUR', 'TRASSIR', 'Dahua', 'CAME'] },
+  { id: 'technology', name: 'Технология', options: ['RFID 125 кГц (EM-Marine)', 'RFID 13.56 МГц (Mifare)', 'RFID 13.56 МГц (Desfire)', 'RFID 13.56 МГц (NFC)', 'Двухчастотный (125 кГц + 13.56 МГц)'] },
+  { id: 'interface', name: 'Интерфейс', options: ['Wiegand 26/34', 'RS-485', 'OSDP', 'USB'] },
+  { id: 'body-material', name: 'Материал корпуса', options: ['Пластик', 'Металл', 'Антивандальный'] },
+  { id: 'ip-rating', name: 'Степень защиты', options: ['IP20', 'IP65', 'IP66', 'IP67', 'IP68'] },
+  { id: 'installation', name: 'Тип установки', options: ['Накладной', 'Врезной', 'Для улицы'] },
+  { id: 'led-indication', name: 'LED-индикация', options: ['да', 'нет'] },
+  { id: 'sound', name: 'Звуковая индикация', options: ['да', 'нет'] },
+  { id: 'keyboard', name: 'Клавиатура', options: ['да', 'нет'] }
+];
+
+// НОВЫЙ ФИЛЬТР ДЛЯ КОНТРОЛЛЕРОВ СКУД
+export const controllerFilters = [
+  {
+    id: 'proizvoditeli',
+    name: 'Производители',
+    options: ['Hikvision', 'iFlou', 'SIGUR', 'Dahua', 'TRASSIR', 'ZKTeco', 'PERCo', 'CAME']
+  },
+  {
+    id: 'tip-kontrollera',
+    name: 'Тип контроллера',
+    options: ['Сетевой', 'Автономный']
+  },
+  {
+    id: 'interface-podklyucheniya',
+    name: 'Интерфейс подключения',
+    options: ['Ethernet', 'Wi-Fi', 'USB', 'RS-485', 'нет']
+  },
+  {
+    id: 'interface-svyazi',
+    name: 'Интерфейс связи',
+    options: ['RS-485', 'OSDP', 'Wiegand', 'Dallas Touch Memory']
+  },
+  {
+    id: 'ispolnenie',
+    name: 'Исполнение',
+    options: ['Внутреннее', 'Уличное']
+  },
+  {
+    id: 'stepen-zashchity',
+    name: 'Степень защиты (IP)',
+    options: ['IP20', 'IP66', 'IP68', 'нет']
+  },
+  {
+    id: 'kolichestvo-tochok-prokhoda',
+    name: 'Количество точек прохода',
+    options: ['1', '2', '4', '8', 'нет']
+  },
+  {
+    id: 'biometriya',
+    name: 'Биометрическое считывание',
+    options: ['Распознавание лиц', 'Распознавание отпечатков пальцев', 'нет']
+  },
+  {
+    id: 'vstroennaya-klaviatura',
+    name: 'Встроенная клавиатура',
+    options: ['да', 'нет']
+  },
+  {
+    id: 'osobennosti',
+    name: 'Особенности',
+    options: ['Встроенный блок питания', 'Поддержка USB', 'Установка на DIN-рейку', 'нет']
+  }
 ];
