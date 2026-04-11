@@ -143,7 +143,6 @@ export const scudReaderFilters = [
   { id: 'keyboard', name: 'Клавиатура', options: ['да', 'нет'] }
 ];
 
-// НОВЫЙ ФИЛЬТР ДЛЯ КОНТРОЛЛЕРОВ СКУД
 export const controllerFilters = [
   {
     id: 'proizvoditeli',
@@ -194,5 +193,28 @@ export const controllerFilters = [
     id: 'osobennosti',
     name: 'Особенности',
     options: ['Встроенный блок питания', 'Поддержка USB', 'Установка на DIN-рейку', 'нет']
+  }
+];
+
+export const contactlessKeyFilters = [
+  {
+    id: 'proizvoditeli',
+    name: 'Производители',
+    options: ['ATIX', 'Dahua', 'Hikvision', 'Бастион', 'AX PRO', 'Dnake']
+  },
+  {
+    id: 'tip-identifikatora',
+    name: 'Тип идентификатора',
+    options: ['Карта доступа', 'Браслет', 'Брелок']
+  },
+  {
+    id: 'format',
+    name: 'Формат / Технология',
+    options: ['EM-marine', 'Mifare']
+  },
+  {
+    id: 'osobennosti',
+    name: 'Особенности',
+    options: ['Карта под печать', 'Тонкая карта', 'Возможна перезапись', 'Нет']
   }
 ];
