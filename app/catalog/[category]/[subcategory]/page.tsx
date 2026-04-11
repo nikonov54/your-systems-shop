@@ -12,7 +12,8 @@ import {
   bracketFilters,
   switchFilters,
   routerFilters,
-  accessPointFilters
+  accessPointFilters,
+  sfpFilters
 } from '../../filters-config';
 
 export default function SubcategoryPage({ params }: { params: Promise<{ category: string, subcategory: string }> }) {
@@ -24,7 +25,7 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
   const currentCategoryData = catalogData.find(c => c.slug === decodedCat);
   const subcategories = currentCategoryData?.sub || [];
 
-  // ИСПРАВЛЕННАЯ ЛОГИКА: Добавлена точная проверка для кириллического слага "wi-fi-точки"
+  // ИСПРАВЛЕННАЯ ЛОГИКА: Добавлена точная проверка для кириллического слага "sfp-модули"
   const activeFilters = 
     (decodedSub.includes('kamery') || decodedSub.includes('камеры')) ? cameraFilters : 
     (decodedSub.includes('registratory') || decodedSub.includes('регистраторы')) ? recorderFilters : 
@@ -33,7 +34,8 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
     (decodedSub.includes('kronshteyny') || decodedSub.includes('кронштейны')) ? bracketFilters : 
     (decodedSub.includes('kommutatory') || decodedSub.includes('коммутаторы')) ? switchFilters :
     (decodedSub.includes('marshrutizatory') || decodedSub.includes('маршрутизаторы') || decodedSub.includes('routery') || decodedSub.includes('роутеры')) ? routerFilters : 
-    (decodedSub.includes('wi-fi-tochki') || decodedSub.includes('wi-fi-точки')) ? accessPointFilters : [];
+    (decodedSub.includes('wi-fi-tochki') || decodedSub.includes('wi-fi-точки')) ? accessPointFilters : 
+    (decodedSub.includes('sfp-moduli') || decodedSub.includes('sfp-модули')) ? sfpFilters : [];
 
   const toggleGroup = (id: string) => setOpenGroups(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id]);
   const createSlug = (text: string) => text.toLowerCase().replace(/ /g, '-');

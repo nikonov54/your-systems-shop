@@ -94,3 +94,14 @@ export const accessPointFilters = [
   { id: 'max-clients', name: 'Макс. количество клиентов', options: ['до 100', 'до 256', 'до 512', 'свыше 1000'] },
   { id: 'special-features', name: 'Особенности', options: ['MLO (Multi-Link Operation)', '4096-QAM', 'Ширина канала 320 МГц', 'Облачное управление', 'Бесшовная Mesh-сеть'] }
 ];
+
+export const sfpFilters = [
+  { id: 'proizvoditeli', name: 'Производители', options: ['Hikvision', 'Dahua', 'TP-Link', 'MikroTik', 'Modultech', 'SNR'] },
+  { id: 'form-factor', name: 'Форм-фактор', options: ['SFP', 'SFP+', 'SFP28', 'QSFP+', 'QSFP28', 'QSFP-DD'] },
+  { id: 'data-rate-sfp', name: 'Скорость передачи', options: ['100 Мбит/с', '1.25 Гбит/с', '10 Гбит/с', '25 Гбит/с', '40 Гбит/с', '100 Гбит/с'] },
+  { id: 'transmission-distance', name: 'Дальность передачи', options: ['до 550 м', 'до 2 км', 'до 10 км', 'до 20 км', 'до 40 км', 'до 80 км', 'свыше 100 км'] },
+  { id: 'fiber-type', name: 'Тип волокна', options: ['Многомодовое (MMF)', 'Одномодовое (SMF)', 'Медный кабель (RJ-45)'] },
+  { id: 'connectors-sfp', name: 'Разъемы', options: ['LC (Duplex)', 'LC (Simplex/WDM)', 'SC', 'RJ-45'] },
+  { id: 'wavelength', name: 'Длина волны', options: ['850 нм', '1310 нм', '1550 нм', 'WDM (1310/1550)', 'CWDM', 'DWDM'] },
+  { id: 'special-sfp', name: 'Особенности', options: ['DDM (Цифровая диагностика)', 'Индустриальный (-40...+85°C)', 'Горячая замена'] }
+];
