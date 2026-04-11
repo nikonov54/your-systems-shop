@@ -393,7 +393,6 @@ export const metalDetectorFilters = [
   }
 ];
 
-// ТУРНИКЕТЫ
 export const turnstileFilters = [
   {
     id: 'brand',
@@ -434,5 +433,49 @@ export const turnstileFilters = [
     id: 'antipanika',
     name: 'Антипаника',
     options: ['Автоматическая', 'Механическая', 'Нет']
+  }
+];
+
+// ШЛАГБАУМЫ
+export const barrierFilters = [
+  {
+    id: 'proizvoditeli',
+    name: 'Производители',
+    options: ['ЛКД', 'CAME', 'PERCo', 'HIKVISION', 'Beward', 'COMUNELLO', 'iFLOW', 'ZKTeco']
+  },
+  {
+    id: 'temperatura',
+    name: 'Диапазон рабочих температур',
+    options: ['-45°C ... 60°C']
+  },
+  {
+    id: 'ip',
+    name: 'Класс защиты IP',
+    options: ['IP54']
+  },
+  {
+    id: 'moshchnost',
+    name: 'Мощность',
+    options: ['530 Вт']
+  },
+  {
+    id: 'napryazhenie',
+    name: 'Напряжение питания',
+    options: ['220 В']
+  },
+  {
+    id: 'proezd',
+    name: 'Перекрываемый проезд',
+    options: ['до 3.2 м', 'до 4.7 м']
+  },
+  {
+    id: 'tip_pitaniya',
+    name: 'Тип питания',
+    options: ['AC']
+  },
+  {
+    id: 'tip_shlagbauma',
+    name: 'Тип шлагбаума',
+    options: ['Автоматический', 'Промышленный', 'Стандартный']
   }
 ];
