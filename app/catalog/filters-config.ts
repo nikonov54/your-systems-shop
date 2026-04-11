@@ -105,3 +105,13 @@ export const sfpFilters = [
   { id: 'wavelength', name: 'Длина волны', options: ['850 нм', '1310 нм', '1550 нм', 'WDM (1310/1550)', 'CWDM', 'DWDM'] },
   { id: 'special-sfp', name: 'Особенности', options: ['DDM (Цифровая диагностика)', 'Индустриальный (-40...+85°C)', 'Горячая замена'] }
 ];
+
+export const poeInjectorFilters = [
+  { id: 'proizvoditeli', name: 'Производители', options: ['Hikvision', 'Dahua', 'Osnovo', 'Amatek', 'Zyxel', 'SNR', 'Tenda', 'Ubiquiti', 'QTECH', 'ComOnyx'] },
+  { id: 'poe-standard', name: 'Стандарт PoE', options: ['Passive PoE', 'IEEE 802.3af (15.4 Вт)', 'IEEE 802.3at (30 Вт)', 'IEEE 802.3bt (60-90 Вт)', 'Ultra PoE (до 95 Вт)'] },
+  { id: 'data-rate-poe', name: 'Скорость портов', options: ['10/100 Мбит/с', '10/100/1000 Мбит/с (Gigabit)', '2.5 Гбит/с', '5 Гбит/с', '10 Гбит/с'] },
+  { id: 'ports-count-poe', name: 'Количество портов PoE', options: ['1', '2', '4'] },
+  { id: 'input-voltage', name: 'Входное напряжение', options: ['AC 100-240В', 'DC 12-24В', 'DC 48-56В'] },
+  { id: 'execution-poe', name: 'Исполнение', options: ['Внутреннее', 'Уличное (IP66/67)', 'Индустриальное (DIN-рейка)', 'Сплиттер'] },
+  { id: 'special-poe', name: 'Особенности', options: ['Встроенный БП', 'Грозозащита', 'Защита от КЗ', 'LED индикация питания/PoE', 'Крепление на стену'] }
+];
