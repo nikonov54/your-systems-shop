@@ -116,7 +116,6 @@ export const poeInjectorFilters = [
   { id: 'special-poe', name: 'Особенности', options: ['Встроенный БП', 'Грозозащита', 'Защита от КЗ', 'LED индикация питания/PoE', 'Крепление на стену'] }
 ];
 
-// НОВОЕ: АНТЕННЫ (НА ОСНОВЕ OEM/ВСТРАИВАЕМЫХ РЕШЕНИЙ)
 export const antennaFilters = [
   { id: 'proizvoditeli', name: 'Производители', options: ['Micro-Drive', 'Антэкс', 'Крокс', 'Laird', 'Pulse'] },
   { id: 'antenna-type', name: 'Тип антенны', options: ['Встраиваемая (OEM)', 'Направленная (Панельная)', 'Всенаправленная', 'Магнитная', 'Автомобильная'] },
@@ -125,4 +124,15 @@ export const antennaFilters = [
   { id: 'connector-type', name: 'Тип разъема', options: ['U.FL (IPEX)', 'SMA-male', 'SMA-female', 'N-type', 'CRC9/TS9', 'Без разъема (под пайку)'] },
   { id: 'mimo-support', name: 'Поддержка MIMO', options: ['да (2x2)', 'да (4x4)', 'нет'] },
   { id: 'installation', name: 'Способ установки', options: ['На печатную плату', 'Клеевая основа', 'На кронштейн', 'На мачту'] }
+];
+
+// НОВОЕ: ПОГРУЖНАЯ ТЕЛЕМЕТРИЯ (ДЛЯ СКВАЖИННЫХ СИСТЕМ)
+export const telemetryFilters = [
+  { id: 'proizvoditeli', name: 'Производители', options: ['Micro-Drive', 'Сибнефтеавтоматика', 'Борец', 'Новомет', 'Ижевскнефтемаш'] },
+  { id: 'module-type', name: 'Тип модуля', options: ['Погружной блок (ПБ)', 'Наземный блок (НБ)', 'Комплект ТМС', 'Скважинный контроллер'] },
+  { id: 'parameters-monitoring', name: 'Контролируемые параметры', options: ['Давление в скважине', 'Температура обмоток ЭЦН', 'Вибрация ЭЦН', 'Ток утечки', 'Расход жидкости'] },
+  { id: 'data-interface', name: 'Интерфейс передачи', options: ['RS-485 (Modbus RTU)', 'Power Line Communication (PLC)', 'GPRS/LTE', 'Спутниковая связь'] },
+  { id: 'protection-class', name: 'Класс защиты', options: ['IP68 (Погружное)', 'Взрывозащищенное (Ex)', 'Коррозионностойкое'] },
+  { id: 'operating-temp', name: 'Рабочая температура', options: ['до +120°C', 'до +150°C', 'до +175°C'] },
+  { id: 'max-pressure', name: 'Макс. давление', options: ['до 25 МПа', 'до 40 МПа', 'до 60 МПа'] }
 ];
