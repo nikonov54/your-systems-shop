@@ -34,7 +34,8 @@ import {
   detectorFilters,
   remoteControlFilters,
   repeaterFilters,
-  sensorFilters
+  sensorFilters,
+  moduleFilters
 } from '../../filters-config';
 
 export default function SubcategoryPage({ params }: { params: Promise<{ category: string, subcategory: string }> }) {
@@ -76,7 +77,8 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
     (decodedSub.includes('izveshateli') || decodedSub.includes('извещатели')) ? detectorFilters :
     (decodedSub.includes('pulty-upravleniya') || decodedSub.includes('пульты управления') || decodedSub.includes('пульты-управления')) ? remoteControlFilters :
     (decodedSub.includes('retranslyatory') || decodedSub.includes('ретрансляторы')) ? repeaterFilters :
-    (decodedSub.includes('datchiki') || decodedSub.includes('датчики')) ? sensorFilters : [];
+    (decodedSub.includes('datchiki') || decodedSub.includes('датчики')) ? sensorFilters :
+    (decodedSub.includes('moduli') || decodedSub.includes('модули')) ? moduleFilters : [];
 
   const toggleGroup = (id: string) => setOpenGroups(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id]);
   const createSlug = (text: string) => text.toLowerCase().replace(/ /g, '-');

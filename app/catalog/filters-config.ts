@@ -1091,7 +1091,6 @@ export const repeaterFilters = [
   }
 ];
 
-// ДАТЧИКИ (сигнализация)
 export const sensorFilters = [
   {
     id: 'proizvoditeli',
@@ -1162,5 +1161,69 @@ export const sensorFilters = [
     id: 'osobennosti',
     name: 'Особенности',
     options: ['Тампер (защита от вскрытия)', 'Антисаботаж', 'Контроль отрыва от стены', 'Светодиодная индикация', 'Регулировка чувствительности', 'Память тревоги']
+  }
+];
+
+// МОДУЛИ (сигнализация)
+export const moduleFilters = [
+  {
+    id: 'proizvoditeli',
+    name: 'Производители',
+    options: ['C.Nord', 'AirShield', 'Hikvision', 'Dahua', 'AX PRO']
+  },
+  {
+    id: 'tip_modulya',
+    name: 'Тип модуля',
+    options: ['Модуль интеграции', 'Адаптер Ethernet', 'Модуль расширения', 'Модуль ввода/вывода', 'Радиомодуль']
+  },
+  {
+    id: 'trevozhnye_vhody',
+    name: 'Тревожные входы',
+    options: ['2 (1 для сигнализации, 1 для защиты от взлома)']
+  },
+  {
+    id: 'vyhodnaya_moshchnost',
+    name: 'Выходная мощность',
+    options: ['3.3 В, до 10 мА']
+  },
+  {
+    id: 'pitanie',
+    name: 'Питание',
+    options: ['3 батареи CR123A']
+  },
+  {
+    id: 'srok_sluzhby',
+    name: 'Срок службы батарей',
+    options: ['5 лет', '4 года (при импульсном типе)']
+  },
+  {
+    id: 'zashchita',
+    name: 'Защита',
+    options: ['Тампер (вскрытие)', 'От перегрева', 'От перемещения (3-осевой акселерометр)']
+  },
+  {
+    id: 'temperatura_izmerenie',
+    name: 'Измерение температуры',
+    options: ['-15°C ... +65°C']
+  },
+  {
+    id: 'shifrovanie',
+    name: 'Шифрование',
+    options: ['AES128']
+  },
+  {
+    id: 'svyaz',
+    name: 'Связь',
+    options: ['Двусторонняя']
+  },
+  {
+    id: 'temperatura',
+    name: 'Рабочая температура',
+    options: ['-10°C ... +55°C (внутри помещения)']
+  },
+  {
+    id: 'osobennosti',
+    name: 'Особенности',
+    options: ['Тревога при вскрытии', 'Тревога при перегреве', 'Тревога при перемещении', 'Мониторинг температуры', 'Двусторонняя связь', 'Шифрование AES128']
   }
 ];
