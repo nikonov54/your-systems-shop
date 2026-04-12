@@ -1227,7 +1227,6 @@ export const moduleFilters = [
   }
 ];
 
-// РЕЛЕ (сигнализация)
 export const relayFilters = [
   {
     id: 'proizvoditeli',
@@ -1283,5 +1282,99 @@ export const relayFilters = [
     id: 'osobennosti',
     name: 'Особенности',
     options: ['Обнаружение напряжения', 'Защита от перегрева', 'Двусторонняя связь', 'Шифрование AES128']
+  }
+];
+
+// РОЗЕТКИ (сигнализация)
+export const socketFilters = [
+  {
+    id: 'proizvoditeli',
+    name: 'Производители',
+    options: ['C.Nord', 'AirShield', 'Dahua', 'LIVI', 'Hikvision']
+  },
+  {
+    id: 'tok_max',
+    name: 'Максимальный ток',
+    options: ['7A', '16A']
+  },
+  {
+    id: 'napryazhenie',
+    name: 'Напряжение',
+    options: ['230 В AC', '100-240 В AC']
+  },
+  {
+    id: 'chastota',
+    name: 'Рабочая частота',
+    options: ['868 МГц']
+  },
+  {
+    id: 'dalnost',
+    name: 'Дальность передачи (открытое пространство)',
+    options: ['до 1600 м']
+  },
+  {
+    id: 'monitoring',
+    name: 'Мониторинг',
+    options: ['Напряжение', 'Ток', 'Температура', 'Мощность']
+  },
+  {
+    id: 'zashchita',
+    name: 'Защита',
+    options: ['От перегрева', 'От перегрузки по току', 'От перенапряжения']
+  },
+  {
+    id: 'rezhim',
+    name: 'Режимы работы',
+    options: ['Бистабильный', 'Импульсный', 'Термостат']
+  },
+  {
+    id: 'upravlenie',
+    name: 'Управление',
+    options: ['Кнопка на корпусе', 'Удалённое (по радиоканалу)']
+  },
+  {
+    id: 'indikatsiya',
+    name: 'Индикация',
+    options: ['Светодиодная']
+  },
+  {
+    id: 'obnovlenie',
+    name: 'Обновление ПО',
+    options: ['Удалённое (через интернет)']
+  },
+  {
+    id: 'shifrovanie',
+    name: 'Шифрование',
+    options: ['AES128']
+  },
+  {
+    id: 'pprch',
+    name: 'Псевдослучайная перестройка частоты (ППРЧ)',
+    options: ['Есть']
+  },
+  {
+    id: 'poterya_svyazi',
+    name: 'Информирование о потере связи',
+    options: ['Да']
+  },
+  {
+    id: 'razmer',
+    name: 'Размер',
+    options: ['115×66×30 мм', '52×52×82 мм']
+  },
+  {
+    id: 'ves',
+    name: 'Вес',
+    options: ['83 г']
+  },
+  {
+    id: 'material',
+    name: 'Материал корпуса',
+    options: ['Поликарбонат']
+  },
+  {
+    id: 'temperatura',
+    name: 'Рабочая температура',
+    options: ['-10°C ... +55°C']
   }
 ];
