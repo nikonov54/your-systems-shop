@@ -1480,7 +1480,6 @@ export const mountingCabinetFilters = [
   }
 ];
 
-// КЛИМАТИЧЕСКИЕ ШКАФЫ
 export const climateCabinetFilters = [
   {
     id: 'proizvoditeli',
@@ -1570,5 +1569,101 @@ export const climateCabinetFilters = [
     id: 'ves',
     name: 'Вес',
     options: ['5 кг', '7 кг', '8 кг', '10.3 кг', '10.8 кг', '11.3 кг', '11.8 кг', '12.3 кг', '12.8 кг', '16.5 кг', '23 кг', '32 кг', '45.8 кг', '46.3 кг']
+  }
+];
+
+// ТЕЛЕКОММУНИКАЦИОННЫЕ И СЕРВЕРНЫЕ ШКАФЫ (19")
+export const rackCabinetFilters = [
+  {
+    id: 'proizvoditeli',
+    name: 'Производители',
+    options: ['Mastermann']
+  },
+  {
+    id: 'montazh',
+    name: 'Тип монтажа',
+    options: ['Настенный', 'Напольный']
+  },
+  {
+    id: 'vysota_u',
+    name: 'Высота (U)',
+    options: ['6U', '9U', '12U', '15U', '18U', '22U', '27U', '32U', '37U', '42U']
+  },
+  {
+    id: 'material',
+    name: 'Материал',
+    options: ['Металл']
+  },
+  {
+    id: 'ip',
+    name: 'Класс защиты IP',
+    options: ['IP66']
+  },
+  {
+    id: 'razmer',
+    name: 'Размер (Ш×В×Г)',
+    options: [
+      '600×350×600 мм',
+      '600×450×600 мм',
+      '600×600×600 мм',
+      '600×800×800 мм',
+      '800×800×800 мм',
+      '800×1000×1000 мм'
+    ]
+  },
+  {
+    id: 'temperatura',
+    name: 'Диапазон рабочих температур',
+    options: ['-55°C ... +50°C']
+  },
+  {
+    id: 'uteplitel',
+    name: 'Утеплитель',
+    options: ['Да', 'Нет']
+  },
+  {
+    id: 'nagrevatel',
+    name: 'Нагреватель',
+    options: ['75 Вт', '150 Вт', '250 Вт', 'Нет']
+  },
+  {
+    id: 'gigrostat',
+    name: 'Гигростат',
+    options: ['NT 78-M', 'Нет']
+  },
+  {
+    id: 'termorele',
+    name: 'Термореле',
+    options: ['Да', 'Нет']
+  },
+  {
+    id: 'rele_predstarta',
+    name: 'Реле предстарта',
+    options: ['Да', 'Нет']
+  },
+  {
+    id: 'rozetka',
+    name: 'Розетка',
+    options: ['Да', 'Нет']
+  },
+  {
+    id: 'avtomat',
+    name: 'Автоматический выключатель',
+    options: ['Да', 'Нет']
+  },
+  {
+    id: 'napravlyayushchie',
+    name: '19" направляющие',
+    options: ['Да', 'Нет']
+  },
+  {
+    id: 'zamok',
+    name: 'Тип замка',
+    options: ['Антивандальный (сувальдный)', 'Стандартный']
+  },
+  {
+    id: 'tsvet',
+    name: 'Цвет',
+    options: ['RAL 7035 (серый)']
   }
 ];
