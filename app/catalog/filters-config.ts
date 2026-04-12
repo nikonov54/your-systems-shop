@@ -950,7 +950,6 @@ export const detectorFilters = [
   }
 ];
 
-// ПУЛЬТЫ УПРАВЛЕНИЯ (сигнализация) - с учётом брелоков
 export const remoteControlFilters = [
   {
     id: 'proizvoditeli',
@@ -1016,5 +1015,79 @@ export const remoteControlFilters = [
     id: 'osobennosti',
     name: 'Особенности',
     options: ['Постановка/снятие с охраны', 'Домашний режим', 'Пароль', 'IC-карта', 'DESFire-карта', 'Мониторинг температуры', 'Шифрование AES128', 'Тревога низкого заряда батареи', 'Двусторонняя связь', 'SOS кнопка']
+  }
+];
+
+// РЕТРАНСЛЯТОРЫ (сигнализация)
+export const repeaterFilters = [
+  {
+    id: 'proizvoditeli',
+    name: 'Производители',
+    options: ['Hikvision', 'C.Nord', 'Dahua']
+  },
+  {
+    id: 'protokoly',
+    name: 'Протоколы',
+    options: ['Tri-X', 'Cam-X']
+  },
+  {
+    id: 'chastota',
+    name: 'Рабочая частота',
+    options: ['868 МГц', '433.05-434.79 МГц']
+  },
+  {
+    id: 'pitanie',
+    name: 'Питание',
+    options: ['AC 100-240 V', '230 В']
+  },
+  {
+    id: 'rezerv_pitanie',
+    name: 'Резервное питание',
+    options: ['АКБ LIR14500 – 3.7 В, 750 мА·ч', 'Нет']
+  },
+  {
+    id: 'moshchnost',
+    name: 'Потребляемая мощность',
+    options: ['1.5 ВА']
+  },
+  {
+    id: 'srok',
+    name: 'Срок службы',
+    options: ['не менее 10 лет']
+  },
+  {
+    id: 'ip',
+    name: 'Стандарт защиты IP',
+    options: ['IP20']
+  },
+  {
+    id: 'temperatura',
+    name: 'Рабочая температура',
+    options: ['-10°C ... +55°C', '-20°C ... +45°C']
+  },
+  {
+    id: 'razmer',
+    name: 'Размер',
+    options: ['150×150×25 мм', '66×66×35 мм']
+  },
+  {
+    id: 'ves',
+    name: 'Вес',
+    options: ['200 г']
+  },
+  {
+    id: 'naznachenie',
+    name: 'Назначение',
+    options: ['увеличение радиуса действия беспроводных устройств']
+  },
+  {
+    id: 'klimat',
+    name: 'Климатическое исполнение',
+    options: ['УХЛ4']
+  },
+  {
+    id: 'moshchnost_peredatchika',
+    name: 'Мощность передатчика',
+    options: ['10 мВт']
   }
 ];
