@@ -40,7 +40,8 @@ import {
   socketFilters,
   mountingCabinetFilters,
   climateCabinetFilters,
-  rackCabinetFilters
+  rackCabinetFilters,
+  cabinetAccessoriesFilters
 } from '../../filters-config';
 
 export default function SubcategoryPage({ params }: { params: Promise<{ category: string, subcategory: string }> }) {
@@ -89,7 +90,8 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
     (decodedSub.includes('obolochki') || decodedSub.includes('оболочки') || decodedSub.includes('montazhnye') || decodedSub.includes('монтажные')) ? mountingCabinetFilters :
     (decodedSub.includes('klimaticheskie') || decodedSub.includes('климатические')) ? climateCabinetFilters :
     (decodedSub.includes('telekommunikatsionnye') || decodedSub.includes('телекоммуникационные')) ? rackCabinetFilters :
-    (decodedSub.includes('servernye') || decodedSub.includes('серверные')) ? rackCabinetFilters : [];
+    (decodedSub.includes('servernye') || decodedSub.includes('серверные')) ? rackCabinetFilters :
+    (decodedSub.includes('aksessuary-shkafy') || decodedSub.includes('аксессуары шкафы') || decodedSub.includes('aksessuary')) ? cabinetAccessoriesFilters : [];
 
   const toggleGroup = (id: string) => setOpenGroups(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id]);
   const createSlug = (text: string) => text.toLowerCase().replace(/ /g, '-');

@@ -1572,7 +1572,6 @@ export const climateCabinetFilters = [
   }
 ];
 
-// ТЕЛЕКОММУНИКАЦИОННЫЕ И СЕРВЕРНЫЕ ШКАФЫ (19")
 export const rackCabinetFilters = [
   {
     id: 'proizvoditeli',
@@ -1642,5 +1641,74 @@ export const rackCabinetFilters = [
     id: 'tsvet',
     name: 'Цвет',
     options: ['Черный', 'RAL 7035 (серый)']
+  }
+];
+
+// АКСЕССУАРЫ ДЛЯ ШКАФОВ
+export const cabinetAccessoriesFilters = [
+  {
+    id: 'proizvoditeli',
+    name: 'Производители',
+    options: ['Mastermann']
+  },
+  {
+    id: 'tip_aksessuara',
+    name: 'Тип аксессуара',
+    options: [
+      'Вентиляторный блок',
+      'L-направляющие',
+      'Полка консольная',
+      'Полка раздвижная',
+      'Полка статическая',
+      'Фальшпанель',
+      'Органайзер горизонтальный',
+      'Панель ВРУ',
+      'Кабельный ввод'
+    ]
+  },
+  {
+    id: 'vysota_u',
+    name: 'Высота (U)',
+    options: ['1U', '2U', '3U']
+  },
+  {
+    id: 'glubina_shkafa',
+    name: 'Глубина шкафа',
+    options: ['250 мм', '350 мм', '367 мм', '352 мм', '500 мм', '567 мм', '600 мм', '702 мм', '737 мм', '800 мм', '902 мм', '937 мм', '1000 мм', '1200 мм']
+  },
+  {
+    id: 'nagruzka',
+    name: 'Нагрузка',
+    options: ['25 кг', '50 кг', '100 кг']
+  },
+  {
+    id: 'ventilyatory',
+    name: 'Количество вентиляторов',
+    options: ['2', '4']
+  },
+  {
+    id: 'termostat',
+    name: 'Термостат',
+    options: ['Да', 'Нет']
+  },
+  {
+    id: 'vyklyuchatel',
+    name: 'Выключатель',
+    options: ['Да', 'Нет']
+  },
+  {
+    id: 'predohranitel',
+    name: 'Предохранитель',
+    options: ['Да', 'Нет']
+  },
+  {
+    id: 'material',
+    name: 'Материал',
+    options: ['Оцинкованная сталь', 'Перфорированный металл']
+  },
+  {
+    id: 'tsvet',
+    name: 'Цвет',
+    options: ['RAL 7035 (серый)', 'Черный']
   }
 ];
