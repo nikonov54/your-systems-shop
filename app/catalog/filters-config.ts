@@ -882,7 +882,6 @@ export const alarmPowerSupplyFilters = [
   }
 ];
 
-// ИЗВЕЩАТЕЛИ (сигнализация)
 export const detectorFilters = [
   {
     id: 'proizvoditeli',
@@ -948,5 +947,69 @@ export const detectorFilters = [
     id: 'osobennosti',
     name: 'Особенности',
     options: ['Антисаботаж (тампер)', 'Защита от вскрытия', 'Контроль отрыва от стены', 'Светодиодная индикация', 'Регулировка чувствительности', 'Память тревоги']
+  }
+];
+
+// ПУЛЬТЫ УПРАВЛЕНИЯ (сигнализация)
+export const remoteControlFilters = [
+  {
+    id: 'proizvoditeli',
+    name: 'Производители',
+    options: ['CAME', 'PERCo', 'HIKVISION', 'HiWatch', 'TRASSIR', 'Dahua', 'AX PRO', 'AirShield', 'C.Nord', 'Livicom']
+  },
+  {
+    id: 'chastota',
+    name: 'Рабочая частота',
+    options: ['433 МГц', '868 МГц']
+  },
+  {
+    id: 'knopki',
+    name: 'Количество кнопок',
+    options: ['3', '4', '15', '20']
+  },
+  {
+    id: 'dalnost',
+    name: 'Дальность передачи (открытое пространство)',
+    options: ['900 м', '1000 м']
+  },
+  {
+    id: 'rfid',
+    name: 'RFID-метки (считыватель карт)',
+    options: ['Да', 'Нет']
+  },
+  {
+    id: 'perestroyka',
+    name: 'Перестройка рабочей частоты',
+    options: ['Да', 'Нет']
+  },
+  {
+    id: 'update',
+    name: 'Удаленное обновление',
+    options: ['Да', 'Нет']
+  },
+  {
+    id: 'pitanie',
+    name: 'Питание',
+    options: ['4 батарейки AA', 'DC 12В', 'батарейки CR123A']
+  },
+  {
+    id: 'ekran',
+    name: 'Экран',
+    options: ['Да', 'Нет']
+  },
+  {
+    id: 'polzovateli',
+    name: 'Количество пользователей',
+    options: ['до 30']
+  },
+  {
+    id: 'temperatura',
+    name: 'Рабочая температура',
+    options: ['-10°C ... +55°C (внутри помещения)']
+  },
+  {
+    id: 'osobennosti',
+    name: 'Особенности',
+    options: ['Постановка/снятие с охраны', 'Домашний режим', 'Пароль', 'IC-карта', 'DESFire-карта', 'Мониторинг температуры', 'Шифрование AES128', 'Тревога низкого заряда батареи', 'Двусторонняя связь']
   }
 ];
