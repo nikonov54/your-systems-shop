@@ -28,7 +28,8 @@ import {
   smartPanelFilters,
   callingPanelFilters,
   videoMonitorFilters,
-  accessoriesFilters
+  accessoriesFilters,
+  securityControllerFilters
 } from '../../filters-config';
 
 export default function SubcategoryPage({ params }: { params: Promise<{ category: string, subcategory: string }> }) {
@@ -54,6 +55,7 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
     (decodedSub.includes('antenny') || decodedSub.includes('антенны')) ? antennaFilters :
     (decodedSub.includes('pogruzhnaya-telemetriya') || decodedSub.includes('погружная-телеметрия')) ? telemetryFilters :
     (decodedSub.includes('schityvateli') || decodedSub.includes('считыватели')) ? scudReaderFilters :
+    (decodedSub.includes('security-controllers') || decodedSub.includes('контроллеры сигнализации') || decodedSub.includes('контроллеры')) ? securityControllerFilters :
     (decodedSub.includes('kontrollery') || decodedSub.includes('контроллеры')) ? controllerFilters :
     (decodedSub.includes('beskontaktnye-klyuchi') || decodedSub.includes('бесконтактные-ключи')) ? contactlessKeyFilters :
     (decodedSub.includes('zamki') || decodedSub.includes('замки')) ? lockFilters :

@@ -728,7 +728,6 @@ export const videoMonitorFilters = [
   }
 ];
 
-// АКСЕССУАРЫ ДЛЯ ДОМОФОНИИ
 export const accessoriesFilters = [
   {
     id: 'proizvoditeli',
@@ -759,5 +758,74 @@ export const accessoriesFilters = [
     id: 'sovmestimost',
     name: 'Совместимость',
     options: ['Dahua', 'Hikvision', 'ATIX', 'Beward', 'Универсальная']
+  }
+];
+
+// КОНТРОЛЛЕРЫ ОХРАННОЙ СИГНАЛИЗАЦИИ
+export const securityControllerFilters = [
+  {
+    id: 'proizvoditeli',
+    name: 'Производители',
+    options: ['Hikvision', 'Dahua', 'Axis', 'Bosch', 'Pyronix', 'Risco', 'Paradox', 'Satel', 'Jablotron', 'Ajax', 'Bolid']
+  },
+  {
+    id: 'svyaz',
+    name: 'Связь / Интерфейсы',
+    options: ['Ethernet', 'Wi-Fi 2.4 ГГц', 'GPRS', '3G/4G']
+  },
+  {
+    id: 'ustroystv_max',
+    name: 'Макс. количество периферийных устройств',
+    options: ['до 150', 'до 200']
+  },
+  {
+    id: 'videokamer',
+    name: 'Поддержка видеокамер',
+    options: ['до 4', 'до 8', 'до 16']
+  },
+  {
+    id: 'shifrovanie',
+    name: 'Шифрование',
+    options: ['AES128', 'AES256']
+  },
+  {
+    id: 'dalnost',
+    name: 'Дальность связи',
+    options: ['до 2000 м (прямая видимость)', 'до 1500 м', 'до 1000 м']
+  },
+  {
+    id: 'protokoly',
+    name: 'Протоколы',
+    options: ['TCP/IP', 'PPTP', 'L2TP', 'DHCP', 'UPNP', 'NTP', 'MQTT']
+  },
+  {
+    id: 'prilozheniya',
+    name: 'Поддержка приложений',
+    options: ['DMSS', 'COS Pro', 'Ajax PRO', 'Hik-Connect', 'Secure']
+  },
+  {
+    id: 'zony',
+    name: 'Количество зон',
+    options: ['до 32', 'до 64', 'до 128']
+  },
+  {
+    id: 'pitanie',
+    name: 'Питание',
+    options: ['12 V DC, 1.5 A', '12 V DC, 2 A', '220 V AC']
+  },
+  {
+    id: 'akb',
+    name: 'Резервный аккумулятор',
+    options: ['12 часов', '24 часа', '8 часов']
+  },
+  {
+    id: 'temperatura',
+    name: 'Рабочая температура',
+    options: ['-10°C ~ +55°C (внутри помещения)', '-20°C ~ +50°C', '-30°C ~ +60°C (уличное исполнение)']
+  },
+  {
+    id: 'osobennosti',
+    name: 'Особенности',
+    options: ['Двусторонняя связь', 'Встроенный динамик', 'Аудиовыход', 'Поддержка звонка и СМС (до 5 номеров)', 'Поддержка беспроводных устройств', 'Поддержка проводных устройств', 'Модуль расширения']
   }
 ];
