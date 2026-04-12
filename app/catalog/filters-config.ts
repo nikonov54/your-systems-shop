@@ -619,3 +619,67 @@ export const callingPanelFilters = [
     options: ['врезной', 'встраиваемый', 'накладной', 'напольный', 'настенный']
   }
 ];
+
+// ВИДЕОМОНИТОРЫ (домофония)
+export const videoMonitorFilters = [
+  {
+    id: 'proizvoditeli',
+    name: 'Производители',
+    options: ['ЛКД', 'HIKVISION', 'EKF', 'HiWatch', 'Beward', 'Dahua', 'AccordTec', 'iFLOW', 'ATIX', 'Dnake']
+  },
+  {
+    id: 'tip',
+    name: 'Тип монитора домофона',
+    options: ['IP', 'Аналоговый', 'Гибридный']
+  },
+  {
+    id: 'diagonal',
+    name: 'Диагональ экрана',
+    options: ['4.3"', '7"', '8"', '10"', '10.1"']
+  },
+  {
+    id: 'matritsa',
+    name: 'Матрица экрана',
+    options: ['IPS', 'TFT']
+  },
+  {
+    id: 'razreshenie',
+    name: 'Разрешение экрана',
+    options: ['480×272', '1024×600', '1280x800', '2 Мп', '720p', 'CVBS']
+  },
+  {
+    id: 'trevozhnyy_vhod',
+    name: 'Тревожный вход',
+    options: ['Да', 'Нет']
+  },
+  {
+    id: 'trevozhnyy_vyhod',
+    name: 'Тревожный выход',
+    options: ['Да', 'Нет']
+  },
+  {
+    id: 'interfeysy',
+    name: 'Интерфейсы',
+    options: ['RJ-45', 'RS-485', 'Wi-Fi']
+  },
+  {
+    id: 'pitanie',
+    name: 'Питание',
+    options: ['DC 12В', 'DC 24В', 'PoE', 'PoE Passive', 'AC 100-240В']
+  },
+  {
+    id: 'moshchnost',
+    name: 'Потребляемая мощность',
+    options: ['4 Вт', '6 Вт']
+  },
+  {
+    id: 'temperatura',
+    name: 'Рабочая температура',
+    options: ['-10°C ... +50°C', '-10°C ... +55°C']
+  },
+  {
+    id: 'osobennosti',
+    name: 'Особенности',
+    options: ['Сенсорный экран', 'Слот для SD карты', 'Встроенное реле', 'Интерком', 'Есть трубка', 'Wi-Fi', 'Блок сопряжения координатный', 'Модуль HOOK']
+  }
+];
