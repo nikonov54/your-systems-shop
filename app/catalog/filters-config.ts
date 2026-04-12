@@ -1164,7 +1164,6 @@ export const sensorFilters = [
   }
 ];
 
-// МОДУЛИ (сигнализация)
 export const moduleFilters = [
   {
     id: 'proizvoditeli',
@@ -1225,5 +1224,64 @@ export const moduleFilters = [
     id: 'osobennosti',
     name: 'Особенности',
     options: ['Тревога при вскрытии', 'Тревога при перегреве', 'Тревога при перемещении', 'Мониторинг температуры', 'Двусторонняя связь', 'Шифрование AES128']
+  }
+];
+
+// РЕЛЕ (сигнализация)
+export const relayFilters = [
+  {
+    id: 'proizvoditeli',
+    name: 'Производители',
+    options: ['C.Nord', 'Hikvision', 'Dahua', 'AX PRO', 'AirShield']
+  },
+  {
+    id: 'tip_rele',
+    name: 'Тип реле',
+    options: ['Слаботочное', 'Силовое']
+  },
+  {
+    id: 'trevozhnye_vhody',
+    name: 'Тревожные входы',
+    options: ['1 (НО/НЗ, для противокражной сигнализации)']
+  },
+  {
+    id: 'trevozhnye_vyhody',
+    name: 'Тревожные выходы',
+    options: ['1 (НО/НЗ, 0-36 В DC, ≤5 А)', '1 (НО/НЗ, 100-240 В AC, ≤13 А)']
+  },
+  {
+    id: 'pitanie',
+    name: 'Питание',
+    options: ['7-24 В DC', '100-240 В AC']
+  },
+  {
+    id: 'zashchita',
+    name: 'Защита',
+    options: ['От перегрева']
+  },
+  {
+    id: 'svyaz',
+    name: 'Связь',
+    options: ['Двусторонняя']
+  },
+  {
+    id: 'shifrovanie',
+    name: 'Шифрование',
+    options: ['AES128']
+  },
+  {
+    id: 'temperatura',
+    name: 'Рабочая температура',
+    options: ['-10°C ... +55°C (внутри помещения)']
+  },
+  {
+    id: 'razmer',
+    name: 'Размер',
+    options: ['39×33×19 мм']
+  },
+  {
+    id: 'osobennosti',
+    name: 'Особенности',
+    options: ['Обнаружение напряжения', 'Защита от перегрева', 'Двусторонняя связь', 'Шифрование AES128']
   }
 ];
