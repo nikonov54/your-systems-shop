@@ -37,7 +37,8 @@ import {
   sensorFilters,
   moduleFilters,
   relayFilters,
-  socketFilters
+  socketFilters,
+  mountingCabinetFilters
 } from '../../filters-config';
 
 export default function SubcategoryPage({ params }: { params: Promise<{ category: string, subcategory: string }> }) {
@@ -82,7 +83,8 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
     (decodedSub.includes('datchiki') || decodedSub.includes('датчики')) ? sensorFilters :
     (decodedSub.includes('moduli') || decodedSub.includes('модули')) ? moduleFilters :
     (decodedSub.includes('rele') || decodedSub.includes('реле')) ? relayFilters :
-    (decodedSub.includes('rozetki') || decodedSub.includes('розетки')) ? socketFilters : [];
+    (decodedSub.includes('rozetki') || decodedSub.includes('розетки')) ? socketFilters :
+    (decodedSub.includes('obolochki') || decodedSub.includes('оболочки') || decodedSub.includes('montazhnye-shkafy') || decodedSub.includes('монтажные шкафы')) ? mountingCabinetFilters : [];
 
   const toggleGroup = (id: string) => setOpenGroups(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id]);
   const createSlug = (text: string) => text.toLowerCase().replace(/ /g, '-');
