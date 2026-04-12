@@ -1644,7 +1644,6 @@ export const rackCabinetFilters = [
   }
 ];
 
-// АКСЕССУАРЫ ДЛЯ ШКАФОВ
 export const cabinetAccessoriesFilters = [
   {
     id: 'proizvoditeli',
@@ -1710,5 +1709,90 @@ export const cabinetAccessoriesFilters = [
     id: 'tsvet',
     name: 'Цвет',
     options: ['RAL 7035 (серый)', 'Черный']
+  }
+];
+
+// ЩИТЫ, БОКСЫ, АПТЕЧНЫЕ (объединённые)
+export const enclosureMedicalFilters = [
+  {
+    id: 'proizvoditeli',
+    name: 'Производители',
+    options: ['Mastermann']
+  },
+  {
+    id: 'tip',
+    name: 'Тип',
+    options: ['Щит', 'Бокс', 'Распределительная коробка', 'Аптечный шкаф']
+  },
+  {
+    id: 'tip_dvercy',
+    name: 'Тип дверцы (для аптечных)',
+    options: ['Глухая металлическая', 'Прозрачная', 'Не применимо']
+  },
+  {
+    id: 'montazh',
+    name: 'Тип монтажа',
+    options: ['Настенный', 'Встраиваемый', 'На DIN-рейку']
+  },
+  {
+    id: 'material',
+    name: 'Материал',
+    options: ['Металл', 'Пластик', 'Металл (холоднокатаная сталь)']
+  },
+  {
+    id: 'stepen_zashchity',
+    name: 'Степень защиты IP',
+    options: ['IP20', 'IP30', 'IP40', 'IP54', 'IP55', 'IP65', 'IP66']
+  },
+  {
+    id: 'vysota_u',
+    name: 'Высота (U)',
+    options: ['1U', '2U', '3U', '4U', '6U', '9U', '12U', '15U', '22U', '32U', '42U', '47U']
+  },
+  {
+    id: 'polki',
+    name: 'Полки',
+    options: ['Регулируемые', 'С бортиками', 'Нет']
+  },
+  {
+    id: 'zamok',
+    name: 'Замок',
+    options: ['Да', 'Нет']
+  },
+  {
+    id: 'uplotnitel',
+    name: 'Уплотнитель двери',
+    options: ['Да', 'Нет']
+  },
+  {
+    id: 'zashchita_ot_vzloma',
+    name: 'Защита от взлома',
+    options: ['Да', 'Нет']
+  },
+  {
+    id: 'prozrachnaya_kryshka',
+    name: 'Прозрачная крышка',
+    options: ['Да', 'Нет']
+  },
+  {
+    id: 'pokrytie',
+    name: 'Покрытие',
+    options: ['Порошковое (антикоррозийное)']
+  },
+  {
+    id: 'razmer',
+    name: 'Размер (Ш×В×Г)',
+    options: [
+      '300×400×150 мм',
+      '350×450×150 мм',
+      '400×500×150 мм',
+      '450×550×150 мм',
+      '500×600×150 мм'
+    ]
+  },
+  {
+    id: 'tsvet',
+    name: 'Цвет',
+    options: ['RAL 7035 (серый)', 'Белый', 'Черный']
   }
 ];
