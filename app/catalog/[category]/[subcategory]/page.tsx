@@ -33,7 +33,8 @@ import {
   alarmPowerSupplyFilters,
   detectorFilters,
   remoteControlFilters,
-  repeaterFilters
+  repeaterFilters,
+  sensorFilters
 } from '../../filters-config';
 
 export default function SubcategoryPage({ params }: { params: Promise<{ category: string, subcategory: string }> }) {
@@ -74,7 +75,8 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
     (decodedSub.includes('istochniki-pitaniya') || decodedSub.includes('источники питания') || decodedSub.includes('источники-питания') || decodedSub.includes('bloki-pitaniya') || decodedSub.includes('блоки питания')) ? alarmPowerSupplyFilters :
     (decodedSub.includes('izveshateli') || decodedSub.includes('извещатели')) ? detectorFilters :
     (decodedSub.includes('pulty-upravleniya') || decodedSub.includes('пульты управления') || decodedSub.includes('пульты-управления')) ? remoteControlFilters :
-    (decodedSub.includes('retranslyatory') || decodedSub.includes('ретрансляторы')) ? repeaterFilters : [];
+    (decodedSub.includes('retranslyatory') || decodedSub.includes('ретрансляторы')) ? repeaterFilters :
+    (decodedSub.includes('datchiki') || decodedSub.includes('датчики')) ? sensorFilters : [];
 
   const toggleGroup = (id: string) => setOpenGroups(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id]);
   const createSlug = (text: string) => text.toLowerCase().replace(/ /g, '-');
