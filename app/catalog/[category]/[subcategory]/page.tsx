@@ -24,7 +24,9 @@ import {
   closerFilters,
   metalDetectorFilters,
   turnstileFilters,
-  barrierFilters
+  barrierFilters,
+  smartPanelFilters,
+  callingPanelFilters
 } from '../../filters-config';
 
 export default function SubcategoryPage({ params }: { params: Promise<{ category: string, subcategory: string }> }) {
@@ -56,7 +58,8 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
     (decodedSub.includes('dovodchiki') || decodedSub.includes('доводчики')) ? closerFilters :
     (decodedSub.includes('metallodetektory') || decodedSub.includes('металлодетекторы')) ? metalDetectorFilters :
     (decodedSub.includes('turnikety') || decodedSub.includes('турникеты')) ? turnstileFilters :
-    (decodedSub.includes('shlagbaumy') || decodedSub.includes('шлагбаумы')) ? barrierFilters : [];
+    (decodedSub.includes('shlagbaumy') || decodedSub.includes('шлагбаумы')) ? barrierFilters :
+    (decodedSub.includes('smart-paneli') || decodedSub.includes('smart-панели') || decodedSub.includes('smart панели') || decodedSub.includes('смарт панели')) ? smartPanelFilters : [];
 
   const toggleGroup = (id: string) => setOpenGroups(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id]);
   const createSlug = (text: string) => text.toLowerCase().replace(/ /g, '-');
