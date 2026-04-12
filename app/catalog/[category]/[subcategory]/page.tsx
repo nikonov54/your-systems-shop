@@ -29,7 +29,8 @@ import {
   callingPanelFilters,
   videoMonitorFilters,
   accessoriesFilters,
-  securityControllerFilters
+  securityControllerFilters,
+  alarmPowerSupplyFilters
 } from '../../filters-config';
 
 export default function SubcategoryPage({ params }: { params: Promise<{ category: string, subcategory: string }> }) {
@@ -66,7 +67,8 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
     (decodedSub.includes('smart-paneli') || decodedSub.includes('smart-панели') || decodedSub.includes('smart панели') || decodedSub.includes('смарт панели')) ? smartPanelFilters :
     (decodedSub.includes('vyzyvnye-paneli') || decodedSub.includes('вызывные панели') || decodedSub.includes('вызывные-панели')) ? callingPanelFilters :
     (decodedSub.includes('videomonitory') || decodedSub.includes('видеомониторы')) ? videoMonitorFilters :
-    (decodedSub.includes('aksessuary') || decodedSub.includes('аксессуары')) ? accessoriesFilters : [];
+    (decodedSub.includes('aksessuary') || decodedSub.includes('аксессуары')) ? accessoriesFilters :
+    (decodedSub.includes('istochniki-pitaniya') || decodedSub.includes('источники питания') || decodedSub.includes('источники-питания') || decodedSub.includes('bloki-pitaniya') || decodedSub.includes('блоки питания')) ? alarmPowerSupplyFilters : [];
 
   const toggleGroup = (id: string) => setOpenGroups(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id]);
   const createSlug = (text: string) => text.toLowerCase().replace(/ /g, '-');

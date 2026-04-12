@@ -761,7 +761,6 @@ export const accessoriesFilters = [
   }
 ];
 
-// КОНТРОЛЛЕРЫ ОХРАННОЙ СИГНАЛИЗАЦИИ
 export const securityControllerFilters = [
   {
     id: 'proizvoditeli',
@@ -827,5 +826,59 @@ export const securityControllerFilters = [
     id: 'osobennosti',
     name: 'Особенности',
     options: ['Двусторонняя связь', 'Встроенный динамик', 'Аудиовыход', 'Поддержка звонка и СМС (до 5 номеров)', 'Поддержка беспроводных устройств', 'Поддержка проводных устройств', 'Модуль расширения']
+  }
+];
+
+// БЛОКИ ПИТАНИЯ ДЛЯ СИГНАЛИЗАЦИИ
+export const alarmPowerSupplyFilters = [
+  {
+    id: 'proizvoditeli',
+    name: 'Производители',
+    options: ['AX PRO', 'Hikvision', 'Dahua', 'Ajax', 'Bolid', 'Risco', 'Bosch']
+  },
+  {
+    id: 'tip_ustroystva',
+    name: 'Тип устройства',
+    options: ['Модуль питания', 'Блок питания', 'Сменный источник питания']
+  },
+  {
+    id: 'pitanie_vhod',
+    name: 'Питание (вход)',
+    options: ['4-16 VDC', '8-24 VDC', '9-15 VDC', '12 VDC', '24 VDC', '100-240 VAC', '220 VAC']
+  },
+  {
+    id: 'pitanie_vyhod',
+    name: 'Питание (выход)',
+    options: ['5 VDC', '5.5 VDC', '9-15 VDC', '12 VDC', '24 VDC']
+  },
+  {
+    id: 'tok_nagruzki',
+    name: 'Ток нагрузки (выходной)',
+    options: ['до 1 A', 'до 2 A', 'до 3 A', 'до 5 A', 'до 10 A']
+  },
+  {
+    id: 'kolichestvo_vyhodov',
+    name: 'Количество выходов',
+    options: ['1 выход', '2 выхода', '4 выхода']
+  },
+  {
+    id: 'zashchita',
+    name: 'Защита',
+    options: ['От КЗ', 'От перегрузки', 'От перегрева', 'От перенапряжения', 'От обратной полярности']
+  },
+  {
+    id: 'korpus',
+    name: 'Тип корпуса / монтаж',
+    options: ['На DIN-рейку', 'В закрытый корпус', 'Открытый (плата)']
+  },
+  {
+    id: 'temperatura',
+    name: 'Рабочая температура',
+    options: ['-10°C до +55°C', '-20°C до +60°C', '-30°C до +70°C']
+  },
+  {
+    id: 'sovmestimost',
+    name: 'Совместимость',
+    options: ['AX PRO', 'ARC3800H', 'Hikvision', 'Dahua', 'Универсальный']
   }
 ];
