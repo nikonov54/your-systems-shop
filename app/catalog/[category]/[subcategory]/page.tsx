@@ -100,7 +100,7 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
     (decodedSub.includes('серверные')) ? rackCabinetFilters :
     (decodedSub.includes('аксессуары-шкафы')) ? cabinetAccessoriesFilters :
     (decodedSub.includes('щиты-боксы-аптечные')) ? enclosureMedicalFilters :
-    (decodedSub.includes('накопители') || decodedSub.includes('жесткие-диски')) ? hddFilters : [];
+    (decodedSub.includes('hdd-для-видеонаблюдения') || decodedSub.includes('hdd-для-серверов') || decodedSub.includes('ssd') || decodedSub.includes('nas-hdd') || decodedSub.includes('внешние-hdd') || decodedSub.includes('накопители') || decodedSub.includes('жесткие-диски')) ? hddFilters : [];
 
   const toggleGroup = (id: string) => setOpenGroups(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id]);
   const createSlug = (text: string) => text.toLowerCase().replace(/ /g, '-');

@@ -123,12 +123,11 @@ export const antennaFilters = [
 ];
 
 export const telemetryFilters = [
-  { id: 'proizvoditeli', name: 'Производители', options: ['Eijkelkamp', 'OTT HydroMet', 'Campbell Scientific', 'Sutron', 'In-Situ'] },
-  { id: 'parameter', name: 'Измеряемый параметр', options: ['Уровень воды', 'Давление', 'Температура', 'Проводимость', 'pH', 'Мутность'] },
-  { id: 'output-signal', name: 'Выходной сигнал', options: ['4-20 мА', '0-10 В', 'RS-232', 'RS-485 (Modbus)', 'SDI-12'] },
-  { id: 'accuracy', name: 'Точность', options: ['±0.05%', '±0.1%', '±0.25%', '±0.5%'] },
-  { id: 'protection', name: 'Степень защиты', options: ['IP68', 'IP67', 'IP66'] },
-  { id: 'power-supply', name: 'Питание', options: ['9-36V DC', '24V AC', 'Батарейное', 'Solar Ready'] }
+  { id: 'proizvoditeli', name: 'Производители', options: ['Micro-drive', 'Transfer', 'Алмаз'] },
+  { id: 'tip_ustroystva', name: 'Тип устройства', options: ['Наземный блок', 'Погружной блок', 'Плата измерительная', 'Плата защиты', 'Плата питания', 'Датчик температуры', 'Имитатор'] },
+  { id: 'napryazhenie_pitaniya', name: 'Напряжение питания', options: ['1000В', '5000В'] },
+  { id: 'temperatura', name: 'Температурный режим', options: ['HT +170°C'] },
+  { id: 'naznachenie', name: 'Назначение', options: ['Диагностика', 'Измерение', 'Защита', 'Питание'] }
 ];
 
 export const scudReaderFilters = [
