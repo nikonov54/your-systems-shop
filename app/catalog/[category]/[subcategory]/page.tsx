@@ -3,7 +3,9 @@
 import { useState, use } from 'react';
 import Link from 'next/link';
 import { ChevronDown, ShieldCheck, Search, ShoppingCart, ChevronRight } from 'lucide-react';
-import { catalogData } from '../../../../menu-data';
+import { catalogData } from '@/menu-data';
+import { mockProducts } from '@/app/lib/products';
+import ProductCard from '@/app/components/ProductCard';
 import { 
   cameraFilters, 
   recorderFilters, 
@@ -47,7 +49,7 @@ import {
   thermalCameraFilters,
   handheldThermalFilters,
   mobileThermalFilters
-} from '../../filters-config';
+} from '@/app/catalog/filters-config';
 
 export default function SubcategoryPage({ params }: { params: Promise<{ category: string, subcategory: string }> }) {
   const { subcategory, category } = use(params);
@@ -57,6 +59,12 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
   const [openGroups, setOpenGroups] = useState<string[]>([]);
   const currentCategoryData = catalogData.find(c => c.slug === decodedCat);
   const subcategories = currentCategoryData?.sub || [];
+
+  // Фильтруем товары по текущей категории и подкатегории
+  const filteredProducts = mockProducts.filter(product => 
+    product.category === decodedCat && 
+    product.subcategory === decodedSub
+  );
 
   const activeFilters = 
     (decodedSub.includes('камеры-тепловизионные')) ? thermalCameraFilters :
@@ -183,9 +191,33 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
                 })}
               </nav>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-12 opacity-5">
-              {Array.from({ length: 6 }).map((_, i) => <div key={i} className="aspect-[3/4] bg-white/5 border border-white/10 rounded-[40px]"></div>)}
-            </div>
+            
+            {/* Сетка товаров */}
+            {filteredProducts.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-12">
+                {filteredProducts.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    id={product.id}
+                    name={product.name}
+                    price={product.price}
+                    oldPrice={product.oldPrice}
+                    image={product.image}
+                    brand={product.brand}
+                    sku={product.sku}
+                    inStock={product.inStock}
+                    href={`/product/${product.id}`}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="flex flex-col items-center justify-center py-20 text-white/30">
+                <svg className="w-20 h-20 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                </svg>
+                <p className="text-lg">Товаров в этой категории пока нет</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
