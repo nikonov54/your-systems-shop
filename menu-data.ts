@@ -48,6 +48,6 @@ export const catalogData: Category[] = [
     id: 7,
     name: "HDD",
     slug: "hdd",
-    sub: ["ТВОИ ВАРИАНТЫ"]
+    sub: ["HDD для видеонаблюдения", "HDD для серверов", "SSD", "NAS HDD", "Внешние HDD"]
   }
 ];

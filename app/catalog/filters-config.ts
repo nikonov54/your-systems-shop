@@ -1712,7 +1712,6 @@ export const cabinetAccessoriesFilters = [
   }
 ];
 
-// ЩИТЫ, БОКСЫ, АПТЕЧНЫЕ (объединённые)
 export const enclosureMedicalFilters = [
   {
     id: 'proizvoditeli',
@@ -1794,5 +1793,64 @@ export const enclosureMedicalFilters = [
     id: 'tsvet',
     name: 'Цвет',
     options: ['RAL 7035 (серый)', 'Белый', 'Черный']
+  }
+];
+
+// HDD (накопители)
+export const hddFilters = [
+  {
+    id: 'proizvoditeli',
+    name: 'Производители',
+    options: ['Western Digital', 'Seagate', 'Toshiba', 'Kingston', 'Samsung', 'Crucial', 'Transcend']
+  },
+  {
+    id: 'tip',
+    name: 'Тип накопителя',
+    options: ['HDD', 'SSD', 'SSHD', 'Внешний HDD', 'Внешний SSD']
+  },
+  {
+    id: 'obem',
+    name: 'Объём',
+    options: ['128 ГБ', '256 ГБ', '512 ГБ', '1 ТБ', '2 ТБ', '3 ТБ', '4 ТБ', '6 ТБ', '8 ТБ', '10 ТБ', '12 ТБ', '14 ТБ', '16 ТБ', '18 ТБ', '20 ТБ']
+  },
+  {
+    id: 'skorost',
+    name: 'Скорость вращения',
+    options: ['5400 об/мин', '7200 об/мин', '10000 об/мин', '15000 об/мин', 'SSD (без вращения)']
+  },
+  {
+    id: 'kesh',
+    name: 'Кэш-память',
+    options: ['64 МБ', '128 МБ', '256 МБ', '512 МБ', '1 ГБ', '2 ГБ']
+  },
+  {
+    id: 'interfeys',
+    name: 'Интерфейс',
+    options: ['SATA 3 Гбит/с', 'SATA 6 Гбит/с', 'SAS', 'USB 3.0', 'USB 3.1', 'USB 3.2', 'M.2 SATA', 'M.2 NVMe', 'PCIe']
+  },
+  {
+    id: 'form_factor',
+    name: 'Форм-фактор',
+    options: ['2.5"', '3.5"', 'M.2 2280', 'M.2 2242', 'Внешний (портативный)']
+  },
+  {
+    id: 'naznachenie',
+    name: 'Назначение',
+    options: ['Для видеонаблюдения', 'Для серверов', 'Для NAS', 'Для ПК', 'Для ноутбуков', 'Для игр', 'Для бэкапов']
+  },
+  {
+    id: 'nagruzka',
+    name: 'Рабочая нагрузка (TB/год)',
+    options: ['до 180 ТБ/год', 'до 300 ТБ/год', 'до 550 ТБ/год', 'до 1000 ТБ/год']
+  },
+  {
+    id: 'mtbf',
+    name: 'Наработка на отказ (MTBF)',
+    options: ['1 млн часов', '1.5 млн часов', '2 млн часов', '2.5 млн часов']
+  },
+  {
+    id: 'garantiya',
+    name: 'Гарантия',
+    options: ['1 год', '2 года', '3 года', '5 лет']
   }
 ];

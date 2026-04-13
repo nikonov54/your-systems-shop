@@ -42,7 +42,8 @@ import {
   climateCabinetFilters,
   rackCabinetFilters,
   cabinetAccessoriesFilters,
-  enclosureMedicalFilters
+  enclosureMedicalFilters,
+  hddFilters
 } from '../../filters-config';
 
 export default function SubcategoryPage({ params }: { params: Promise<{ category: string, subcategory: string }> }) {
@@ -93,7 +94,8 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
     (decodedSub.includes('telekommunikatsionnye') || decodedSub.includes('телекоммуникационные')) ? rackCabinetFilters :
     (decodedSub.includes('servernye') || decodedSub.includes('серверные')) ? rackCabinetFilters :
     (decodedSub.includes('aksessuary-shkafy') || decodedSub.includes('аксессуары шкафы') || decodedSub.includes('aksessuary')) ? cabinetAccessoriesFilters :
-    (decodedSub.includes('shchity-boksy-aptechnye') || decodedSub.includes('щиты боксы аптечные') || decodedSub.includes('щиты-боксы-аптечные')) ? enclosureMedicalFilters : [];
+    (decodedSub.includes('shchity-boksy-aptechnye') || decodedSub.includes('щиты боксы аптечные') || decodedSub.includes('щиты-боксы-аптечные')) ? enclosureMedicalFilters :
+    (decodedSub.includes('hdd') || decodedSub.includes('накопители') || decodedSub.includes('жесткие диски')) ? hddFilters : [];
 
   const toggleGroup = (id: string) => setOpenGroups(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id]);
   const createSlug = (text: string) => text.toLowerCase().replace(/ /g, '-');
