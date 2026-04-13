@@ -1796,7 +1796,6 @@ export const enclosureMedicalFilters = [
   }
 ];
 
-// HDD (накопители)
 export const hddFilters = [
   {
     id: 'proizvoditeli',
@@ -1852,5 +1851,153 @@ export const hddFilters = [
     id: 'garantiya',
     name: 'Гарантия',
     options: ['1 год', '2 года', '3 года', '5 лет']
+  }
+];
+
+// ТЕПЛОВИЗОРЫ - Камеры тепловизионные
+export const thermalCameraFilters = [
+  {
+    id: 'razreshenie_matritsy',
+    name: 'Разрешение матрицы',
+    options: ['256×192']
+  },
+  {
+    id: 'fokus_thermal',
+    name: 'Фокусное расстояние тепловизионного объектива',
+    options: ['2 мм', '3.5 мм', '7 мм', '10 мм']
+  },
+  {
+    id: 'ugol_obzora_thermal',
+    name: 'Угол обзора тепловизионный',
+    options: ['17.3°×13.1°', '24°×18°', '50.6°×37.8°', '87.8°×63.8°']
+  },
+  {
+    id: 'detection_chelovek',
+    name: 'Обнаружение человека',
+    options: ['83 м', '146 м', '292 м', '417 м']
+  },
+  {
+    id: 'detection_transport',
+    name: 'Обнаружение транспорта',
+    options: ['222 м', '389 м', '778 м', '1111 м']
+  },
+  {
+    id: 'recognition_chelovek',
+    name: 'Распознавание человека',
+    options: ['21 м', '38 м', '75 м', '107 м']
+  },
+  {
+    id: 'identification_chelovek',
+    name: 'Идентификация человека',
+    options: ['11 м', '19 м', '38 м', '54 м']
+  },
+  {
+    id: 'fokus_visible',
+    name: 'Фокусное расстояние видимого света',
+    options: ['2 мм', '4 мм', '8 мм', '12 мм']
+  },
+  {
+    id: 'ugol_obzora_visible',
+    name: 'Угол обзора видимого света',
+    options: ['22°×16.6°', '33.4°×25°', '71.2°×52°', '94°×72°']
+  },
+  {
+    id: 'ik_dalnost',
+    name: 'ИК-подсветка (видимый свет)',
+    options: ['до 30 м', 'до 35 м']
+  },
+  {
+    id: 'szhatie',
+    name: 'Сжатие видео',
+    options: ['H.265', 'H.264', 'MJPEG']
+  },
+  {
+    id: 'analitika',
+    name: 'Видеоаналитика',
+    options: [
+      'Обнаружение возгорания',
+      'Автоматическое слежение за горячими и холодными объектами',
+      'Обнаружение курения',
+      'Обнаружение использования телефона',
+      'Интеллектуальная сигнализация с прожектором и динамиком',
+      'Охрана периметра',
+      'Классификация человек/транспортное средство',
+      'Отслеживание холодных/горячих точек'
+    ]
+  },
+  {
+    id: 'temperatura_izmerenie',
+    name: 'Измерение температуры',
+    options: ['-20°C ... +150°C']
+  },
+  {
+    id: 'microsd',
+    name: 'Слот для microSD',
+    options: ['до 256 ГБ']
+  },
+  {
+    id: 'audio',
+    name: 'Аудио',
+    options: ['Аудиовход (1)', 'Аудиовыход (1)']
+  },
+  {
+    id: 'trevoga',
+    name: 'Тревожные входы/выходы',
+    options: ['1/1', '2/2']
+  },
+  {
+    id: 'ethernet',
+    name: 'Ethernet',
+    options: ['RJ45 10M/100M']
+  },
+  {
+    id: 'rs485',
+    name: 'RS-485',
+    options: ['1 порт']
+  },
+  {
+    id: 'wifi',
+    name: 'Wi-Fi',
+    options: ['2.4 ГГц, 150 Мбит/с, до 150 м']
+  },
+  {
+    id: '4g',
+    name: '4G модуль',
+    options: ['Есть']
+  },
+  {
+    id: 'solnechnaya_batareya',
+    name: 'Солнечная батарея',
+    options: ['Есть']
+  },
+  {
+    id: 'pitanie',
+    name: 'Питание',
+    options: ['DC12V', 'PoE']
+  },
+  {
+    id: 'moshchnost',
+    name: 'Потребляемая мощность',
+    options: ['5.3 Вт', '14 Вт']
+  },
+  {
+    id: 'temperatura',
+    name: 'Рабочая температура',
+    options: ['-30°C ... +60°C']
+  },
+  {
+    id: 'ip',
+    name: 'Степень защиты IP',
+    options: ['IP67']
+  },
+  {
+    id: 'zashchita',
+    name: 'Защита',
+    options: ['От перенапряжения до 6 кВ', 'ESD: контакт 6 кВ / воздух 8 кВ']
+  },
+  {
+    id: 'ves',
+    name: 'Вес',
+    options: ['0.85 кг', '0.9 кг', '1.4 кг']
   }
 ];

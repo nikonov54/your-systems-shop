@@ -43,7 +43,8 @@ import {
   rackCabinetFilters,
   cabinetAccessoriesFilters,
   enclosureMedicalFilters,
-  hddFilters
+  hddFilters,
+  thermalCameraFilters
 } from '../../filters-config';
 
 export default function SubcategoryPage({ params }: { params: Promise<{ category: string, subcategory: string }> }) {
@@ -56,46 +57,46 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
   const subcategories = currentCategoryData?.sub || [];
 
   const activeFilters = 
-    (decodedSub.includes('kamery') || decodedSub.includes('камеры')) ? cameraFilters : 
-    (decodedSub.includes('registratory') || decodedSub.includes('регистраторы')) ? recorderFilters : 
-    (decodedSub.includes('mikrofony') || decodedSub.includes('микрофоны')) ? microphoneFilters :
-    (decodedSub.includes('montazhnye-korobki') || decodedSub.includes('монтажные-коробки')) ? mountingBoxFilters :
-    (decodedSub.includes('kronshteyny') || decodedSub.includes('кронштейны')) ? bracketFilters : 
-    (decodedSub.includes('kommutatory') || decodedSub.includes('коммутаторы')) ? switchFilters :
-    (decodedSub.includes('marshrutizatory') || decodedSub.includes('маршрутизаторы') || decodedSub.includes('routery') || decodedSub.includes('роутеры')) ? routerFilters : 
-    (decodedSub.includes('wi-fi-tochki') || decodedSub.includes('wi-fi-точки')) ? accessPointFilters : 
-    (decodedSub.includes('sfp-moduli') || decodedSub.includes('sfp-модули')) ? sfpFilters :
-    (decodedSub.includes('poe-inzhektory') || decodedSub.includes('poe-инжекторы')) ? poeInjectorFilters :
-    (decodedSub.includes('antenny') || decodedSub.includes('антенны')) ? antennaFilters :
-    (decodedSub.includes('pogruzhnaya-telemetriya') || decodedSub.includes('погружная-телеметрия')) ? telemetryFilters :
-    (decodedSub.includes('schityvateli') || decodedSub.includes('считыватели')) ? scudReaderFilters :
-    (decodedSub.includes('security-controllers') || decodedSub.includes('контроллеры сигнализации') || decodedSub.includes('контроллеры')) ? securityControllerFilters :
-    (decodedSub.includes('kontrollery') || decodedSub.includes('контроллеры')) ? controllerFilters :
-    (decodedSub.includes('beskontaktnye-klyuchi') || decodedSub.includes('бесконтактные-ключи')) ? contactlessKeyFilters :
-    (decodedSub.includes('zamki') || decodedSub.includes('замки')) ? lockFilters :
-    (decodedSub.includes('dovodchiki') || decodedSub.includes('доводчики')) ? closerFilters :
-    (decodedSub.includes('metallodetektory') || decodedSub.includes('металлодетекторы')) ? metalDetectorFilters :
-    (decodedSub.includes('turnikety') || decodedSub.includes('турникеты')) ? turnstileFilters :
-    (decodedSub.includes('shlagbaumy') || decodedSub.includes('шлагбаумы')) ? barrierFilters :
-    (decodedSub.includes('smart-paneli') || decodedSub.includes('smart-панели') || decodedSub.includes('smart панели') || decodedSub.includes('смарт панели')) ? smartPanelFilters :
-    (decodedSub.includes('vyzyvnye-paneli') || decodedSub.includes('вызывные панели') || decodedSub.includes('вызывные-панели')) ? callingPanelFilters :
-    (decodedSub.includes('videomonitory') || decodedSub.includes('видеомониторы')) ? videoMonitorFilters :
-    (decodedSub.includes('aksessuary') || decodedSub.includes('аксессуары')) ? accessoriesFilters :
-    (decodedSub.includes('istochniki-pitaniya') || decodedSub.includes('источники питания') || decodedSub.includes('источники-питания') || decodedSub.includes('bloki-pitaniya') || decodedSub.includes('блоки питания')) ? alarmPowerSupplyFilters :
-    (decodedSub.includes('izveshateli') || decodedSub.includes('извещатели')) ? detectorFilters :
-    (decodedSub.includes('pulty-upravleniya') || decodedSub.includes('пульты управления') || decodedSub.includes('пульты-управления')) ? remoteControlFilters :
-    (decodedSub.includes('retranslyatory') || decodedSub.includes('ретрансляторы')) ? repeaterFilters :
-    (decodedSub.includes('datchiki') || decodedSub.includes('датчики')) ? sensorFilters :
-    (decodedSub.includes('moduli') || decodedSub.includes('модули')) ? moduleFilters :
-    (decodedSub.includes('rele') || decodedSub.includes('реле')) ? relayFilters :
-    (decodedSub.includes('rozetki') || decodedSub.includes('розетки')) ? socketFilters :
-    (decodedSub.includes('obolochki') || decodedSub.includes('оболочки') || decodedSub.includes('montazhnye') || decodedSub.includes('монтажные')) ? mountingCabinetFilters :
-    (decodedSub.includes('klimaticheskie') || decodedSub.includes('климатические')) ? climateCabinetFilters :
-    (decodedSub.includes('telekommunikatsionnye') || decodedSub.includes('телекоммуникационные')) ? rackCabinetFilters :
-    (decodedSub.includes('servernye') || decodedSub.includes('серверные')) ? rackCabinetFilters :
-    (decodedSub.includes('aksessuary-shkafy') || decodedSub.includes('аксессуары шкафы') || decodedSub.includes('aksessuary')) ? cabinetAccessoriesFilters :
-    (decodedSub.includes('shchity-boksy-aptechnye') || decodedSub.includes('щиты боксы аптечные') || decodedSub.includes('щиты-боксы-аптечные')) ? enclosureMedicalFilters :
-    (decodedSub.includes('hdd') || decodedSub.includes('накопители') || decodedSub.includes('жесткие диски')) ? hddFilters : [];
+    (decodedSub.includes('камеры-тепловизионные')) ? thermalCameraFilters :
+    (decodedSub.includes('камеры')) ? cameraFilters : 
+    (decodedSub.includes('регистраторы')) ? recorderFilters : 
+    (decodedSub.includes('микрофоны')) ? microphoneFilters :
+    (decodedSub.includes('монтажные-коробки')) ? mountingBoxFilters :
+    (decodedSub.includes('кронштейны')) ? bracketFilters : 
+    (decodedSub.includes('коммутаторы')) ? switchFilters :
+    (decodedSub.includes('маршрутизаторы') || decodedSub.includes('роутеры')) ? routerFilters : 
+    (decodedSub.includes('wi-fi-точки')) ? accessPointFilters : 
+    (decodedSub.includes('sfp-модули')) ? sfpFilters :
+    (decodedSub.includes('poe-инжекторы')) ? poeInjectorFilters :
+    (decodedSub.includes('антенны')) ? antennaFilters :
+    (decodedSub.includes('погружная-телеметрия')) ? telemetryFilters :
+    (decodedSub.includes('считыватели')) ? scudReaderFilters :
+    (decodedSub.includes('контроллеры')) ? controllerFilters :
+    (decodedSub.includes('бесконтактные-ключи')) ? contactlessKeyFilters :
+    (decodedSub.includes('замки')) ? lockFilters :
+    (decodedSub.includes('доводчики')) ? closerFilters :
+    (decodedSub.includes('металлодетекторы')) ? metalDetectorFilters :
+    (decodedSub.includes('турникеты')) ? turnstileFilters :
+    (decodedSub.includes('шлагбаумы')) ? barrierFilters :
+    (decodedSub.includes('smart-панели') || decodedSub.includes('смарт-панели')) ? smartPanelFilters :
+    (decodedSub.includes('вызывные-панели')) ? callingPanelFilters :
+    (decodedSub.includes('видеомониторы')) ? videoMonitorFilters :
+    (decodedSub.includes('аксессуары')) ? accessoriesFilters :
+    (decodedSub.includes('источники-питания') || decodedSub.includes('блоки-питания')) ? alarmPowerSupplyFilters :
+    (decodedSub.includes('извещатели')) ? detectorFilters :
+    (decodedSub.includes('пульты-управления')) ? remoteControlFilters :
+    (decodedSub.includes('ретрансляторы')) ? repeaterFilters :
+    (decodedSub.includes('датчики')) ? sensorFilters :
+    (decodedSub.includes('модули')) ? moduleFilters :
+    (decodedSub.includes('реле')) ? relayFilters :
+    (decodedSub.includes('розетки')) ? socketFilters :
+    (decodedSub.includes('оболочки') || decodedSub.includes('монтажные')) ? mountingCabinetFilters :
+    (decodedSub.includes('климатические')) ? climateCabinetFilters :
+    (decodedSub.includes('телекоммуникационные')) ? rackCabinetFilters :
+    (decodedSub.includes('серверные')) ? rackCabinetFilters :
+    (decodedSub.includes('аксессуары-шкафы')) ? cabinetAccessoriesFilters :
+    (decodedSub.includes('щиты-боксы-аптечные')) ? enclosureMedicalFilters :
+    (decodedSub.includes('накопители') || decodedSub.includes('жесткие-диски')) ? hddFilters : [];
 
   const toggleGroup = (id: string) => setOpenGroups(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id]);
   const createSlug = (text: string) => text.toLowerCase().replace(/ /g, '-');
