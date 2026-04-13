@@ -12,6 +12,8 @@ interface ProductCardProps {
   sku: string;
   inStock: boolean;
   href: string;
+  isNew?: boolean;
+  isHit?: boolean;
 }
 
 export default function ProductCard({
@@ -23,18 +25,37 @@ export default function ProductCard({
   brand,
   sku,
   inStock,
-  href
+  href,
+  isNew,
+  isHit
 }: ProductCardProps) {
-  // Защита от undefined price
-  if (price === undefined || price === null) {
-    return null;
-  }
+  if (price === undefined || price === null) return null;
 
   const discount = oldPrice ? Math.round(((oldPrice - price) / oldPrice) * 100) : 0;
 
   return (
-    <div className="group relative bg-[#0a0c10] border border-white/10 rounded-2xl overflow-hidden hover:border-blue-500/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.1)]">
+    <div className="group relative bg-[#0a0c10] border border-white/10 rounded-2xl overflow-hidden hover:border-blue-500/40 transition-all duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.15)] hover:-translate-y-1">
       <Link href={href} className="block">
+        {/* Метки */}
+        <div className="absolute top-3 left-3 z-10 flex gap-2">
+          {isNew && (
+            <span className="bg-green-600 text-white text-xs font-bold px-2 py-1 rounded-lg">
+              Новинка
+            </span>
+          )}
+          {isHit && (
+            <span className="bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded-lg">
+              Хит
+            </span>
+          )}
+          {discount > 0 && (
+            <span className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-lg">
+              -{discount}%
+            </span>
+          )}
+        </div>
+
+        {/* Изображение */}
         <div className="relative aspect-square bg-gradient-to-br from-[#0f1217] to-[#05070a] overflow-hidden">
           {image ? (
             // eslint-disable-next-line @next/next/no-img-element
@@ -51,31 +72,29 @@ export default function ProductCard({
             </div>
           )}
 
-          {discount > 0 && (
-            <div className="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-lg">
-              -{discount}%
-            </div>
-          )}
-
           {!inStock && (
-            <div className="absolute top-3 right-3 bg-black/70 text-white/70 text-xs font-bold px-2 py-1 rounded-lg backdrop-blur-sm">
-              Нет в наличии
-            </div>
-          )}
-
-          {brand && (
-            <div className="absolute bottom-3 left-3 bg-black/50 text-white/50 text-[10px] font-bold px-2 py-1 rounded-lg backdrop-blur-sm">
-              {brand}
+            <div className="absolute inset-0 bg-black/60 flex items-center justify-center backdrop-blur-sm">
+              <span className="text-white font-bold text-sm px-3 py-1 bg-red-600/80 rounded-full">
+                Нет в наличии
+              </span>
             </div>
           )}
         </div>
 
+        {/* Информация */}
         <div className="p-5 space-y-3">
-          <div className="text-[10px] text-white/30 font-mono tracking-wider">
-            Арт. {sku}
+          <div className="flex items-center justify-between">
+            {brand && (
+              <span className="text-[10px] text-white/40 font-mono">
+                {brand}
+              </span>
+            )}
+            <span className="text-[10px] text-white/30 font-mono">
+              Арт. {sku}
+            </span>
           </div>
 
-          <h3 className="text-white font-bold text-base leading-tight line-clamp-2 min-h-[48px]">
+          <h3 className="text-white font-bold text-base leading-tight line-clamp-2 min-h-[48px] group-hover:text-blue-400 transition-colors">
             {name}
           </h3>
 
