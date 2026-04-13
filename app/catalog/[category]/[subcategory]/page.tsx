@@ -44,7 +44,9 @@ import {
   cabinetAccessoriesFilters,
   enclosureMedicalFilters,
   hddFilters,
-  thermalCameraFilters
+  thermalCameraFilters,
+  handheldThermalFilters,
+  mobileThermalFilters
 } from '../../filters-config';
 
 export default function SubcategoryPage({ params }: { params: Promise<{ category: string, subcategory: string }> }) {
@@ -58,6 +60,8 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
 
   const activeFilters = 
     (decodedSub.includes('камеры-тепловизионные')) ? thermalCameraFilters :
+    (decodedSub.includes('ручные-тепловизоры')) ? handheldThermalFilters :
+    (decodedSub.includes('мобильные-тепловизоры')) ? mobileThermalFilters :
     (decodedSub.includes('камеры')) ? cameraFilters : 
     (decodedSub.includes('регистраторы')) ? recorderFilters : 
     (decodedSub.includes('микрофоны')) ? microphoneFilters :

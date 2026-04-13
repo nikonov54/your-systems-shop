@@ -2001,3 +2001,101 @@ export const thermalCameraFilters = [
     options: ['0.85 кг', '0.9 кг', '1.4 кг']
   }
 ];
+
+// ТЕПЛОВИЗОРЫ - Ручные (промышленные, строительные, пожарные)
+export const handheldThermalFilters = [
+  {
+    id: 'proizvoditeli',
+    name: 'Производители',
+    options: ['Guide Sensmart']
+  },
+  {
+    id: 'razreshenie_matritsy',
+    name: 'Разрешение матрицы',
+    options: ['120×90', '192×144', '256×192', '320×240', '384×288', '384×288 (12 мкм)', '480×360', '640×480', '640×512', '640×480 (12 мкм)', '1024×768', '1280×1024']
+  },
+  {
+    id: 'chuvstvitelnost',
+    name: 'Чувствительность (NETD)',
+    options: ['30 мК', '40 мК', '45 мК', '50 мК', '60 мК']
+  },
+  {
+    id: 'kadry',
+    name: 'Частота кадров',
+    options: ['9 Гц', '15 Гц', '25 Гц', '30 Гц']
+  },
+  {
+    id: 'temperatura',
+    name: 'Температурный диапазон',
+    options: ['-20°C ... +120°C', '-20°C ... +150°C', '-20°C ... +400°C', '-20°C ... +550°C', '-20°C ... +1500°C', '-20°C ... +2000°C']
+  },
+  {
+    id: 'ip',
+    name: 'Класс защиты IP',
+    options: ['IP54', 'IP67']
+  },
+  {
+    id: 'ves',
+    name: 'Вес',
+    options: ['около 20 г']
+  },
+  {
+    id: 'vremya_raboty',
+    name: 'Время работы',
+    options: ['>5 часов', '>8 часов', '16 часов']
+  },
+  {
+    id: 'svyaz',
+    name: 'Связь и интерфейсы',
+    options: ['NFC', '5G', 'Обновление OTA']
+  },
+  {
+    id: 'osobennosti',
+    name: 'Особенности',
+    options: ['5-дюймовый сенсорный экран', 'NFC передача данных', 'Обновление OTA', '128 ГБ хранилища', 'Автофокус', 'Угол обзора 56°', 'Угол обзора 25°']
+  }
+];
+
+// ТЕПЛОВИЗОРЫ - Мобильные (для смартфона)
+export const mobileThermalFilters = [
+  {
+    id: 'proizvoditeli',
+    name: 'Производители',
+    options: ['Guide Sensmart']
+  },
+  {
+    id: 'razreshenie_matritsy',
+    name: 'Разрешение матрицы',
+    options: ['120×90', '256×192']
+  },
+  {
+    id: 'temperatura',
+    name: 'Температурный диапазон',
+    options: ['-20°C ... +120°C']
+  },
+  {
+    id: 'ugol_obzora',
+    name: 'Угол обзора',
+    options: ['25°', '56°']
+  },
+  {
+    id: 'fokus',
+    name: 'Фокусное расстояние',
+    options: ['3.2 мм', '7 мм']
+  },
+  {
+    id: 'avtofokus',
+    name: 'Автофокус',
+    options: ['Да']
+  },
+  {
+    id: 'moshchnost',
+    name: 'Потребляемая мощность',
+    options: ['<150 мВт']
+  },
+  {
+    id: 'ves',
+    name: 'Вес',
+    options: ['около 20 г']
+  }
+];
