@@ -6,7 +6,7 @@ export interface Product {
   price: number;
   oldPrice?: number;
   image: string;
-  images?: string[]; // для галереи
+  images?: string[];
   brand: string;
   sku: string;
   inStock: boolean;
@@ -30,7 +30,7 @@ export const mockProducts: Product[] = [
     sku: 'DS-2CD2347G2-LU',
     inStock: true,
     category: 'videonablyudenie',
-    subcategory: 'камеры',
+    subcategory: 'камеры',  // ← ИСПРАВЛЕНО: кириллица
     isHit: true,
     description: '4 Мп камера с Full-time цветным изображением. Технология ColorVu обеспечивает яркое цветное видео даже в условиях низкой освещенности. ИК-подсветка до 30 м, защита IP67, поддержка microSD до 256 ГБ.',
     specs: {
@@ -52,7 +52,7 @@ export const mockProducts: Product[] = [
     sku: 'DS-7608NXI-K2/8P',
     inStock: true,
     category: 'videonablyudenie',
-    subcategory: 'регистраторы',
+    subcategory: 'регистраторы',  // ← ИСПРАВЛЕНО: кириллица
     isNew: true,
     description: '8-канальный сетевой видеорегистратор с поддержкой H.265+. Поддержка 2 HDD до 10 ТБ каждый, 8 портов PoE, разрешение записи до 12 Мп.',
     specs: {
@@ -74,7 +74,7 @@ export const mockProducts: Product[] = [
     sku: 'PC230',
     inStock: true,
     category: 'teplovizory',
-    subcategory: 'камеры-тепловизионные',
+    subcategory: 'камеры-тепловизионные',  // ← кириллица
     isHit: true,
     description: 'Компактный тепловизор с разрешением 256×192. Диапазон измерений -20°C до +550°C, частота 25 Гц, 5 Мп видимый свет.',
     specs: {
@@ -94,7 +94,7 @@ export const mockProducts: Product[] = [
     sku: 'DS-K1102M',
     inStock: false,
     category: 'skud',
-    subcategory: 'считыватели',
+    subcategory: 'считыватели',  // ← кириллица
     description: 'Считыватель Mifare, интерфейс Wiegand 26/34, защита IP65, световая и звуковая индикация.'
   },
   {
@@ -106,7 +106,7 @@ export const mockProducts: Product[] = [
     sku: 'DS-K2601',
     inStock: true,
     category: 'skud',
-    subcategory: 'контроллеры',
+    subcategory: 'контроллеры',  // ← кириллица
     isNew: true,
     description: 'Двухдверный контроллер СКУД, поддерживает до 5000 пользователей и 10000 событий.'
   },
@@ -119,6 +119,35 @@ export const mockProducts: Product[] = [
     sku: 'MIF-1K',
     inStock: true,
     category: 'skud',
-    subcategory: 'бесконтактные-ключи'
+    subcategory: 'бесконтактные-ключи',  // ← кириллица
+    description: 'Бесконтактный ключ Mifare 1k, совместимый с большинством систем контроля доступа.'
+  },
+  // ========== НОВАЯ КАМЕРА 8K ==========
+  {
+    id: '7',
+    name: 'Куполная IP-камера 8K Dahua SD8C845FG-HNF',
+    price: 58900,
+    oldPrice: 74900,
+    image: '',
+    images: ['', '', ''],
+    brand: 'Dahua',
+    sku: 'SD8C845FG-HNF',
+    inStock: true,
+    category: 'videonablyudenie',
+    subcategory: 'камеры',  // ← кириллица
+    isNew: true,
+    isHit: true,
+    description: 'Премиальная купольная камера с разрешением 8K (7680x4320). Поддержка автотрекинга, распознавания лиц и номеров. ИК-подсветка до 80 м, защита IP67/IK10. Оптический зум 30x.',
+    specs: {
+      'Разрешение': '8K (7680x4320)',
+      'Матрица': 'CMOS 1/1.2"',
+      'Угол обзора': '120°',
+      'ИК-подсветка': 'до 80 м',
+      'Защита': 'IP67 / IK10',
+      'Smart AI': 'Автотрекинг, распознавание лиц, номера авто',
+      'Оптический зум': '30x',
+      'Сжатие': 'H.265/H.264',
+      'Питание': 'PoE+ / DC 24V'
+    }
   }
 ];
