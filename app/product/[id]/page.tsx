@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { 
   ShieldCheck, 
   ShoppingCart, 
+  GitCompare,
   CheckCircle, 
   XCircle, 
   Minus, 
@@ -16,6 +17,7 @@ import {
 } from 'lucide-react';
 import { mockProducts } from '@/app/lib/products';
 import ProductCard from '@/app/components/ProductCard';
+import { useStore } from '@/app/context/StoreContext';
 
 export default function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -24,6 +26,10 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
   const [descriptionExpanded, setDescriptionExpanded] = useState(false);
   
   const product = mockProducts.find(p => p.id === id);
+  
+  const { compareItems, isInCompare, addToCompare, removeFromCompare, cartItems, addToCart } = useStore();
+  const compareCount = compareItems.length;
+  const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   
   const similarProducts = mockProducts
     .filter(p => p.id !== id && p.subcategory === product?.subcategory)
@@ -57,7 +63,6 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
 
   const categorySlug = product.category;
   
-  // Определяем название вкладки в навигации
   const getCategoryTabName = () => {
     if (categorySlug === 'videonablyudenie') return 'Камеры';
     if (categorySlug === 'teplovizory') return 'Тепловизоры';
@@ -65,17 +70,28 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
     return 'Каталог';
   };
 
-  // Ссылка на подкатегорию (для хлебных крошек)
   const getCategoryLink = () => {
     if (categorySlug === 'videonablyudenie') return '/catalog/videonablyudenie/камеры';
     if (categorySlug === 'teplovizory') return '/catalog/teplovizory/камеры-тепловизионные';
     return `/catalog/${categorySlug}`;
   };
 
+  const handleAddToCart = () => {
+    addToCart(product, quantity);
+  };
+
+  const handleCompare = () => {
+    if (isInCompare(product.id)) {
+      removeFromCompare(product.id);
+    } else {
+      addToCompare(product);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#020408] text-white">
       <header className="relative z-50 bg-[#05070a] border-b border-white/5">
-        <div className="container mx-auto px-6 h-20 flex items-center">
+        <div className="container mx-auto px-6 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <div className="bg-blue-600 p-2 rounded-xl shadow-[0_0_20px_rgba(37,99,235,0.3)]">
               <ShieldCheck size={28} />
@@ -85,11 +101,36 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
               <span className="text-[9px] font-bold tracking-[0.3em] mt-1 opacity-80 uppercase">Security Solutions</span>
             </div>
           </Link>
+          
+          <div className="flex items-center gap-6">
+            <Link href="/compare" className="relative text-white/70 hover:text-blue-400 transition-colors">
+              <div className="flex items-center gap-2">
+                <GitCompare size={20} />
+                {compareCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-blue-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                    {compareCount}
+                  </span>
+                )}
+                <span className="text-sm hidden md:inline">Сравнение</span>
+              </div>
+            </Link>
+
+            <Link href="/cart" className="relative text-white/70 hover:text-blue-400 transition-colors">
+              <div className="flex items-center gap-2">
+                <ShoppingCart size={20} />
+                {cartCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-blue-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                    {cartCount}
+                  </span>
+                )}
+                <span className="text-sm hidden md:inline">Корзина</span>
+              </div>
+            </Link>
+          </div>
         </div>
       </header>
 
       <div className="container mx-auto px-6 py-6">
-        {/* Хлебные крошки */}
         <div className="flex items-center gap-2 text-sm text-white/40 mb-6">
           <Link href="/" className="hover:text-white/60">Главная</Link>
           <span>/</span>
@@ -101,13 +142,10 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
         </div>
 
         <div className="max-w-7xl mx-auto">
-          {/* Основная секция: изображение + информация */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Изображение и миниатюры */}
             <div>
               <div className="bg-[#0f1217] rounded-2xl border border-white/10 p-6 flex items-center justify-center h-[320px]">
                 {product.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={product.image}
                     alt={product.name}
@@ -122,60 +160,30 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                   </div>
                 )}
               </div>
-              {/* Миниатюры дополнительных фото */}
               {product.images && product.images.length > 0 && (
                 <div className="flex gap-2 mt-3">
                   {product.images.map((img, idx) => (
                     <div key={idx} className="w-16 h-16 bg-[#0f1217] rounded-lg border border-white/10 overflow-hidden cursor-pointer hover:border-blue-500 transition-colors">
-                      {img && (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img src={img} alt="" className="w-full h-full object-cover" />
-                      )}
+                      {img && <img src={img} alt="" className="w-full h-full object-cover" />}
                     </div>
                   ))}
                 </div>
               )}
             </div>
 
-            {/* Информация о товаре */}
             <div>
-              {/* Метки */}
               <div className="flex gap-2 mb-3">
-                {product.isNew && (
-                  <span className="bg-green-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">
-                    Новинка
-                  </span>
-                )}
-                {product.isHit && (
-                  <span className="bg-orange-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">
-                    Хит
-                  </span>
-                )}
-                {discount > 0 && (
-                  <span className="bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">
-                    -{discount}%
-                  </span>
-                )}
+                {product.isNew && <span className="bg-green-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">Новинка</span>}
+                {product.isHit && <span className="bg-orange-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">Хит</span>}
+                {discount > 0 && <span className="bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">-{discount}%</span>}
               </div>
 
-              {/* Артикул */}
-              <div className="text-white/40 text-xs mb-1 font-mono">
-                Арт. {product.sku}
-              </div>
-
-              {/* Название */}
-              <h1 className="text-2xl font-black mb-2 leading-tight">
-                {product.name}
-              </h1>
-
-              {/* Бренд */}
+              <div className="text-white/40 text-xs mb-1 font-mono">Арт. {product.sku}</div>
+              <h1 className="text-2xl font-black mb-2 leading-tight">{product.name}</h1>
               {product.brand && (
-                <div className="text-white/50 text-xs mb-3">
-                  Бренд: <span className="text-white/80">{product.brand}</span>
-                </div>
+                <div className="text-white/50 text-xs mb-3">Бренд: <span className="text-white/80">{product.brand}</span></div>
               )}
 
-              {/* Описание с кнопкой "Читать далее" */}
               {product.description && (
                 <div className="mb-4">
                   <div className={`text-white/60 text-sm leading-relaxed ${!descriptionExpanded && 'line-clamp-2'}`}>
@@ -185,130 +193,78 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                     onClick={() => setDescriptionExpanded(!descriptionExpanded)}
                     className="flex items-center gap-1 text-blue-500 text-xs mt-1 hover:text-blue-400 transition-colors"
                   >
-                    {descriptionExpanded ? (
-                      <>Свернуть <ChevronUp size={14} /></>
-                    ) : (
-                      <>Читать далее <ChevronDown size={14} /></>
-                    )}
+                    {descriptionExpanded ? <>Свернуть <ChevronUp size={14} /></> : <>Читать далее <ChevronDown size={14} /></>}
                   </button>
                 </div>
               )}
 
-              {/* Цена и наличие */}
               <div className="mb-4">
                 <div className="flex items-baseline gap-2 flex-wrap">
-                  <span className="text-2xl font-black text-white">
-                    {(product.price * quantity).toLocaleString('ru-RU')} ₽
-                  </span>
-                  {product.oldPrice && (
-                    <span className="text-sm text-white/40 line-through">
-                      {(product.oldPrice * quantity).toLocaleString('ru-RU')} ₽
-                    </span>
-                  )}
+                  <span className="text-2xl font-black text-white">{(product.price * quantity).toLocaleString('ru-RU')} ₽</span>
+                  {product.oldPrice && <span className="text-sm text-white/40 line-through">{(product.oldPrice * quantity).toLocaleString('ru-RU')} ₽</span>}
                 </div>
                 {product.oldPrice && (
-                  <div className="text-green-500 text-xs mt-0.5">
-                    Экономия {((product.oldPrice - product.price) * quantity).toLocaleString('ru-RU')} ₽
-                  </div>
+                  <div className="text-green-500 text-xs mt-0.5">Экономия {((product.oldPrice - product.price) * quantity).toLocaleString('ru-RU')} ₽</div>
                 )}
               </div>
 
               <div className="flex items-center gap-2 mb-4">
                 {product.inStock ? (
-                  <>
-                    <CheckCircle size={16} className="text-green-500" />
-                    <span className="text-green-500 text-sm font-medium">В наличии</span>
-                  </>
+                  <><CheckCircle size={16} className="text-green-500" /><span className="text-green-500 text-sm font-medium">В наличии</span></>
                 ) : (
-                  <>
-                    <XCircle size={16} className="text-red-500" />
-                    <span className="text-red-500 text-sm font-medium">Нет в наличии</span>
-                  </>
+                  <><XCircle size={16} className="text-red-500" /><span className="text-red-500 text-sm font-medium">Нет в наличии</span></>
                 )}
               </div>
 
-              {/* Количество и кнопка */}
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
                   <span className="text-white/60 text-sm">Количество:</span>
                   <div className="flex items-center gap-2 bg-white/5 rounded-lg border border-white/10">
-                    <button
-                      onClick={decrementQuantity}
-                      className="p-2 hover:bg-white/10 transition-colors rounded-l-lg"
-                    >
-                      <Minus size={14} />
-                    </button>
-                    <input
-                      type="number"
-                      value={quantity}
-                      onChange={(e) => {
-                        const val = parseInt(e.target.value);
-                        if (!isNaN(val) && val >= 1) setQuantity(val);
-                      }}
-                      className="w-12 text-center bg-transparent outline-none text-sm [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-                    />
-                    <button
-                      onClick={incrementQuantity}
-                      className="p-2 hover:bg-white/10 transition-colors rounded-r-lg"
-                    >
-                      <Plus size={14} />
-                    </button>
+                    <button onClick={decrementQuantity} className="p-2 hover:bg-white/10 rounded-l-lg"><Minus size={14} /></button>
+                    <input type="number" value={quantity} onChange={(e) => { const val = parseInt(e.target.value); if (!isNaN(val) && val >= 1) setQuantity(val); }} className="w-12 text-center bg-transparent outline-none text-sm" />
+                    <button onClick={incrementQuantity} className="p-2 hover:bg-white/10 rounded-r-lg"><Plus size={14} /></button>
                   </div>
                 </div>
 
-                <button
-                  className={`w-full py-3 rounded-xl font-bold text-base transition-all flex items-center justify-center gap-2 ${
-                    product.inStock
-                      ? 'bg-blue-600 text-white hover:bg-blue-700 active:scale-95 shadow-[0_5px_15px_rgba(37,99,235,0.3)]'
-                      : 'bg-white/5 text-white/30 cursor-not-allowed'
-                  }`}
-                  disabled={!product.inStock}
-                  onClick={() => console.log('Добавлено в корзину:', product.id, 'Количество:', quantity)}
-                >
-                  <ShoppingCart size={18} />
-                  {product.inStock ? 'В корзину' : 'Нет в наличии'}
-                </button>
+                <div className="flex gap-3">
+                  <button
+                    onClick={handleAddToCart}
+                    disabled={!product.inStock}
+                    className={`flex-1 py-3 rounded-xl font-bold text-base transition-all duration-300 flex items-center justify-center gap-2 ${
+                      product.inStock
+                        ? 'bg-blue-600 text-white hover:bg-blue-700 hover:shadow-[0_0_15px_rgba(37,99,235,0.5)] active:scale-95'
+                        : 'bg-white/5 text-white/30 cursor-not-allowed'
+                    }`}
+                  >
+                    <ShoppingCart size={18} />
+                    {product.inStock ? 'В корзину' : 'Нет в наличии'}
+                  </button>
+
+                  <button
+                    onClick={handleCompare}
+                    className={`px-5 py-3 rounded-xl font-bold text-base transition-all duration-300 flex items-center justify-center gap-2 border ${
+                      isInCompare(product.id)
+                        ? 'bg-blue-600/20 border-blue-500 text-blue-400 hover:bg-blue-600/30'
+                        : 'bg-white/5 border-white/10 text-white/60 hover:border-blue-500 hover:text-blue-400 hover:bg-blue-500/10'
+                    }`}
+                    title={isInCompare(product.id) ? 'Убрать из сравнения' : 'Добавить к сравнению'}
+                  >
+                    <GitCompare size={18} />
+                    <span className="hidden sm:inline">{isInCompare(product.id) ? 'В сравнении' : 'Сравнить'}</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Вкладки */}
           <div className="mt-8">
             <div className="flex gap-6 border-b border-white/10">
-              <button
-                onClick={() => setActiveTab('specs')}
-                className={`pb-2 text-sm font-medium transition-colors ${
-                  activeTab === 'specs'
-                    ? 'text-blue-500 border-b-2 border-blue-500'
-                    : 'text-white/40 hover:text-white/60'
-                }`}
-              >
-                Технические характеристики
-              </button>
-              <button
-                onClick={() => setActiveTab('docs')}
-                className={`pb-2 text-sm font-medium transition-colors ${
-                  activeTab === 'docs'
-                    ? 'text-blue-500 border-b-2 border-blue-500'
-                    : 'text-white/40 hover:text-white/60'
-                }`}
-              >
-                Документы
-              </button>
-              <button
-                onClick={() => setActiveTab('similar')}
-                className={`pb-2 text-sm font-medium transition-colors ${
-                  activeTab === 'similar'
-                    ? 'text-blue-500 border-b-2 border-blue-500'
-                    : 'text-white/40 hover:text-white/60'
-                }`}
-              >
-                Похожие товары
-              </button>
+              <button onClick={() => setActiveTab('specs')} className={`pb-2 text-sm font-medium transition-colors ${activeTab === 'specs' ? 'text-blue-500 border-b-2 border-blue-500' : 'text-white/40 hover:text-white/60'}`}>Технические характеристики</button>
+              <button onClick={() => setActiveTab('docs')} className={`pb-2 text-sm font-medium transition-colors ${activeTab === 'docs' ? 'text-blue-500 border-b-2 border-blue-500' : 'text-white/40 hover:text-white/60'}`}>Документы</button>
+              <button onClick={() => setActiveTab('similar')} className={`pb-2 text-sm font-medium transition-colors ${activeTab === 'similar' ? 'text-blue-500 border-b-2 border-blue-500' : 'text-white/40 hover:text-white/60'}`}>Похожие товары</button>
             </div>
 
             <div className="py-5">
-              {/* Вкладка: Технические характеристики */}
               {activeTab === 'specs' && product.specs && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {Object.entries(product.specs).map(([key, value]) => (
@@ -320,61 +276,30 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                 </div>
               )}
 
-              {/* Вкладка: Документы */}
               {activeTab === 'docs' && (
                 <div className="space-y-3">
                   <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors cursor-pointer">
                     <FileText size={20} className="text-blue-500" />
-                    <div className="flex-1">
-                      <p className="text-sm font-medium">Руководство по эксплуатации</p>
-                      <p className="text-xs text-white/40">PDF, 2.5 МБ</p>
-                    </div>
+                    <div className="flex-1"><p className="text-sm font-medium">Руководство по эксплуатации</p><p className="text-xs text-white/40">PDF, 2.5 МБ</p></div>
                     <Download size={16} className="text-white/40" />
                   </div>
                   <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors cursor-pointer">
                     <FileText size={20} className="text-blue-500" />
-                    <div className="flex-1">
-                      <p className="text-sm font-medium">Сертификат соответствия</p>
-                      <p className="text-xs text-white/40">PDF, 1.2 МБ</p>
-                    </div>
-                    <Download size={16} className="text-white/40" />
-                  </div>
-                  <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors cursor-pointer">
-                    <FileText size={20} className="text-blue-500" />
-                    <div className="flex-1">
-                      <p className="text-sm font-medium">Краткое руководство</p>
-                      <p className="text-xs text-white/40">PDF, 0.8 МБ</p>
-                    </div>
+                    <div className="flex-1"><p className="text-sm font-medium">Сертификат соответствия</p><p className="text-xs text-white/40">PDF, 1.2 МБ</p></div>
                     <Download size={16} className="text-white/40" />
                   </div>
                 </div>
               )}
 
-              {/* Вкладка: Похожие товары */}
               {activeTab === 'similar' && (
                 similarProducts.length > 0 ? (
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     {similarProducts.map((similarProduct) => (
-                      <ProductCard
-                        key={similarProduct.id}
-                        id={similarProduct.id}
-                        name={similarProduct.name}
-                        price={similarProduct.price}
-                        oldPrice={similarProduct.oldPrice}
-                        image={similarProduct.image}
-                        brand={similarProduct.brand}
-                        sku={similarProduct.sku}
-                        inStock={similarProduct.inStock}
-                        href={`/product/${similarProduct.id}`}
-                        isNew={similarProduct.isNew}
-                        isHit={similarProduct.isHit}
-                      />
+                      <ProductCard key={similarProduct.id} {...similarProduct} href={`/product/${similarProduct.id}`} />
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center py-8 text-white/40 text-sm">
-                    Нет похожих товаров
-                  </div>
+                  <div className="text-center py-8 text-white/40 text-sm">Нет похожих товаров</div>
                 )
               )}
             </div>

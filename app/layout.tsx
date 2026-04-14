@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Inter_Tight } from "next/font/google";
+import { StoreProvider } from './context/StoreContext';
 
 const interTight = Inter_Tight({ 
   subsets: ["cyrillic", "latin"], 
@@ -18,7 +19,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru" className={interTight.variable}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <StoreProvider>
+          {children}
+        </StoreProvider>
+      </body>
     </html>
   );
 }
