@@ -1,6 +1,6 @@
 'use client';
 
-import { use, useState } from 'react';
+import { use, useState, useRef } from 'react';
 import Link from 'next/link';
 import { 
   ShieldCheck, 
@@ -11,9 +11,7 @@ import {
   Minus, 
   Plus,
   Download,
-  FileText,
-  ChevronDown,
-  ChevronUp
+  FileText
 } from 'lucide-react';
 import { mockProducts } from '@/app/lib/products';
 import ProductCard from '@/app/components/ProductCard';
@@ -22,8 +20,10 @@ import { useStore } from '@/app/context/StoreContext';
 export default function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const [quantity, setQuantity] = useState(1);
-  const [activeTab, setActiveTab] = useState<'specs' | 'docs' | 'similar'>('specs');
+  const [activeTab, setActiveTab] = useState<'specs' | 'docs' | 'similar' | null>(null);
   const [descriptionExpanded, setDescriptionExpanded] = useState(false);
+  
+  const contentRef = useRef<HTMLDivElement>(null);
   
   const product = mockProducts.find(p => p.id === id);
   
@@ -34,6 +34,19 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
   const similarProducts = mockProducts
     .filter(p => p.id !== id && p.subcategory === product?.subcategory)
     .slice(0, 4);
+
+  const scrollToContent = () => {
+    setTimeout(() => {
+      if (contentRef.current) {
+        contentRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+  };
+
+  const handleTabClick = (tab: 'specs' | 'docs' | 'similar') => {
+    setActiveTab(activeTab === tab ? null : tab);
+    scrollToContent();
+  };
 
   if (!product) {
     return (
@@ -142,7 +155,9 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
         </div>
 
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Основная информация о товаре */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+            {/* Левая колонка - изображение */}
             <div>
               <div className="bg-[#0f1217] rounded-2xl border border-white/10 p-6 flex items-center justify-center h-[320px]">
                 {product.image ? (
@@ -171,6 +186,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
               )}
             </div>
 
+            {/* Правая колонка - информация */}
             <div>
               <div className="flex gap-2 mb-3">
                 {product.isNew && <span className="bg-green-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">Новинка</span>}
@@ -193,7 +209,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                     onClick={() => setDescriptionExpanded(!descriptionExpanded)}
                     className="flex items-center gap-1 text-blue-500 text-xs mt-1 hover:text-blue-400 transition-colors"
                   >
-                    {descriptionExpanded ? <>Свернуть <ChevronUp size={14} /></> : <>Читать далее <ChevronDown size={14} /></>}
+                    {descriptionExpanded ? <>Свернуть</> : <>Читать далее</>}
                   </button>
                 </div>
               )}
@@ -257,11 +273,39 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
             </div>
           </div>
 
-          <div className="mt-8">
+          {/* Горизонтальные вкладки - все свёрнуты по умолчанию */}
+          <div ref={contentRef} className="mt-8">
             <div className="flex gap-6 border-b border-white/10">
-              <button onClick={() => setActiveTab('specs')} className={`pb-2 text-sm font-medium transition-colors ${activeTab === 'specs' ? 'text-blue-500 border-b-2 border-blue-500' : 'text-white/40 hover:text-white/60'}`}>Технические характеристики</button>
-              <button onClick={() => setActiveTab('docs')} className={`pb-2 text-sm font-medium transition-colors ${activeTab === 'docs' ? 'text-blue-500 border-b-2 border-blue-500' : 'text-white/40 hover:text-white/60'}`}>Документы</button>
-              <button onClick={() => setActiveTab('similar')} className={`pb-2 text-sm font-medium transition-colors ${activeTab === 'similar' ? 'text-blue-500 border-b-2 border-blue-500' : 'text-white/40 hover:text-white/60'}`}>Похожие товары</button>
+              <button
+                onClick={() => handleTabClick('specs')}
+                className={`pb-2 text-sm font-medium transition-colors ${
+                  activeTab === 'specs'
+                    ? 'text-blue-500 border-b-2 border-blue-500'
+                    : 'text-white/40 hover:text-white/60'
+                }`}
+              >
+                Технические характеристики
+              </button>
+              <button
+                onClick={() => handleTabClick('docs')}
+                className={`pb-2 text-sm font-medium transition-colors ${
+                  activeTab === 'docs'
+                    ? 'text-blue-500 border-b-2 border-blue-500'
+                    : 'text-white/40 hover:text-white/60'
+                }`}
+              >
+                Документы
+              </button>
+              <button
+                onClick={() => handleTabClick('similar')}
+                className={`pb-2 text-sm font-medium transition-colors ${
+                  activeTab === 'similar'
+                    ? 'text-blue-500 border-b-2 border-blue-500'
+                    : 'text-white/40 hover:text-white/60'
+                }`}
+              >
+                Похожие товары
+              </button>
             </div>
 
             <div className="py-5">
@@ -280,12 +324,18 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                 <div className="space-y-3">
                   <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors cursor-pointer">
                     <FileText size={20} className="text-blue-500" />
-                    <div className="flex-1"><p className="text-sm font-medium">Руководство по эксплуатации</p><p className="text-xs text-white/40">PDF, 2.5 МБ</p></div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium">Руководство по эксплуатации</p>
+                      <p className="text-xs text-white/40">PDF, 2.5 МБ</p>
+                    </div>
                     <Download size={16} className="text-white/40" />
                   </div>
                   <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors cursor-pointer">
                     <FileText size={20} className="text-blue-500" />
-                    <div className="flex-1"><p className="text-sm font-medium">Сертификат соответствия</p><p className="text-xs text-white/40">PDF, 1.2 МБ</p></div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium">Сертификат соответствия</p>
+                      <p className="text-xs text-white/40">PDF, 1.2 МБ</p>
+                    </div>
                     <Download size={16} className="text-white/40" />
                   </div>
                 </div>
