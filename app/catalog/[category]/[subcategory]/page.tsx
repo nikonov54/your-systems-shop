@@ -2,7 +2,7 @@
 
 import { useState, use } from 'react';
 import Link from 'next/link';
-import { ChevronDown, ShieldCheck, Search, ShoppingCart, ChevronRight } from 'lucide-react';
+import { ChevronDown, ShieldCheck, Search, ShoppingCart, ChevronRight, Scale } from 'lucide-react';
 import { catalogData } from '@/menu-data';
 import { mockProducts } from '@/app/lib/products';
 import ProductCard from '@/app/components/ProductCard';
@@ -114,7 +114,7 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
   const createSlug = (text: string) => text.toLowerCase().replace(/ /g, '-');
 
   return (
-    <main className="h-screen bg-[#020408] relative flex flex-col font-sans text-white overflow-hidden">
+    <main className="min-h-screen bg-[#020408] relative flex flex-col font-sans text-white">
       <header className="relative z-50 bg-[#05070a] border-b border-white/5 shrink-0">
         <div className="container mx-auto px-6 h-20 flex items-center justify-between gap-8">
           <Link href="/" className="flex items-center gap-3 shrink-0 uppercase tracking-tighter">
@@ -124,13 +124,20 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
               <span className="text-[9px] font-bold tracking-[0.3em] mt-1 opacity-80 uppercase">Security Solutions</span>
             </div>
           </Link>
-          <div className="hidden lg:flex flex-1 max-w-sm relative">
-            <input type="text" placeholder="Поиск по артикулу..." className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-sm outline-none focus:border-blue-600/30" />
+          
+          <div className="flex flex-1 max-w-sm relative">
+            <input type="text" placeholder="Поиск..." className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-sm outline-none focus:border-blue-600/30" />
             <Search className="absolute right-4 top-3 text-slate-500" size={18} />
           </div>
+
           <div className="flex items-center gap-6 font-black">
             <a href="tel:88000000000" className="text-lg hover:text-blue-500 transition-colors">8 800 000-00-00</a>
-            <button className="bg-blue-600 p-3 rounded-xl relative">
+            <Link href="/compare">
+              <button className="p-3 rounded-xl transition-all hover:bg-blue-600">
+                <Scale size={20} className="text-white/60 hover:text-white transition-colors" />
+              </button>
+            </Link>
+            <button className="bg-blue-600 p-3 rounded-xl relative hover:bg-blue-700 transition-all shadow-[0_5px_15px_rgba(37,99,235,0.2)]">
               <ShoppingCart size={20} />
               <span className="absolute -top-1 -right-1 bg-white text-blue-600 text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
             </button>
