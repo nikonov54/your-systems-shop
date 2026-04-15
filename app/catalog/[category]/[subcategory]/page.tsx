@@ -124,6 +124,13 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
               <span className="text-[9px] font-bold tracking-[0.3em] mt-1 opacity-80 uppercase">Security Solutions</span>
             </div>
           </Link>
+
+          {/* Навигационные ссылки */}
+          <div className="hidden lg:flex items-center gap-6 text-sm font-bold uppercase tracking-wider">
+            <Link href="/project" className="text-white/70 hover:text-blue-500 transition-colors">
+              Проектирование
+            </Link>
+          </div>
           
           <div className="flex flex-1 max-w-sm relative">
             <input type="text" placeholder="Поиск..." className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-sm outline-none focus:border-blue-600/30" />

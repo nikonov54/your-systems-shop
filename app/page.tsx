@@ -37,6 +37,13 @@ export default function Home() {
                 <span className="text-[9px] font-bold tracking-[0.3em] mt-1 opacity-80 uppercase">Security Solutions</span>
               </div>
             </Link>
+
+            {/* Навигационные ссылки */}
+            <div className="hidden lg:flex items-center gap-6 text-sm font-bold uppercase tracking-wider">
+              <Link href="/project" className="text-white/70 hover:text-blue-500 transition-colors">
+                Проектирование
+              </Link>
+            </div>
             
             <div className="relative group" onMouseLeave={() => setActiveCat(null)}>
               <button className="flex items-center gap-3 bg-transparent border border-white/20 text-white px-6 py-2.5 rounded-xl text-xs font-bold tracking-[0.2em] hover:bg-blue-600 transition-all uppercase">
@@ -106,9 +113,11 @@ export default function Home() {
                 </p>
               </div>
 
-              <button className="w-fit bg-blue-600 text-white px-10 py-4 rounded-2xl font-black text-lg hover:bg-blue-700 transition-all flex items-center gap-3 active:scale-95 uppercase shadow-[0_15px_30px_rgba(37,99,235,0.2)]">
-                Стать партнером <ArrowRight size={22} />
-              </button>
+              <Link href="/project">
+                <button className="w-fit bg-blue-600 text-white px-10 py-4 rounded-2xl font-black text-lg hover:bg-blue-700 transition-all flex items-center gap-3 active:scale-95 uppercase shadow-[0_15px_30px_rgba(37,99,235,0.2)]">
+                  Стать партнером <ArrowRight size={22} />
+                </button>
+              </Link>
               
               <div className="mt-20 text-white/40 text-[9px] font-black tracking-[1em] uppercase">
                 Est. 2020 / YourSystems Engineering
