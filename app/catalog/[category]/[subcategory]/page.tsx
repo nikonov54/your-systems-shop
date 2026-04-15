@@ -125,11 +125,19 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
             </div>
           </Link>
 
-          {/* Навигационные ссылки */}
-          <div className="hidden lg:flex items-center gap-6 text-sm font-bold uppercase tracking-wider">
-            <Link href="/project" className="text-white/70 hover:text-blue-500 transition-colors">
-              Проектирование
-            </Link>
+          {/* Кнопка УСЛУГИ с выпадающим меню */}
+          <div className="hidden lg:flex relative group">
+            <button className="text-sm font-bold uppercase tracking-wider text-white/70 hover:text-blue-500 transition-colors">
+              Услуги
+            </button>
+            <div className="absolute top-full left-0 mt-2 bg-[#0a0c10] rounded-xl border border-white/10 min-w-[180px] py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+              <Link href="/project" className="block px-6 py-2 text-xs uppercase tracking-wider text-white/70 hover:text-blue-500 hover:bg-white/5 transition-colors">
+                Проектирование
+              </Link>
+              <Link href="/services/montazh" className="block px-6 py-2 text-xs uppercase tracking-wider text-white/70 hover:text-blue-500 hover:bg-white/5 transition-colors">
+                Монтаж
+              </Link>
+            </div>
           </div>
           
           <div className="flex flex-1 max-w-sm relative">

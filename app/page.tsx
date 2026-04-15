@@ -38,11 +38,22 @@ export default function Home() {
               </div>
             </Link>
 
-            {/* Навигационные ссылки */}
-            <div className="hidden lg:flex items-center gap-6 text-sm font-bold uppercase tracking-wider">
-              <Link href="/project" className="text-white/70 hover:text-blue-500 transition-colors">
-                Проектирование
-              </Link>
+            {/* Кнопка УСЛУГИ с прозрачной обводкой и 3 полосками как у каталога */}
+            <div className="relative group" onMouseLeave={() => setActiveCat(null)}>
+              <button className="flex items-center gap-3 bg-transparent border border-white/20 text-white px-6 py-2.5 rounded-xl text-xs font-bold tracking-[0.2em] hover:bg-blue-600 transition-all uppercase">
+                <Menu size={18} className="text-blue-400 group-hover:text-white" /> УСЛУГИ
+              </button>
+              
+              <div className="absolute top-full left-0 w-full h-[20px] invisible group-hover:visible" />
+
+              <div className="absolute top-[calc(100%+15px)] left-0 bg-[#0a0c10] shadow-[0_30px_60px_rgba(0,0,0,0.8)] rounded-2xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all min-w-[260px] py-4 z-50">
+                <Link href="/project" className="block px-8 py-3 text-[11px] uppercase tracking-widest font-black text-white/70 hover:text-blue-500 hover:bg-white/5 transition-all">
+                  Проектирование
+                </Link>
+                <Link href="/services/montazh" className="block px-8 py-3 text-[11px] uppercase tracking-widest font-black text-white/70 hover:text-blue-500 hover:bg-white/5 transition-all">
+                  Монтаж
+                </Link>
+              </div>
             </div>
             
             <div className="relative group" onMouseLeave={() => setActiveCat(null)}>
