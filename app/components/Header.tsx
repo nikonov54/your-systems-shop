@@ -78,9 +78,9 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Поиск */}
+        {/* Поиск - фон прозрачный */}
         <div className="flex flex-1 max-w-sm relative">
-          <input type="text" placeholder="Поиск..." className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-sm outline-none focus:border-blue-600/30" />
+          <input type="text" placeholder="Поиск..." className="w-full bg-transparent border border-white/10 rounded-xl px-5 py-3 text-sm outline-none focus:border-blue-600/30" />
           <Search className="absolute right-4 top-3 text-slate-500" size={18} />
         </div>
 
