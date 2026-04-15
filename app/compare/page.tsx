@@ -5,29 +5,8 @@ import { useStore } from '../context/StoreContext';
 import { mockProducts } from '../lib/products';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ShoppingCart, Scale, X, Trash2, ArrowLeft, ShieldCheck, Search } from 'lucide-react';
-
-// МАСТЕР-СПИСОК ВСЕХ ХАРАКТЕРИСТИК ДЛЯ КАМЕР (из фильтров)
-const MASTER_SPECS = [
-  'Производитель',
-  'Видеоаналитика',
-  'Тип корпуса',
-  'Исполнение',
-  'Разрешение, МП',
-  'Тип объектива',
-  'Фокусное расстояние, мм',
-  'ИК-подсветка',
-  'Wi-Fi',
-  'SD-карта',
-  'PIR-датчик',
-  'Аудио',
-  'Тревожный вход/выход',
-  'Защита IP',
-  'IK',
-  'Особенности',
-  'Питание',
-  'Рабочая температура'
-];
+import { ShoppingCart, Scale, X, Trash2, ArrowLeft } from 'lucide-react';
+import Header from '@/app/components/Header';
 
 export default function ComparePage() {
   const { compareItems, removeFromCompare, clearCompare, addToCart } = useStore();
@@ -50,38 +29,24 @@ export default function ComparePage() {
     }).format(price);
   };
   
-  // Получение значения характеристики (маппинг между мастер-списком и реальными ключами)
+  const getAllSpecs = () => {
+    const allSpecs = new Set<string>();
+    compareItems.forEach(item => {
+      if (item.specs) {
+        Object.keys(item.specs).forEach(key => allSpecs.add(key));
+      }
+    });
+    return Array.from(allSpecs);
+  };
+  
   const getSpecValue = (item: typeof compareItems[0], specKey: string): string => {
-    const mapping: Record<string, string> = {
-      'Производитель': 'Производитель',
-      'Видеоаналитика': 'Видеоаналитика',
-      'Тип корпуса': 'Тип корпуса',
-      'Исполнение': 'Исполнение',
-      'Разрешение, МП': 'Разрешение, МП',
-      'Тип объектива': 'Тип объектива',
-      'Фокусное расстояние, мм': 'Фокусное расстояние, мм',
-      'ИК-подсветка': 'ИК-подсветка',
-      'Wi-Fi': 'Wi-Fi',
-      'SD-карта': 'SD-карта',
-      'PIR-датчик': 'PIR-датчик',
-      'Аудио': 'Аудио',
-      'Тревожный вход/выход': 'Тревожный вход/выход',
-      'Защита IP': 'Защита IP',
-      'IK': 'IK',
-      'Особенности': 'Особенности',
-      'Питание': 'Питание',
-      'Рабочая температура': 'Рабочая температура'
-    };
-    
-    const key = mapping[specKey];
-    if (!key) return '—';
-    const value = item.specs?.[key];
-    return value || '—';
+    return item.specs?.[specKey] || '—';
   };
   
   if (compareItems.length === 0) {
     return (
       <div className="min-h-screen bg-[#020408] text-white">
+        <Header />
         <div className="container mx-auto px-6 py-20 text-center">
           <div className="inline-flex p-6 bg-white/5 rounded-full mb-8">
             <Scale size={64} className="text-slate-600" />
@@ -96,8 +61,12 @@ export default function ComparePage() {
     );
   }
   
+  const allSpecs = getAllSpecs();
+  
   return (
     <div className="min-h-screen bg-[#020408] text-white">
+      <Header />
+      
       <div className="container mx-auto px-6 py-6">
         <Link href={backLink} className="inline-flex items-center gap-2 text-sm text-white/40 hover:text-blue-500 mb-4">
           <ArrowLeft size={14} />
@@ -118,12 +87,12 @@ export default function ComparePage() {
           <table className="w-full border-collapse">
             <thead>
               <tr className="border-b border-white/10">
-                <th className="p-3 text-left w-48">Характеристики</th>
+                <th className="p-3 text-left w-40">Характеристики</th>
                 {compareItems.map((item) => (
                   <th key={item.id} className="p-3 text-center">
                     <button
                       onClick={() => removeFromCompare(item.id)}
-                      className="float-right w-6 h-6 bg-red-600 rounded-full hover:bg-red-700"
+                      className="float-right w-6 h-6 bg-red-600 rounded-full"
                     >
                       <X size={14} className="mx-auto text-white" />
                     </button>
@@ -154,7 +123,7 @@ export default function ComparePage() {
                           const fullProduct = mockProducts.find(p => p.id === item.id);
                           if (fullProduct) addToCart(fullProduct, 1);
                         }}
-                        className="mt-2 px-3 py-1 bg-blue-600 rounded-lg text-xs hover:bg-blue-700"
+                        className="mt-2 px-3 py-1 bg-blue-600 rounded-lg text-xs"
                       >
                         <ShoppingCart size={12} className="inline mr-1" />
                         В корзину
@@ -163,7 +132,7 @@ export default function ComparePage() {
                   );
                 })}
               </tr>
-              {MASTER_SPECS.map((specKey) => (
+              {allSpecs.map((specKey) => (
                 <tr key={specKey} className="border-b border-white/5">
                   <td className="p-3 font-bold">{specKey}</td>
                   {compareItems.map((item) => (

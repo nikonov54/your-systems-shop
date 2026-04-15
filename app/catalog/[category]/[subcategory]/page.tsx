@@ -2,10 +2,11 @@
 
 import { useState, use } from 'react';
 import Link from 'next/link';
-import { ChevronDown, ShieldCheck, Search, ShoppingCart, ChevronRight, Scale } from 'lucide-react';
+import { ChevronDown, ChevronRight } from 'lucide-react';
 import { catalogData } from '@/menu-data';
 import { mockProducts } from '@/app/lib/products';
 import ProductCard from '@/app/components/ProductCard';
+import Header from '@/app/components/Header';
 import { 
   cameraFilters, 
   recorderFilters, 
@@ -115,50 +116,7 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
 
   return (
     <main className="min-h-screen bg-[#020408] relative flex flex-col font-sans text-white">
-      <header className="relative z-50 bg-[#05070a] border-b border-white/5 shrink-0">
-        <div className="container mx-auto px-6 h-20 flex items-center justify-between gap-8">
-          <Link href="/" className="flex items-center gap-3 shrink-0 uppercase tracking-tighter">
-            <div className="bg-blue-600 p-2 rounded-xl shadow-[0_0_20px_rgba(37,99,235,0.4)]"><ShieldCheck size={28} /></div>
-            <div className="flex flex-col items-center leading-none text-center">
-              <span className="text-2xl font-black uppercase">Your<span className="text-blue-500">Systems</span></span>
-              <span className="text-[9px] font-bold tracking-[0.3em] mt-1 opacity-80 uppercase">Security Solutions</span>
-            </div>
-          </Link>
-
-          {/* Кнопка УСЛУГИ с выпадающим меню */}
-          <div className="hidden lg:flex relative group">
-            <button className="text-sm font-bold uppercase tracking-wider text-white/70 hover:text-blue-500 transition-colors">
-              Услуги
-            </button>
-            <div className="absolute top-full left-0 mt-2 bg-[#0a0c10] rounded-xl border border-white/10 min-w-[180px] py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-              <Link href="/project" className="block px-6 py-2 text-xs uppercase tracking-wider text-white/70 hover:text-blue-500 hover:bg-white/5 transition-colors">
-                Проектирование
-              </Link>
-              <Link href="/services/montazh" className="block px-6 py-2 text-xs uppercase tracking-wider text-white/70 hover:text-blue-500 hover:bg-white/5 transition-colors">
-                Монтаж
-              </Link>
-            </div>
-          </div>
-          
-          <div className="flex flex-1 max-w-sm relative">
-            <input type="text" placeholder="Поиск..." className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-sm outline-none focus:border-blue-600/30" />
-            <Search className="absolute right-4 top-3 text-slate-500" size={18} />
-          </div>
-
-          <div className="flex items-center gap-6 font-black">
-            <a href="tel:88000000000" className="text-lg hover:text-blue-500 transition-colors">8 800 000-00-00</a>
-            <Link href="/compare">
-              <button className="p-3 rounded-xl transition-all hover:bg-blue-600">
-                <Scale size={20} className="text-white/60 hover:text-white transition-colors" />
-              </button>
-            </Link>
-            <button className="bg-blue-600 p-3 rounded-xl relative hover:bg-blue-700 transition-all shadow-[0_5px_15px_rgba(37,99,235,0.2)]">
-              <ShoppingCart size={20} />
-              <span className="absolute -top-1 -right-1 bg-white text-blue-600 text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
-            </button>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <div className="flex flex-1 overflow-hidden">
         <aside className="w-80 shrink-0 border-r border-white/5 bg-[#05070a] flex flex-col h-full overflow-hidden">
