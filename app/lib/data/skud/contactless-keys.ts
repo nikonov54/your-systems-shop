@@ -1,16 +1,17 @@
+// app/lib/data/skud/contactless-keys.ts
 import { Product } from '../types';
 
 export const contactlessKeys: Product[] = [
   {
     id: '6',
-    name: 'Beskontaktnyj klyuch Mifare 1k',
+    name: 'Бесконтактный ключ Mifare 1k',
     price: 45,
-    image: '',
+    image: '/images/skud/contactless-keys/mifare-1k.jpg',
     brand: 'ATIX',
     sku: 'MIF-1K',
     inStock: true,
     category: 'skud',
     subcategory: 'contactless-keys',
-    description: 'Beskontaktnyj klyuch Mifare 1k.'
+    description: 'Бесконтактный ключ Mifare 1k.'
   }
 ];

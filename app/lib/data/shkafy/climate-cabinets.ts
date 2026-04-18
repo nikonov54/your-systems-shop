@@ -7,406 +7,263 @@ export const climateCabinets: Product[] = [
     id: 'shkaf-001',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 4К',
     price: 53000,
-    image: '',
+    image: '/images/shkafy/climate-cabinets/mastermann-6-utp-4k-termoshkaf.jpg',
     brand: 'Mastermann',
     sku: '00-00015642',
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
     description: 'Коммутационный термошкаф с защитным реле от холодного пуска.',
-    specs: {
-      'Кол-во портов': '4',
-      'Управляемый': 'Нет',
-      'Материал': 'Металл',
-      'Защита IP': 'IP66',
-      'Размер': '300х400х210 мм'
-    }
+    specs: {}
   },
   {
     id: 'shkaf-002',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 4КУ',
     price: 70500,
-    image: '',
+    image: '/images/shkafy/climate-cabinets/mastermann-6-utp-4ku-termoshkaf.jpg',
     brand: 'Mastermann',
     sku: '00-00015643',
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
     description: 'Коммутационный термошкаф управляемый.',
-    specs: {
-      'Кол-во портов': '4',
-      'Управляемый': 'Да',
-      'Материал': 'Металл',
-      'Защита IP': 'IP66',
-      'Размер': '300х400х210 мм'
-    }
+    specs: {}
   },
   {
     id: 'shkaf-003',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 4К ГЗ',
     price: 71000,
-    image: '',
+    image: '/images/shkafy/climate-cabinets/mastermann-6-utp-4k-gz-termoshkaf.jpg',
     brand: 'Mastermann',
     sku: '00-00015645',
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
     description: 'Коммутационный термошкаф с грозозащитой.',
-    specs: {
-      'Кол-во портов': '4',
-      'Управляемый': 'Нет',
-      'Материал': 'Металл',
-      'Защита IP': 'IP66',
-      'Грозозащита': '220В + PoE линии',
-      'Размер': '300х400х210 мм'
-    }
+    specs: {}
   },
   {
     id: 'shkaf-004',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 4КУ ГЗ',
     price: 86000,
-    image: '',
+    image: '/images/shkafy/climate-cabinets/mastermann-6-utp-4ku-gz-termoshkaf.jpg',
     brand: 'Mastermann',
     sku: '00-00015646',
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
     description: 'Коммутационный термошкаф управляемый с грозозащитой.',
-    specs: {
-      'Кол-во портов': '4',
-      'Управляемый': 'Да',
-      'Материал': 'Металл',
-      'Защита IP': 'IP66',
-      'Грозозащита': '220В + PoE линии',
-      'Размер': '300х400х210 мм'
-    }
+    specs: {}
   },
   {
     id: 'shkaf-005',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 4К АКБ 2А',
     price: 63360,
-    image: '',
+    image: '/images/shkafy/climate-cabinets/mastermann-6-utp-4k-akb-2a-termoshkaf.jpg',
     brand: 'Mastermann',
     sku: '00-00015647',
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
     description: 'Коммутационный термошкаф с АКБ 2А.',
-    specs: {
-      'Кол-во портов': '4',
-      'Управляемый': 'Нет',
-      'Материал': 'Металл',
-      'Защита IP': 'IP66',
-      'Аккумулятор': '12В, 2А/ч',
-      'Размер': '300х400х210 мм'
-    }
+    specs: {}
   },
   {
     id: 'shkaf-006',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 4КУ АКБ 2А',
     price: 77280,
-    image: '',
+    image: '/images/shkafy/climate-cabinets/mastermann-6-utp-4ku-akb-2a-termoshkaf.jpg',
     brand: 'Mastermann',
     sku: '00-00015648',
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
     description: 'Коммутационный термошкаф управляемый с АКБ 2А.',
-    specs: {
-      'Кол-во портов': '4',
-      'Управляемый': 'Да',
-      'Материал': 'Металл',
-      'Защита IP': 'IP66',
-      'Аккумулятор': '12В, 2А/ч',
-      'Размер': '300х400х210 мм'
-    }
+    specs: {}
   },
   {
     id: 'shkaf-007',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 4К ГЗ АКБ 2А',
     price: 75000,
-    image: '',
+    image: '/images/shkafy/climate-cabinets/mastermann-6-utp-4k-gz-akb-2a-termoshkaf.jpg',
     brand: 'Mastermann',
     sku: '00-00015649',
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
     description: 'Коммутационный термошкаф с грозозащитой и АКБ 2А.',
-    specs: {
-      'Кол-во портов': '4',
-      'Управляемый': 'Нет',
-      'Материал': 'Металл',
-      'Защита IP': 'IP66',
-      'Грозозащита': '220В + PoE линии',
-      'Аккумулятор': '12В, 2А/ч',
-      'Размер': '300х400х210 мм'
-    }
+    specs: {}
   },
   {
     id: 'shkaf-008',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 4КУ ГЗ АКБ 2А',
     price: 94500,
-    image: '',
+    image: '/images/shkafy/climate-cabinets/mastermann-6-utp-4ku-gz-akb-2a-termoshkaf.jpg',
     brand: 'Mastermann',
     sku: '00-00015650',
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
     description: 'Коммутационный термошкаф управляемый с грозозащитой и АКБ 2А.',
-    specs: {
-      'Кол-во портов': '4',
-      'Управляемый': 'Да',
-      'Материал': 'Металл',
-      'Защита IP': 'IP66',
-      'Грозозащита': '220В + PoE линии',
-      'Аккумулятор': '12В, 2А/ч',
-      'Размер': '300х400х210 мм'
-    }
+    specs: {}
   },
   {
     id: 'shkaf-009',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 4К АКБ 7А',
     price: 64560,
-    image: '',
+    image: '/images/shkafy/climate-cabinets/mastermann-6-utp-4k-akb-7a-termoshkaf.jpg',
     brand: 'Mastermann',
     sku: '00-00015651',
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
     description: 'Коммутационный термошкаф с АКБ 7А.',
-    specs: {
-      'Кол-во портов': '4',
-      'Управляемый': 'Нет',
-      'Материал': 'Металл',
-      'Защита IP': 'IP66',
-      'Аккумулятор': '12В, 7А/ч',
-      'Размер': '300х400х210 мм'
-    }
+    specs: {}
   },
   {
     id: 'shkaf-010',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 4КУ АКБ 7А',
     price: 81750,
-    image: '',
+    image: '/images/shkafy/climate-cabinets/mastermann-6-utp-4ku-akb-7a-termoshkaf.jpg',
     brand: 'Mastermann',
     sku: '00-00015651',
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
     description: 'Коммутационный термошкаф управляемый с АКБ 7А.',
-    specs: {
-      'Кол-во портов': '4',
-      'Управляемый': 'Да',
-      'Материал': 'Металл',
-      'Защита IP': 'IP66',
-      'Аккумулятор': '12В, 7А/ч',
-      'Размер': '300х400х210 мм'
-    }
+    specs: {}
   },
   // ========== 6 УТП 8К (4 шкафа) ==========
   {
     id: 'shkaf-011',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 8К',
     price: 69000,
-    image: '',
+    image: '/images/shkafy/climate-cabinets/mastermann-6-utp-8k-termoshkaf.jpg',
     brand: 'Mastermann',
     sku: '00-00015655',
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
     description: 'Коммутационный термошкаф на 8 портов.',
-    specs: {
-      'Кол-во портов': '8',
-      'Управляемый': 'Нет',
-      'Материал': 'Металл',
-      'Защита IP': 'IP66',
-      'Размер': '300х400х210 мм'
-    }
+    specs: {}
   },
   {
     id: 'shkaf-012',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 8КУ',
     price: 87000,
-    image: '',
+    image: '/images/shkafy/climate-cabinets/mastermann-6-utp-8ku-termoshkaf.jpg',
     brand: 'Mastermann',
     sku: '00-00015656',
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
     description: 'Коммутационный термошкаф управляемый на 8 портов.',
-    specs: {
-      'Кол-во портов': '8',
-      'Управляемый': 'Да',
-      'Материал': 'Металл',
-      'Защита IP': 'IP66',
-      'Размер': '300х400х210 мм'
-    }
+    specs: {}
   },
   {
     id: 'shkaf-013',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 8К ГЗ',
     price: 105000,
-    image: '',
+    image: '/images/shkafy/climate-cabinets/mastermann-6-utp-8k-gz-termoshkaf.jpg',
     brand: 'Mastermann',
     sku: '00-00015657',
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
     description: 'Коммутационный термошкаф на 8 портов с грозозащитой.',
-    specs: {
-      'Кол-во портов': '8',
-      'Управляемый': 'Нет',
-      'Материал': 'Металл',
-      'Защита IP': 'IP66',
-      'Грозозащита': '220В + PoE линии',
-      'Размер': '300х400х210 мм'
-    }
+    specs: {}
   },
   {
     id: 'shkaf-014',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 8КУ ГЗ',
     price: 120000,
-    image: '',
+    image: '/images/shkafy/climate-cabinets/mastermann-6-utp-8ku-gz-termoshkaf.jpg',
     brand: 'Mastermann',
     sku: '00-00015658',
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
     description: 'Коммутационный термошкаф управляемый на 8 портов с грозозащитой.',
-    specs: {
-      'Кол-во портов': '8',
-      'Управляемый': 'Да',
-      'Материал': 'Металл',
-      'Защита IP': 'IP66',
-      'Грозозащита': '220В + PoE линии',
-      'Размер': '300х400х210 мм'
-    }
+    specs: {}
   },
-  // ========== 8 УТП 8К (6 шкафов) ==========
+  // ========== 8 УТП 8К (3 шкафа) ==========
   {
     id: 'shkaf-015',
-    name: 'Коммутационный термошкаф Mastermann 8 УТП 8КУ АКБ 7А',
+    name: 'Коммутационный термошкаф Mastermann 8 УТП 8К АКБ 7А',
     price: 85500,
-    image: '',
+    image: '/images/shkafy/climate-cabinets/mastermann-8-utp-8k-akb-7a-termoshkaf.jpg',
     brand: 'Mastermann',
     sku: '00-00015659',
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
     description: 'Коммутационный термошкаф управляемый с АКБ 7А.',
-    specs: {
-      'Кол-во портов': '8',
-      'Управляемый': 'Да',
-      'Материал': 'Металл',
-      'Защита IP': 'IP66',
-      'Аккумулятор': '12В, 7А/ч',
-      'Размер': '300х400х210 мм'
-    }
+    specs: {}
   },
   {
     id: 'shkaf-016',
     name: 'Коммутационный термошкаф Mastermann 8 УТП 8К ГЗ АКБ 7А',
     price: 118000,
-    image: '',
+    image: '/images/shkafy/climate-cabinets/mastermann-8-utp-8k-gz-akb-7a-termoshkaf.jpg',
     brand: 'Mastermann',
     sku: '00-00015660',
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
     description: 'Коммутационный термошкаф с грозозащитой и АКБ 7А.',
-    specs: {
-      'Кол-во портов': '8',
-      'Управляемый': 'Нет',
-      'Материал': 'Металл',
-      'Защита IP': 'IP66',
-      'Грозозащита': '220В + PoE линии',
-      'Аккумулятор': '12В, 7А/ч',
-      'Размер': '300х400х210 мм'
-    }
+    specs: {}
   },
   {
     id: 'shkaf-017',
-    name: 'Коммутационный термошкаф Mastermann 8 УТП 8КУ ГЗ АКБ 7А',
+    name: 'Коммутационный термошкаф Mastermann 8 УТП 8К ГЗ АКБ 7А',
     price: 135000,
-    image: '',
+    image: '/images/shkafy/climate-cabinets/mastermann-8-utp-8ku-gz-akb-7a-termoshkaf.jpg',
     brand: 'Mastermann',
     sku: '00-00015661',
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
     description: 'Коммутационный термошкаф управляемый с грозозащитой и АКБ 7А.',
-    specs: {
-      'Кол-во портов': '8',
-      'Управляемый': 'Да',
-      'Материал': 'Металл',
-      'Защита IP': 'IP66',
-      'Грозозащита': '220В + PoE линии',
-      'Аккумулятор': '12В, 7А/ч',
-      'Размер': '300х400х210 мм'
-    }
+    specs: {}
   },
   // ========== ДОПОЛНИТЕЛЬНЫЕ ШКАФЫ (до 20) ==========
   {
     id: 'shkaf-018',
-    name: 'Коммутационный термошкаф Mastermann 6 УТП 4К ГЗ АКБ 7А (расширенный)',
-    price: 89000,
-    image: '',
+    name: 'Коммутационный термошкаф Mastermann 6 УТП 8КУ ГЗ (расширенный)',
+    price: 120000,
+    image: '/images/shkafy/climate-cabinets/mastermann-6-utp-8ku-gz-termoshkaf-extended.jpg',
     brand: 'Mastermann',
     sku: '00-00015662',
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
     description: 'Коммутационный термошкаф расширенной комплектации.',
-    specs: {
-      'Кол-во портов': '4',
-      'Управляемый': 'Нет',
-      'Материал': 'Металл',
-      'Защита IP': 'IP66',
-      'Грозозащита': '220В + PoE линии',
-      'Аккумулятор': '12В, 7А/ч',
-      'Размер': '300х400х210 мм'
-    }
+    specs: {}
   },
   {
     id: 'shkaf-019',
-    name: 'Коммутационный термошкаф Mastermann 6 УТП 4КУ ГЗ АКБ 7А (расширенный)',
-    price: 105000,
-    image: '',
+    name: 'Коммутационный термошкаф Mastermann 8 УТП 8КУ АКБ 7А (премиум)',
+    price: 102000,
+    image: '/images/shkafy/climate-cabinets/mastermann-8-utp-8ku-akb-7a-termoshkaf-premium.jpg',
     brand: 'Mastermann',
     sku: '00-00015663',
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
-    description: 'Коммутационный термошкаф управляемый расширенной комплектации.',
-    specs: {
-      'Кол-во портов': '4',
-      'Управляемый': 'Да',
-      'Материал': 'Металл',
-      'Защита IP': 'IP66',
-      'Грозозащита': '220В + PoE линии',
-      'Аккумулятор': '12В, 7А/ч',
-      'Размер': '300х400х210 мм'
-    }
+    description: 'Коммутационный термошкаф премиум класса.',
+    specs: {}
   },
   {
     id: 'shkaf-020',
-    name: 'Коммутационный термошкаф Mastermann 8 УТП 8КУ ГЗ АКБ 7А (премиум)',
-    price: 155000,
-    image: '',
+    name: 'Коммутационный термошкаф Mastermann 8 УТП 8КУ ГЗ АКБ 7А (премиум+)',
+    price: 135000,
+    image: '/images/shkafy/climate-cabinets/mastermann-8-utp-8ku-gz-akb-7a-termoshkaf-premium-plus.jpg',
     brand: 'Mastermann',
     sku: '00-00015664',
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
-    description: 'Коммутационный термошкаф премиум класса.',
-    specs: {
-      'Кол-во портов': '8',
-      'Управляемый': 'Да',
-      'Материал': 'Металл',
-      'Защита IP': 'IP66',
-      'Грозозащита': '220В + PoE линии',
-      'Аккумулятор': '12В, 7А/ч',
-      'Размер': '300х400х210 мм'
-    }
+    description: 'Коммутационный термошкаф премиум класса с грозозащитой.',
+    specs: {}
   }
 ];

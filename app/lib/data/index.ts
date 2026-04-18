@@ -1,26 +1,26 @@
 // app/lib/data/index.ts
 import { Product } from './types';
 
-// ========== ВИДЕОНАБЛЮДЕНИЕ ==========
+// Videonablyudenie
 import { cameras } from './videonablyudenie/cameras';
 import { recorders } from './videonablyudenie/recorders';
 // import { microphones } from './videonablyudenie/microphones';
 // import { mountingBoxes } from './videonablyudenie/mounting-boxes';
 // import { brackets } from './videonablyudenie/brackets';
 
-// ========== ТЕПЛОВИЗОРЫ ==========
+// Teplovizory
 import { thermalCameras } from './teplovizory/thermal-cameras';
 // import { handheldThermal } from './teplovizory/handheld-thermal';
 // import { mobileThermal } from './teplovizory/mobile-thermal';
 
-// ========== HDD ==========
+// HDD
 // import { hddForCctv } from './hdd/hdd-for-cctv';
 // import { hddForServers } from './hdd/hdd-for-servers';
 // import { ssd } from './hdd/ssd';
 // import { nasHdd } from './hdd/nas-hdd';
 // import { externalHdd } from './hdd/external-hdd';
 
-// ========== СЕТЕВОЕ ОБОРУДОВАНИЕ ==========
+// Setevoe oborudovanie
 import { switches } from './setevoe-oborudovanie/switches';
 // import { routers } from './setevoe-oborudovanie/routers';
 // import { wifiAccessPoints } from './setevoe-oborudovanie/wi-fi-access-points';
@@ -29,7 +29,7 @@ import { switches } from './setevoe-oborudovanie/switches';
 // import { antennas } from './setevoe-oborudovanie/antennas';
 // import { telemetry } from './setevoe-oborudovanie/telemetry';
 
-// ========== СКУД ==========
+// SKUD
 import { readers } from './skud/readers';
 import { skudControllers } from './skud/controllers';
 import { contactlessKeys } from './skud/contactless-keys';
@@ -40,13 +40,13 @@ import { contactlessKeys } from './skud/contactless-keys';
 // import { barriers } from './skud/barriers';
 // import { xRayScanners } from './skud/x-ray-scanners';
 
-// ========== ДОМОФОНИЯ ==========
+// Domofoniya
 // import { smartPanels } from './domofoniya/smart-panels';
 // import { videoMonitors } from './domofoniya/video-monitors';
 // import { callingPanels } from './domofoniya/calling-panels';
 // import { domofoniyaAccessories } from './domofoniya/accessories';
 
-// ========== СИГНАЛИЗАЦИЯ ==========
+// Signalizatsiya
 // import { alarmControllers } from './signalizatsiya/alarm-controllers';
 // import { powerSupplies } from './signalizatsiya/power-supplies';
 // import { detectors } from './signalizatsiya/detectors';
@@ -57,7 +57,7 @@ import { contactlessKeys } from './skud/contactless-keys';
 // import { relays } from './signalizatsiya/relays';
 // import { alarmSockets } from './signalizatsiya/sockets';
 
-// ========== ШКАФЫ ==========
+// Shkafy
 import { climateCabinets } from './shkafy/climate-cabinets';
 // import { mountingEnclosures } from './shkafy/mounting-enclosures';
 // import { telecommunicationRacks } from './shkafy/telecommunication-racks';
@@ -66,26 +66,19 @@ import { climateCabinets } from './shkafy/climate-cabinets';
 // import { cabinetAccessories } from './shkafy/cabinet-accessories';
 
 export const mockProducts: Product[] = [
-  // Видеонаблюдение
   ...cameras,
   ...recorders,
   // ...microphones,
   // ...mountingBoxes,
   // ...brackets,
-  
-  // Тепловизоры
   ...thermalCameras,
   // ...handheldThermal,
   // ...mobileThermal,
-  
-  // HDD
   // ...hddForCctv,
   // ...hddForServers,
   // ...ssd,
   // ...nasHdd,
   // ...externalHdd,
-  
-  // Сетевое оборудование
   ...switches,
   // ...routers,
   // ...wifiAccessPoints,
@@ -93,8 +86,6 @@ export const mockProducts: Product[] = [
   // ...poeInjectors,
   // ...antennas,
   // ...telemetry,
-  
-  // СКУД
   ...readers,
   ...skudControllers,
   ...contactlessKeys,
@@ -104,14 +95,10 @@ export const mockProducts: Product[] = [
   // ...turnstiles,
   // ...barriers,
   // ...xRayScanners,
-  
-  // Домофония
   // ...smartPanels,
   // ...videoMonitors,
   // ...callingPanels,
   // ...domofoniyaAccessories,
-  
-  // Сигнализация
   // ...alarmControllers,
   // ...powerSupplies,
   // ...detectors,
@@ -121,8 +108,6 @@ export const mockProducts: Product[] = [
   // ...alarmModules,
   // ...relays,
   // ...alarmSockets,
-  
-  // Шкафы
   ...climateCabinets
   // ...mountingEnclosures,
   // ...telecommunicationRacks,
