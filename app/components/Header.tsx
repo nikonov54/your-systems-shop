@@ -8,16 +8,82 @@ import { catalogData, type Category } from '@/menu-data';
 
 export default function Header() {
   const [activeCat, setActiveCat] = useState<Category | null>(null);
+  const [activeService, setActiveService] = useState<string | null>(null);
   const [cartCount] = useState(0);
 
   const createSlug = (text: string) => {
-    return text.toLowerCase().replace(/ /g, '-');
+    const slugMap: Record<string, string> = {
+      // Видеонаблюдение
+      'Камеры': 'cameras',
+      'Регистраторы': 'recorders',
+      'Микрофоны': 'microphones',
+      'Монтажные коробки': 'mounting-boxes',
+      'Кронштейны': 'brackets',
+      
+      // Тепловизоры
+      'Камеры тепловизионные': 'thermal-cameras',
+      'Ручные тепловизоры': 'handheld-thermal',
+      'Мобильные тепловизоры': 'mobile-thermal',
+      
+      // HDD
+      'HDD для видеонаблюдения': 'hdd-for-cctv',
+      'HDD для серверов': 'hdd-for-servers',
+      'SSD': 'ssd',
+      'NAS HDD': 'nas-hdd',
+      'Внешние HDD': 'external-hdd',
+      
+      // Сетевое оборудование
+      'Коммутаторы': 'switches',
+      'Маршрутизаторы': 'routers',
+      'Wi-Fi точки': 'wi-fi-access-points',
+      'SFP модули': 'sfp-modules',
+      'PoE инжекторы': 'poe-injectors',
+      'Антенны': 'antennas',
+      'Погружная телеметрия': 'telemetry',
+      
+      // СКУД
+      'Считыватели': 'readers',
+      'Контроллеры': 'controllers',
+      'Бесконтактные ключи': 'contactless-keys',
+      'Замки': 'locks',
+      'Доводчики': 'door-closers',
+      'Металлодетекторы': 'metal-detectors',
+      'Турникеты': 'turnstiles',
+      'Шлагбаумы': 'barriers',
+      'Интроскопы': 'x-ray-scanners',
+      
+      // Домофония
+      'Smart панели': 'smart-panels',
+      'Видеомониторы': 'video-monitors',
+      'Вызывные панели': 'calling-panels',
+      'Аксессуары': 'accessories',
+      
+      // Сигнализация
+      'Контроллеры сигнализации': 'alarm-controllers',
+      'Источники питания': 'power-supplies',
+      'Извещатели': 'detectors',
+      'Пульты управления': 'remote-controls',
+      'Ретрансляторы': 'repeaters',
+      'Датчики': 'sensors',
+      'Модули': 'modules',
+      'Реле': 'relays',
+      'Розетки': 'sockets',
+      
+      // Шкафы
+      'Монтажные и оболочки': 'mounting-enclosures',
+      'Климатические': 'climate-cabinets',
+      'Телекоммуникационные': 'telecommunication-racks',
+      'Серверные': 'server-racks',
+      'Щиты боксы аптечные': 'medical-cabinets',
+      'Аксессуары шкафов': 'cabinet-accessories'
+    };
+    
+    return slugMap[text] || text.toLowerCase().replace(/ /g, '-');
   };
 
   return (
     <header className="relative z-50 bg-[#05070a] border-b border-white/5">
       <div className="container mx-auto px-6 h-20 flex items-center justify-between gap-8">
-        {/* Логотип */}
         <Link href="/" className="flex items-center gap-3 shrink-0 uppercase tracking-tighter">
           <div className="bg-blue-600 p-2 rounded-xl shadow-[0_0_20px_rgba(37,99,235,0.3)]">
             <ShieldCheck size={28} />
@@ -29,23 +95,29 @@ export default function Header() {
         </Link>
 
         {/* Кнопка УСЛУГИ */}
-        <div className="relative group" onMouseLeave={() => setActiveCat(null)}>
+        <div className="relative group" onMouseLeave={() => setActiveService(null)}>
           <button className="flex items-center gap-3 bg-transparent border border-white/20 text-white px-6 py-2.5 rounded-xl text-xs font-bold tracking-[0.2em] hover:bg-blue-600 transition-all uppercase">
             <Menu size={18} className="text-blue-400 group-hover:text-white" /> УСЛУГИ
           </button>
           
           <div className="absolute top-full left-0 w-full h-[20px] invisible group-hover:visible" />
 
-          <div className="absolute top-[calc(100%+15px)] left-0 bg-[#0a0c10] shadow-[0_30px_60px_rgba(0,0,0,0.8)] rounded-2xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all min-w-[260px] py-4 z-50">
-            <Link href="/project" className="block px-8 py-3 text-[11px] uppercase tracking-widest font-black text-white/70 hover:text-blue-500 hover:bg-white/5 transition-all">
+          <div className="absolute top-[calc(100%+15px)] left-0 bg-[#05070a] shadow-[0_30px_60px_rgba(0,0,0,0.8)] rounded-2xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all min-w-[260px] py-2 z-50">
+            <Link 
+              href="/project" 
+              className="block px-8 py-3 text-[11px] uppercase tracking-widest font-black text-white hover:text-blue-500 transition-colors"
+            >
               Проектирование
             </Link>
-            <Link href="/services/montazh" className="block px-8 py-3 text-[11px] uppercase tracking-widest font-black text-white/70 hover:text-blue-500 hover:bg-white/5 transition-all">
+            <Link 
+              href="/services/montazh" 
+              className="block px-8 py-3 text-[11px] uppercase tracking-widest font-black text-white hover:text-blue-500 transition-colors"
+            >
               Монтаж
             </Link>
           </div>
         </div>
-        
+
         {/* Кнопка КАТАЛОГ */}
         <div className="relative group" onMouseLeave={() => setActiveCat(null)}>
           <button className="flex items-center gap-3 bg-transparent border border-white/20 text-white px-6 py-2.5 rounded-xl text-xs font-bold tracking-[0.2em] hover:bg-blue-600 transition-all uppercase">
@@ -78,13 +150,11 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Поиск - фон прозрачный */}
         <div className="flex flex-1 max-w-sm relative">
           <input type="text" placeholder="Поиск..." className="w-full bg-transparent border border-white/10 rounded-xl px-5 py-3 text-sm outline-none focus:border-blue-600/30" />
           <Search className="absolute right-4 top-3 text-slate-500" size={18} />
         </div>
 
-        {/* Контакты и иконки */}
         <div className="flex items-center gap-6 font-black">
           <a href="tel:88000000000" className="text-lg hover:text-blue-500 transition-colors tracking-tighter">8 800 000-00-00</a>
           <Link href="/compare">

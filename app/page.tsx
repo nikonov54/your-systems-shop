@@ -10,9 +10,7 @@ export default function Home() {
     <main className="h-screen bg-[#020408] relative flex flex-col font-sans overflow-hidden">
       <Header />
       
-      {/* ПЕРВЫЙ ЭКРАН - занимает всю оставшуюся высоту */}
       <div className="flex-1 flex flex-col md:flex-row items-center justify-center container mx-auto px-6 gap-12 overflow-hidden">
-        {/* Левая часть с текстом - увеличена */}
         <div className="w-full md:w-1/2 flex flex-col justify-center md:pl-16">
           <div className="max-w-3xl">
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tight uppercase mb-6 font-[family-name:var(--font-inter-tight)]">
@@ -41,7 +39,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Правая часть с видео - без изменений, как в эталоне */}
         <div className="w-full md:w-1/2 h-full flex items-center justify-center relative p-8">
           <div className="absolute w-[80%] h-[80%] bg-blue-600/10 blur-[120px] rounded-full animate-pulse"></div>
           <div className="relative z-10 w-full h-full flex items-center justify-center overflow-hidden">

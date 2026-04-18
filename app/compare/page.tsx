@@ -53,7 +53,7 @@ export default function ComparePage() {
           </div>
           <h1 className="text-4xl font-black mb-4">Список сравнения пуст</h1>
           <p className="text-xl text-slate-400 mb-8">Добавьте товары для сравнения</p>
-          <Link href="/catalog/videonablyudenie/камеры" className="inline-block px-8 py-3 bg-blue-600 rounded-xl">
+          <Link href="/catalog/videonablyudenie/cameras" className="inline-block px-8 py-3 bg-blue-600 rounded-xl">
             Перейти в каталог
           </Link>
         </div>

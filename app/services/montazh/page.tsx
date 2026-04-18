@@ -142,7 +142,7 @@ export default function MontazhPage() {
     <div className="min-h-screen bg-[#020408] text-white">
       <Header />
       
-      {/* Hero-секция с видео - затемненное */}
+      {/* Hero-секция с видео */}
       <div className="relative w-full h-[calc(100vh-80px)] flex items-center overflow-hidden">
         <video 
           autoPlay 
@@ -155,7 +155,7 @@ export default function MontazhPage() {
           <source src="/montazh-video.mp4" type="video/mp4" />
         </video>
         
-        {/* Затемняющий оверлей - видео становится темнее */}
+        {/* Затемняющий оверлей */}
         <div className="absolute inset-0 bg-black/50"></div>
         
         {/* Градиентный оверлей */}

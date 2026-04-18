@@ -2,7 +2,7 @@
 
 import { useState, use } from 'react';
 import Link from 'next/link';
-import { ChevronDown, ChevronRight } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { catalogData } from '@/menu-data';
 import { mockProducts } from '@/app/lib/products';
 import ProductCard from '@/app/components/ProductCard';
@@ -61,58 +61,132 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
   const currentCategoryData = catalogData.find(c => c.slug === decodedCat);
   const subcategories = currentCategoryData?.sub || [];
 
-  // Фильтруем товары по текущей категории и подкатегории
   const filteredProducts = mockProducts.filter(product => 
     product.category === decodedCat && 
     product.subcategory === decodedSub
   );
 
   const activeFilters = 
-    (decodedSub.includes('камеры-тепловизионные')) ? thermalCameraFilters :
-    (decodedSub.includes('ручные-тепловизоры')) ? handheldThermalFilters :
-    (decodedSub.includes('мобильные-тепловизоры')) ? mobileThermalFilters :
-    (decodedSub.includes('камеры')) ? cameraFilters : 
-    (decodedSub.includes('регистраторы')) ? recorderFilters : 
-    (decodedSub.includes('микрофоны')) ? microphoneFilters :
-    (decodedSub.includes('монтажные-коробки')) ? mountingBoxFilters :
-    (decodedSub.includes('кронштейны')) ? bracketFilters : 
-    (decodedSub.includes('коммутаторы')) ? switchFilters :
-    (decodedSub.includes('маршрутизаторы') || decodedSub.includes('роутеры')) ? routerFilters : 
-    (decodedSub.includes('wi-fi-точки')) ? accessPointFilters : 
-    (decodedSub.includes('sfp-модули')) ? sfpFilters :
-    (decodedSub.includes('poe-инжекторы')) ? poeInjectorFilters :
-    (decodedSub.includes('антенны')) ? antennaFilters :
-    (decodedSub.includes('погружная-телеметрия')) ? telemetryFilters :
-    (decodedSub.includes('считыватели')) ? scudReaderFilters :
-    (decodedSub.includes('контроллеры')) ? controllerFilters :
-    (decodedSub.includes('бесконтактные-ключи')) ? contactlessKeyFilters :
-    (decodedSub.includes('замки')) ? lockFilters :
-    (decodedSub.includes('доводчики')) ? closerFilters :
-    (decodedSub.includes('металлодетекторы')) ? metalDetectorFilters :
-    (decodedSub.includes('турникеты')) ? turnstileFilters :
-    (decodedSub.includes('шлагбаумы')) ? barrierFilters :
-    (decodedSub.includes('smart-панели') || decodedSub.includes('смарт-панели')) ? smartPanelFilters :
-    (decodedSub.includes('вызывные-панели')) ? callingPanelFilters :
-    (decodedSub.includes('видеомониторы')) ? videoMonitorFilters :
-    (decodedSub.includes('аксессуары')) ? accessoriesFilters :
-    (decodedSub.includes('источники-питания') || decodedSub.includes('блоки-питания')) ? alarmPowerSupplyFilters :
-    (decodedSub.includes('извещатели')) ? detectorFilters :
-    (decodedSub.includes('пульты-управления')) ? remoteControlFilters :
-    (decodedSub.includes('ретрансляторы')) ? repeaterFilters :
-    (decodedSub.includes('датчики')) ? sensorFilters :
-    (decodedSub.includes('модули')) ? moduleFilters :
-    (decodedSub.includes('реле')) ? relayFilters :
-    (decodedSub.includes('розетки')) ? socketFilters :
-    (decodedSub.includes('оболочки') || decodedSub.includes('монтажные')) ? mountingCabinetFilters :
-    (decodedSub.includes('климатические')) ? climateCabinetFilters :
-    (decodedSub.includes('телекоммуникационные')) ? rackCabinetFilters :
-    (decodedSub.includes('серверные')) ? rackCabinetFilters :
-    (decodedSub.includes('аксессуары-шкафы')) ? cabinetAccessoriesFilters :
-    (decodedSub.includes('щиты-боксы-аптечные')) ? enclosureMedicalFilters :
-    (decodedSub.includes('hdd-для-видеонаблюдения') || decodedSub.includes('hdd-для-серверов') || decodedSub.includes('ssd') || decodedSub.includes('nas-hdd') || decodedSub.includes('внешние-hdd') || decodedSub.includes('накопители') || decodedSub.includes('жесткие-диски')) ? hddFilters : [];
+    (decodedSub === 'cameras') ? cameraFilters :
+    (decodedSub === 'recorders') ? recorderFilters :
+    (decodedSub === 'microphones') ? microphoneFilters :
+    (decodedSub === 'mounting-boxes') ? mountingBoxFilters :
+    (decodedSub === 'brackets') ? bracketFilters :
+    (decodedSub === 'thermal-cameras') ? thermalCameraFilters :
+    (decodedSub === 'handheld-thermal') ? handheldThermalFilters :
+    (decodedSub === 'mobile-thermal') ? mobileThermalFilters :
+    (decodedSub === 'readers') ? scudReaderFilters :
+    (decodedSub === 'controllers') ? controllerFilters :
+    (decodedSub === 'contactless-keys') ? contactlessKeyFilters :
+    (decodedSub === 'locks') ? lockFilters :
+    (decodedSub === 'door-closers') ? closerFilters :
+    (decodedSub === 'metal-detectors') ? metalDetectorFilters :
+    (decodedSub === 'turnstiles') ? turnstileFilters :
+    (decodedSub === 'barriers') ? barrierFilters :
+    (decodedSub === 'smart-panels') ? smartPanelFilters :
+    (decodedSub === 'video-monitors') ? videoMonitorFilters :
+    (decodedSub === 'calling-panels') ? callingPanelFilters :
+    (decodedSub === 'accessories') ? accessoriesFilters :
+    (decodedSub === 'alarm-controllers') ? securityControllerFilters :
+    (decodedSub === 'power-supplies') ? alarmPowerSupplyFilters :
+    (decodedSub === 'detectors') ? detectorFilters :
+    (decodedSub === 'remote-controls') ? remoteControlFilters :
+    (decodedSub === 'repeaters') ? repeaterFilters :
+    (decodedSub === 'sensors') ? sensorFilters :
+    (decodedSub === 'modules') ? moduleFilters :
+    (decodedSub === 'relays') ? relayFilters :
+    (decodedSub === 'sockets') ? socketFilters :
+    (decodedSub === 'mounting-enclosures') ? mountingCabinetFilters :
+    (decodedSub === 'climate-cabinets') ? climateCabinetFilters :
+    (decodedSub === 'telecommunication-racks') ? rackCabinetFilters :
+    (decodedSub === 'server-racks') ? rackCabinetFilters :
+    (decodedSub === 'medical-cabinets') ? enclosureMedicalFilters :
+    (decodedSub === 'cabinet-accessories') ? cabinetAccessoriesFilters :
+    (decodedSub === 'hdd-for-cctv') ? hddFilters :
+    (decodedSub === 'hdd-for-servers') ? hddFilters :
+    (decodedSub === 'ssd') ? hddFilters :
+    (decodedSub === 'nas-hdd') ? hddFilters :
+    (decodedSub === 'external-hdd') ? hddFilters :
+    (decodedSub === 'switches') ? switchFilters :
+    (decodedSub === 'routers') ? routerFilters :
+    (decodedSub === 'wi-fi-access-points') ? accessPointFilters :
+    (decodedSub === 'sfp-modules') ? sfpFilters :
+    (decodedSub === 'poe-injectors') ? poeInjectorFilters :
+    (decodedSub === 'antennas') ? antennaFilters :
+    (decodedSub === 'telemetry') ? telemetryFilters : [];
 
   const toggleGroup = (id: string) => setOpenGroups(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id]);
-  const createSlug = (text: string) => text.toLowerCase().replace(/ /g, '-');
+  
+  // Полный createSlug со всеми подкатегориями
+  const createSlug = (text: string) => {
+    const slugMap: Record<string, string> = {
+      // Видеонаблюдение
+      'Камеры': 'cameras',
+      'Регистраторы': 'recorders',
+      'Микрофоны': 'microphones',
+      'Монтажные коробки': 'mounting-boxes',
+      'Кронштейны': 'brackets',
+      
+      // Тепловизоры
+      'Камеры тепловизионные': 'thermal-cameras',
+      'Ручные тепловизоры': 'handheld-thermal',
+      'Мобильные тепловизоры': 'mobile-thermal',
+      
+      // HDD
+      'HDD для видеонаблюдения': 'hdd-for-cctv',
+      'HDD для серверов': 'hdd-for-servers',
+      'SSD': 'ssd',
+      'NAS HDD': 'nas-hdd',
+      'Внешние HDD': 'external-hdd',
+      
+      // Сетевое оборудование
+      'Коммутаторы': 'switches',
+      'Маршрутизаторы': 'routers',
+      'Wi-Fi точки': 'wi-fi-access-points',
+      'SFP модули': 'sfp-modules',
+      'PoE инжекторы': 'poe-injectors',
+      'Антенны': 'antennas',
+      'Погружная телеметрия': 'telemetry',
+      
+      // СКУД
+      'Считыватели': 'readers',
+      'Контроллеры': 'controllers',
+      'Бесконтактные ключи': 'contactless-keys',
+      'Замки': 'locks',
+      'Доводчики': 'door-closers',
+      'Металлодетекторы': 'metal-detectors',
+      'Турникеты': 'turnstiles',
+      'Шлагбаумы': 'barriers',
+      'Интроскопы': 'x-ray-scanners',
+      
+      // Домофония
+      'Smart панели': 'smart-panels',
+      'Видеомониторы': 'video-monitors',
+      'Вызывные панели': 'calling-panels',
+      'Аксессуары': 'accessories',
+      
+      // Сигнализация
+      'Контроллеры сигнализации': 'alarm-controllers',
+      'Источники питания': 'power-supplies',
+      'Извещатели': 'detectors',
+      'Пульты управления': 'remote-controls',
+      'Ретрансляторы': 'repeaters',
+      'Датчики': 'sensors',
+      'Модули': 'modules',
+      'Реле': 'relays',
+      'Розетки': 'sockets',
+      
+      // Шкафы
+      'Монтажные и оболочки': 'mounting-enclosures',
+      'Климатические': 'climate-cabinets',
+      'Телекоммуникационные': 'telecommunication-racks',
+      'Серверные': 'server-racks',
+      'Щиты боксы аптечные': 'medical-cabinets',
+      'Аксессуары шкафов': 'cabinet-accessories'
+    };
+    
+    return slugMap[text] || text.toLowerCase().replace(/ /g, '-');
+  };
 
   return (
     <main className="min-h-screen bg-[#020408] relative flex flex-col font-sans text-white">
@@ -172,7 +246,6 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
               </nav>
             </div>
             
-            {/* Сетка товаров */}
             {filteredProducts.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-12">
                 {filteredProducts.map((product) => (
