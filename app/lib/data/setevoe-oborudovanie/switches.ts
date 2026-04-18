@@ -12,8 +12,21 @@ export const switches: Product[] = [
     inStock: true,
     category: 'setevoe-oborudovanie',
     subcategory: 'switches',
-    description: 'Промышленный управляемый коммутатор.',
-    specs: {}
+    description: 'Промышленный управляемый коммутатор. Корпус из композитного материала.',
+    specs: {
+      'Кол-во портов PoE': '4 x 30 Вт',
+      'Кол-во портов SFP': '2',
+      'Управляемый': 'Да',
+      'Материал': 'Композит',
+      'Защита IP': 'IP66',
+      'Ударопрочность': 'IK10',
+      'Размер': '334х417х200 мм'
+    },
+    docs: [
+      { name: 'Паспорт изделия', url: '/docs/mastermann-mm4gpoe-2sfp-pasport.pdf' },
+      { name: 'Декларация соответствия', url: '/docs/mastermann-switches-declaration.pdf' },
+      { name: 'Сертификат соответствия', url: '/docs/mastermann-switches-certificate.pdf' }
+    ]
   },
   {
     id: 'komm-002',
@@ -26,7 +39,20 @@ export const switches: Product[] = [
     category: 'setevoe-oborudovanie',
     subcategory: 'switches',
     description: 'Промышленный управляемый коммутатор на 8 портов PoE.',
-    specs: {}
+    specs: {
+      'Кол-во портов PoE': '8 x 30 Вт',
+      'Кол-во портов SFP': '2',
+      'Управляемый': 'Да',
+      'Материал': 'Композит',
+      'Защита IP': 'IP66',
+      'Ударопрочность': 'IK10',
+      'Размер': '334х417х200 мм'
+    },
+    docs: [
+      { name: 'Паспорт изделия', url: '/docs/mastermann-mm8gpoe-2sfp-pasport.pdf' },
+      { name: 'Декларация соответствия', url: '/docs/mastermann-switches-declaration.pdf' },
+      { name: 'Сертификат соответствия', url: '/docs/mastermann-switches-certificate.pdf' }
+    ]
   },
   {
     id: 'komm-003',
@@ -39,7 +65,21 @@ export const switches: Product[] = [
     category: 'setevoe-oborudovanie',
     subcategory: 'switches',
     description: 'Промышленный управляемый коммутатор с бесперебойным питанием.',
-    specs: {}
+    specs: {
+      'Кол-во портов PoE': '4 x 30 Вт',
+      'Кол-во портов SFP': '2',
+      'Управляемый': 'Да',
+      'Материал': 'Композит',
+      'Защита IP': 'IP66',
+      'Ударопрочность': 'IK10',
+      'Питание': '2 источника + UPS',
+      'Размер': '334х417х200 мм'
+    },
+    docs: [
+      { name: 'Паспорт изделия', url: '/docs/mastermann-mm4gpoe-2sfp-ups-pasport.pdf' },
+      { name: 'Декларация соответствия', url: '/docs/mastermann-switches-declaration.pdf' },
+      { name: 'Сертификат соответствия', url: '/docs/mastermann-switches-certificate.pdf' }
+    ]
   },
   {
     id: 'komm-004',
@@ -52,6 +92,20 @@ export const switches: Product[] = [
     category: 'setevoe-oborudovanie',
     subcategory: 'switches',
     description: 'Промышленный управляемый коммутатор на 8 портов PoE с бесперебойным питанием.',
-    specs: {}
+    specs: {
+      'Кол-во портов PoE': '8 x 30 Вт',
+      'Кол-во портов SFP': '2',
+      'Управляемый': 'Да',
+      'Материал': 'Композит',
+      'Защита IP': 'IP66',
+      'Ударопрочность': 'IK10',
+      'Питание': '2 источника + UPS',
+      'Размер': '334х417х200 мм'
+    },
+    docs: [
+      { name: 'Паспорт изделия', url: '/docs/mastermann-mm8gpoe-2sfp-ups-pasport.pdf' },
+      { name: 'Декларация соответствия', url: '/docs/mastermann-switches-declaration.pdf' },
+      { name: 'Сертификат соответствия', url: '/docs/mastermann-switches-certificate.pdf' }
+    ]
   }
 ];
