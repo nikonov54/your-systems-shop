@@ -1,4 +1,3 @@
-// app/lib/data/types.ts
 export interface Product {
   id: string;
   name: string;
@@ -15,4 +14,5 @@ export interface Product {
   isHit?: boolean;
   description?: string;
   specs?: Record<string, string>;
+  docs?: { name: string; url: string }[];   // Добавлено поле для документов
 }
