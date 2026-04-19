@@ -255,11 +255,15 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
                     name={product.name}
                     price={product.price}
                     oldPrice={product.oldPrice}
-                    image={product.image}
-                    brand={product.brand}
-                    sku={product.sku}
-                    inStock={product.inStock}
+                    image={product.image || '/images/placeholder.jpg'}
+                    brand={product.brand || ''}
+                    sku={product.sku || ''}
+                    inStock={product.inStock ?? true}
                     href={`/product/${product.id}`}
+                    category={product.category}
+                    subcategory={product.subcategory}
+                    isNew={false}
+                    isHit={false}
                   />
                 ))}
               </div>

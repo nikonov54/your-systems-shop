@@ -22,11 +22,7 @@ export const switches: Product[] = [
       'Ударопрочность': 'IK10',
       'Размер': '334х417х200 мм'
     },
-    docs: [
-      { name: 'Паспорт изделия', url: '/docs/mastermann-mm4gpoe-2sfp-pasport.pdf' },
-      { name: 'Декларация соответствия', url: '/docs/mastermann-switches-declaration.pdf' },
-      { name: 'Сертификат соответствия', url: '/docs/mastermann-switches-certificate.pdf' }
-    ]
+    docs: []
   },
   {
     id: 'komm-002',
@@ -48,11 +44,7 @@ export const switches: Product[] = [
       'Ударопрочность': 'IK10',
       'Размер': '334х417х200 мм'
     },
-    docs: [
-      { name: 'Паспорт изделия', url: '/docs/mastermann-mm8gpoe-2sfp-pasport.pdf' },
-      { name: 'Декларация соответствия', url: '/docs/mastermann-switches-declaration.pdf' },
-      { name: 'Сертификат соответствия', url: '/docs/mastermann-switches-certificate.pdf' }
-    ]
+    docs: []
   },
   {
     id: 'komm-003',
@@ -75,11 +67,7 @@ export const switches: Product[] = [
       'Питание': '2 источника + UPS',
       'Размер': '334х417х200 мм'
     },
-    docs: [
-      { name: 'Паспорт изделия', url: '/docs/mastermann-mm4gpoe-2sfp-ups-pasport.pdf' },
-      { name: 'Декларация соответствия', url: '/docs/mastermann-switches-declaration.pdf' },
-      { name: 'Сертификат соответствия', url: '/docs/mastermann-switches-certificate.pdf' }
-    ]
+    docs: []
   },
   {
     id: 'komm-004',
@@ -102,10 +90,6 @@ export const switches: Product[] = [
       'Питание': '2 источника + UPS',
       'Размер': '334х417х200 мм'
     },
-    docs: [
-      { name: 'Паспорт изделия', url: '/docs/mastermann-mm8gpoe-2sfp-ups-pasport.pdf' },
-      { name: 'Декларация соответствия', url: '/docs/mastermann-switches-declaration.pdf' },
-      { name: 'Сертификат соответствия', url: '/docs/mastermann-switches-certificate.pdf' }
-    ]
+    docs: []
   }
 ];

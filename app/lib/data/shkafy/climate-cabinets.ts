@@ -2,7 +2,6 @@
 import type { Product } from '@/app/context/StoreContext';
 
 export const climateCabinets: Product[] = [
-  // 1
   {
     id: 'shkaf-001',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 4К',
@@ -14,7 +13,7 @@ export const climateCabinets: Product[] = [
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
-    description: 'Базовый термошкаф 4 порта.',
+    description: 'Коммутационный термошкаф Mastermann 6 УТП 4К предназначен для размещения активного сетевого оборудования на объектах с суровыми климатическими условиями.',
     specs: {
       'Температурный режим': '-60°C ... +50°C',
       'Обогреватель': '50 Вт',
@@ -34,7 +33,6 @@ export const climateCabinets: Product[] = [
     },
     docs: []
   },
-  // 2
   {
     id: 'shkaf-002',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 4КУ',
@@ -45,7 +43,7 @@ export const climateCabinets: Product[] = [
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
-    description: 'Управляемый термошкаф 4 порта.',
+    description: 'Управляемая версия коммутационного термошкафа Mastermann 6 УТП 4КУ.',
     specs: {
       'Температурный режим': '-60°C ... +50°C',
       'Обогреватель': '50 Вт',
@@ -65,7 +63,6 @@ export const climateCabinets: Product[] = [
     },
     docs: []
   },
-  // 3
   {
     id: 'shkaf-003',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 4К ГЗ',
@@ -76,7 +73,7 @@ export const climateCabinets: Product[] = [
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
-    description: 'С грозозащитой.',
+    description: 'Коммутационный термошкаф Mastermann 6 УТП 4К ГЗ оснащён устройством грозозащиты.',
     specs: {
       'Температурный режим': '-60°C ... +50°C',
       'Обогреватель': '50 Вт',
@@ -96,7 +93,6 @@ export const climateCabinets: Product[] = [
     },
     docs: []
   },
-  // 4
   {
     id: 'shkaf-004',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 4КУ ГЗ',
@@ -107,7 +103,7 @@ export const climateCabinets: Product[] = [
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
-    description: 'Управляемый с грозозащитой.',
+    description: 'Управляемый термошкаф с грозозащитой Mastermann 6 УТП 4КУ ГЗ.',
     specs: {
       'Температурный режим': '-60°C ... +50°C',
       'Обогреватель': '50 Вт',
@@ -127,7 +123,6 @@ export const climateCabinets: Product[] = [
     },
     docs: []
   },
-  // 5
   {
     id: 'shkaf-005',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 4К АКБ 2А',
@@ -138,7 +133,7 @@ export const climateCabinets: Product[] = [
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
-    description: 'С АКБ 2А·ч.',
+    description: 'Термошкаф со встроенным аккумулятором 12В 2А·ч.',
     specs: {
       'Температурный режим': '-60°C ... +50°C',
       'Обогреватель': '50 Вт',
@@ -158,7 +153,6 @@ export const climateCabinets: Product[] = [
     },
     docs: []
   },
-  // 6
   {
     id: 'shkaf-006',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 4КУ АКБ 2А',
@@ -169,7 +163,7 @@ export const climateCabinets: Product[] = [
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
-    description: 'Управляемый, АКБ 2А·ч.',
+    description: 'Управляемый термошкаф с аккумулятором 12В 2А·ч.',
     specs: {
       'Температурный режим': '-60°C ... +50°C',
       'Обогреватель': '50 Вт',
@@ -189,7 +183,6 @@ export const climateCabinets: Product[] = [
     },
     docs: []
   },
-  // 7
   {
     id: 'shkaf-007',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 4К ГЗ АКБ 2А',
@@ -200,7 +193,7 @@ export const climateCabinets: Product[] = [
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
-    description: 'Грозозащита, АКБ 2А·ч.',
+    description: 'Термошкаф с грозозащитой и аккумулятором 2А·ч.',
     specs: {
       'Температурный режим': '-60°C ... +50°C',
       'Обогреватель': '50 Вт',
@@ -220,7 +213,6 @@ export const climateCabinets: Product[] = [
     },
     docs: []
   },
-  // 8
   {
     id: 'shkaf-008',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 4КУ ГЗ АКБ 2А',
@@ -231,7 +223,7 @@ export const climateCabinets: Product[] = [
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
-    description: 'Управляемый, грозозащита, АКБ 2А·ч.',
+    description: 'Управляемый термошкаф с грозозащитой и АКБ 2А·ч.',
     specs: {
       'Температурный режим': '-60°C ... +50°C',
       'Обогреватель': '50 Вт',
@@ -251,7 +243,6 @@ export const climateCabinets: Product[] = [
     },
     docs: []
   },
-  // 9
   {
     id: 'shkaf-009',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 4К АКБ 7А',
@@ -262,7 +253,7 @@ export const climateCabinets: Product[] = [
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
-    description: 'АКБ 7А·ч.',
+    description: 'Термошкаф с аккумулятором 7А·ч.',
     specs: {
       'Температурный режим': '-60°C ... +50°C',
       'Обогреватель': '50 Вт',
@@ -282,7 +273,6 @@ export const climateCabinets: Product[] = [
     },
     docs: []
   },
-  // 10
   {
     id: 'shkaf-010',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 4КУ АКБ 7А',
@@ -293,7 +283,7 @@ export const climateCabinets: Product[] = [
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
-    description: 'Управляемый, АКБ 7А·ч.',
+    description: 'Управляемый термошкаф с аккумулятором 7А·ч.',
     specs: {
       'Температурный режим': '-60°C ... +50°C',
       'Обогреватель': '50 Вт',
@@ -313,7 +303,6 @@ export const climateCabinets: Product[] = [
     },
     docs: []
   },
-  // 11
   {
     id: 'shkaf-011',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 8К',
@@ -324,7 +313,7 @@ export const climateCabinets: Product[] = [
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
-    description: '8 портов, неуправляемый.',
+    description: 'Термошкаф на 8 портов.',
     specs: {
       'Температурный режим': '-60°C ... +50°C',
       'Обогреватель': '50 Вт',
@@ -344,7 +333,6 @@ export const climateCabinets: Product[] = [
     },
     docs: []
   },
-  // 12
   {
     id: 'shkaf-012',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 8КУ',
@@ -355,7 +343,7 @@ export const climateCabinets: Product[] = [
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
-    description: '8 портов, управляемый.',
+    description: 'Управляемый термошкаф на 8 портов.',
     specs: {
       'Температурный режим': '-60°C ... +50°C',
       'Обогреватель': '50 Вт',
@@ -375,7 +363,6 @@ export const climateCabinets: Product[] = [
     },
     docs: []
   },
-  // 13
   {
     id: 'shkaf-013',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 8К ГЗ',
@@ -386,7 +373,7 @@ export const climateCabinets: Product[] = [
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
-    description: '8 портов, грозозащита.',
+    description: 'Термошкаф на 8 портов с грозозащитой.',
     specs: {
       'Температурный режим': '-60°C ... +50°C',
       'Обогреватель': '50 Вт',
@@ -406,7 +393,6 @@ export const climateCabinets: Product[] = [
     },
     docs: []
   },
-  // 14
   {
     id: 'shkaf-014',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 8КУ ГЗ',
@@ -417,7 +403,7 @@ export const climateCabinets: Product[] = [
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
-    description: '8 портов, управляемый, грозозащита.',
+    description: 'Управляемый термошкаф на 8 портов с грозозащитой.',
     specs: {
       'Температурный режим': '-60°C ... +50°C',
       'Обогреватель': '50 Вт',
@@ -437,7 +423,6 @@ export const climateCabinets: Product[] = [
     },
     docs: []
   },
-  // 15
   {
     id: 'shkaf-015',
     name: 'Коммутационный термошкаф Mastermann 8 УТП 8К АКБ 7А',
@@ -448,7 +433,7 @@ export const climateCabinets: Product[] = [
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
-    description: '8 портов, АКБ 7А·ч (4 шт).',
+    description: 'Термошкаф увеличенной ёмкости с аккумулятором 7А·ч.',
     specs: {
       'Температурный режим': '-60°C ... +50°C',
       'Обогреватель': '50 Вт',
@@ -468,7 +453,6 @@ export const climateCabinets: Product[] = [
     },
     docs: []
   },
-  // 16
   {
     id: 'shkaf-016',
     name: 'Коммутационный термошкаф Mastermann 8 УТП 8К ГЗ АКБ 7А',
@@ -479,7 +463,7 @@ export const climateCabinets: Product[] = [
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
-    description: '8 портов, грозозащита, АКБ 7А·ч.',
+    description: 'Термошкаф с грозозащитой и аккумулятором 7А·ч.',
     specs: {
       'Температурный режим': '-60°C ... +50°C',
       'Обогреватель': '50 Вт',
@@ -499,7 +483,6 @@ export const climateCabinets: Product[] = [
     },
     docs: []
   },
-  // 17
   {
     id: 'shkaf-017',
     name: 'Коммутационный термошкаф Mastermann 8 УТП 8КУ ГЗ АКБ 7А',
@@ -510,7 +493,7 @@ export const climateCabinets: Product[] = [
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
-    description: 'Управляемый, грозозащита, АКБ 7А·ч.',
+    description: 'Управляемый термошкаф премиум-класса с грозозащитой и аккумулятором.',
     specs: {
       'Температурный режим': '-60°C ... +50°C',
       'Обогреватель': '50 Вт',
@@ -530,7 +513,6 @@ export const climateCabinets: Product[] = [
     },
     docs: []
   },
-  // 18
   {
     id: 'shkaf-018',
     name: 'Коммутационный термошкаф Mastermann 6 УТП 8КУ ГЗ (расширенный)',
@@ -541,7 +523,7 @@ export const climateCabinets: Product[] = [
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
-    description: 'Расширенная версия.',
+    description: 'Расширенная версия управляемого термошкафа на 8 портов с грозозащитой.',
     specs: {
       'Температурный режим': '-60°C ... +50°C',
       'Обогреватель': '50 Вт',
@@ -561,7 +543,6 @@ export const climateCabinets: Product[] = [
     },
     docs: []
   },
-  // 19
   {
     id: 'shkaf-019',
     name: 'Коммутационный термошкаф Mastermann 8 УТП 8КУ АКБ 7А (премиум)',
@@ -572,7 +553,7 @@ export const climateCabinets: Product[] = [
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
-    description: 'Премиум, АКБ 7А·ч.',
+    description: 'Премиальная версия управляемого термошкафа с АКБ 7А·ч.',
     specs: {
       'Температурный режим': '-60°C ... +50°C',
       'Обогреватель': '50 Вт',
@@ -592,7 +573,6 @@ export const climateCabinets: Product[] = [
     },
     docs: []
   },
-  // 20
   {
     id: 'shkaf-020',
     name: 'Коммутационный термошкаф Mastermann 8 УТП 8КУ ГЗ АКБ 7А (премиум+)',
@@ -603,7 +583,7 @@ export const climateCabinets: Product[] = [
     inStock: true,
     category: 'shkafy',
     subcategory: 'climate-cabinets',
-    description: 'Флагманская модель.',
+    description: 'Флагманская модель: управляемый термошкаф с грозозащитой, АКБ 7А·ч.',
     specs: {
       'Температурный режим': '-60°C ... +50°C',
       'Обогреватель': '50 Вт',

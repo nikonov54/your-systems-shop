@@ -2,7 +2,6 @@
 import { climateCabinets } from './data/shkafy/climate-cabinets';
 import { switches } from './data/setevoe-oborudovanie/switches';
 
-// Для сравнения и каталогов используем все товары
 export const mockProducts = [
   ...climateCabinets,
   ...switches,

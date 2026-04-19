@@ -8,7 +8,6 @@ import Header from '@/app/components/Header';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
-// Нормализация строки для поиска: убираем пробелы, дефисы, приводим к нижнему регистру
 function normalize(str: string): string {
   return str.toLowerCase().replace(/[\s-]/g, '');
 }
@@ -19,21 +18,13 @@ export default function SearchPage() {
   const query = normalize(rawQuery);
 
   const filteredProducts = mockProducts.filter((product) => {
-    // Нормализуем все поля, где ищем
-    const name = normalize(product.name);
-    const brand = normalize(product.brand || '');
-    const sku = normalize(product.sku || '');
-    const description = normalize(product.description || '');
-
-    if (name.includes(query)) return true;
-    if (brand.includes(query)) return true;
-    if (sku.includes(query)) return true;
-    if (description.includes(query)) return true;
-
-    // Поиск по характеристикам
+    if (normalize(product.name).includes(query)) return true;
+    if (normalize(product.brand || '').includes(query)) return true;
+    if (normalize(product.sku || '').includes(query)) return true;
+    if (normalize(product.description || '').includes(query)) return true;
     if (product.specs) {
-      for (const value of Object.values(product.specs)) {
-        if (normalize(value).includes(query)) return true;
+      for (const val of Object.values(product.specs)) {
+        if (normalize(val).includes(query)) return true;
       }
     }
     return false;
@@ -73,6 +64,8 @@ export default function SearchPage() {
                 sku={product.sku || ''}
                 inStock={product.inStock ?? true}
                 href={`/product/${product.id}`}
+                category={product.category}
+                subcategory={product.subcategory}
                 isNew={false}
                 isHit={false}
               />

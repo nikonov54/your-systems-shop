@@ -1,28 +1,30 @@
+// app/components/Header.tsx
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { ShieldCheck, Search, ShoppingCart, Scale, Menu, ChevronRight, X } from 'lucide-react';
+import { ShieldCheck, Search, ShoppingCart, Scale, Menu, ChevronRight } from 'lucide-react';
 import { catalogData, type Category } from '@/menu-data';
 import { mockProducts } from '@/app/lib/products';
+import { useStore } from '@/app/context/StoreContext';
 
-// Нормализация для поиска
 function normalize(str: string): string {
   return str.toLowerCase().replace(/[\s-]/g, '');
 }
 
 export default function Header() {
   const router = useRouter();
+  const { getCartCount } = useStore();
+  const cartCount = getCartCount();
+
   const [activeCat, setActiveCat] = useState<Category | null>(null);
   const [activeService, setActiveService] = useState<string | null>(null);
-  const [cartCount] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<typeof mockProducts>([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
 
-  // Дебаунс для поиска
   useEffect(() => {
     const timer = setTimeout(() => {
       if (searchQuery.trim().length === 0) {
@@ -30,7 +32,6 @@ export default function Header() {
         setShowDropdown(false);
         return;
       }
-
       const queryNorm = normalize(searchQuery);
       const filtered = mockProducts.filter((product) => {
         if (normalize(product.name).includes(queryNorm)) return true;
@@ -44,14 +45,12 @@ export default function Header() {
         }
         return false;
       });
-      setSearchResults(filtered.slice(0, 8)); // максимум 8 результатов
+      setSearchResults(filtered.slice(0, 8));
       setShowDropdown(true);
     }, 300);
-
     return () => clearTimeout(timer);
   }, [searchQuery]);
 
-  // Закрытие дропдауна при клике вне
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
@@ -143,7 +142,7 @@ export default function Header() {
           </div>
         </Link>
 
-        {/* Кнопка УСЛУГИ */}
+        {/* УСЛУГИ */}
         <div className="relative group" onMouseLeave={() => setActiveService(null)}>
           <button className="flex items-center gap-3 bg-transparent border border-white/20 text-white px-6 py-2.5 rounded-xl text-xs font-bold tracking-[0.2em] hover:bg-blue-600 transition-all uppercase">
             <Menu size={18} className="text-blue-400 group-hover:text-white" /> УСЛУГИ
@@ -155,7 +154,7 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Кнопка КАТАЛОГ */}
+        {/* КАТАЛОГ */}
         <div className="relative group" onMouseLeave={() => setActiveCat(null)}>
           <button className="flex items-center gap-3 bg-transparent border border-white/20 text-white px-6 py-2.5 rounded-xl text-xs font-bold tracking-[0.2em] hover:bg-blue-600 transition-all uppercase">
             <Menu size={18} className="text-blue-400 group-hover:text-white" /> КАТАЛОГ
@@ -183,7 +182,7 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Поиск с выпадающим списком */}
+        {/* ПОИСК */}
         <div className="flex flex-1 max-w-sm relative" ref={searchRef}>
           <form onSubmit={handleSearchSubmit} className="w-full relative">
             <input
@@ -198,8 +197,6 @@ export default function Header() {
               <Search size={18} />
             </button>
           </form>
-
-          {/* Выпадающий список результатов */}
           {showDropdown && searchResults.length > 0 && (
             <div className="absolute top-full left-0 right-0 mt-2 bg-[#0a0c10] border border-white/10 rounded-xl shadow-2xl z-50 max-h-96 overflow-y-auto">
               {searchResults.map((product) => (
@@ -223,10 +220,7 @@ export default function Header() {
                 </div>
               ))}
               <div className="p-2 border-t border-white/5">
-                <button
-                  onClick={handleSearchSubmit}
-                  className="w-full text-center text-xs text-slate-400 hover:text-blue-400 py-1"
-                >
+                <button onClick={handleSearchSubmit} className="w-full text-center text-xs text-slate-400 hover:text-blue-400 py-1">
                   Показать все результаты →
                 </button>
               </div>
@@ -234,6 +228,7 @@ export default function Header() {
           )}
         </div>
 
+        {/* ПРАВЫЙ БЛОК */}
         <div className="flex items-center gap-6 font-black">
           <a href="tel:+7 (913) 946-44-60" className="text-lg hover:text-blue-500 transition-colors tracking-tighter">+7 (913) 946-44-60</a>
           <Link href="/compare">
@@ -241,10 +236,16 @@ export default function Header() {
               <Scale size={20} className="text-white/60 hover:text-white transition-colors" />
             </button>
           </Link>
-          <button className="bg-blue-600 p-3 rounded-xl relative hover:bg-blue-700 transition-all shadow-[0_5px_15px_rgba(37,99,235,0.2)]">
-            <ShoppingCart size={20} />
-            <span className="absolute -top-1 -right-1 bg-white text-blue-600 text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
-          </button>
+          <Link href="/cart" className="relative">
+            <button className="p-3 rounded-xl transition-all hover:bg-blue-600">
+              <ShoppingCart size={20} className="text-white/60 hover:text-white transition-colors" />
+            </button>
+            {cartCount > 0 && (
+              <span className="absolute -top-1 -right-1 bg-white text-blue-600 text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
+                {cartCount}
+              </span>
+            )}
+          </Link>
         </div>
       </div>
     </header>
