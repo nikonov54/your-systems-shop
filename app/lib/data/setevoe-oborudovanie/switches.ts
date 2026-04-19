@@ -1,5 +1,5 @@
 // app/lib/data/setevoe-oborudovanie/switches.ts
-import { Product } from '../types';
+import type { Product } from '@/app/context/StoreContext';
 
 export const switches: Product[] = [
   {

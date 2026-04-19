@@ -1,8 +1,11 @@
 // app/lib/products.ts
 import { climateCabinets } from './data/shkafy/climate-cabinets';
+import { switches } from './data/setevoe-oborudovanie/switches';
 
-// Для сравнения используем только климатические шкафы
-export const mockProducts = [...climateCabinets];
+// Для сравнения и каталогов используем все товары
+export const mockProducts = [
+  ...climateCabinets,
+  ...switches,
+];
 
-// Экспорт типа Product для использования в других файлах
 export type { Product } from '@/app/context/StoreContext';
