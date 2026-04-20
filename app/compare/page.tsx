@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { ShoppingCart, Scale, X, Trash2, ArrowLeft } from 'lucide-react';
 import Header from '@/app/components/Header';
 
-// Нормализация ключей (приведение к единому названию)
+// Нормализация ключей
 function normalizeKey(key: string): string {
   const k = key.trim().toLowerCase();
   const map: Record<string, string> = {
@@ -52,7 +52,7 @@ function normalizeKey(key: string): string {
   return map[k] || (k.charAt(0).toUpperCase() + k.slice(1));
 }
 
-// Нормализация значений (для единообразия)
+// Нормализация значений
 function normalizeValue(value: string, specKey: string): string {
   if (!value || value === '—') return value;
   if (specKey === 'Материал и толщина корпуса, мм') {
@@ -68,14 +68,10 @@ function normalizeValue(value: string, specKey: string): string {
 
 function extractNumber(str: string): number | null {
   if (!str || str === '—') return null;
-  const s = str.toLowerCase();
-  if (s.includes('8k')) return 8000;
-  if (s.includes('4k')) return 4000;
-  const match = s.match(/(\d+(?:\.\d+)?)/);
+  const match = str.match(/(\d+(?:\.\d+)?)/);
   return match ? parseFloat(match[0]) : null;
 }
 
-// Рейтинг коммутатора (чем выше, тем лучше)
 function getSwitchRating(value: string): number {
   if (!value || value === '—') return 0;
   let rating = 0;
@@ -88,12 +84,23 @@ function getSwitchRating(value: string): number {
   return rating;
 }
 
+function getGlandPortCount(value: string): number {
+  if (!value || value === '—') return 0;
+  let total = 0;
+  const matches = value.matchAll(/\((\d+)\s*шт\.?\)/g);
+  for (const m of matches) total += parseInt(m[1]);
+  return total;
+}
+
 function isBetterWhenHigher(specKey: string): boolean {
-  const higherIsBetter = [
-    'разрешение', 'ик-подсветка', 'угол обзора', 'мп',
-    'количество', 'гарантия', 'ёмкость', 'объём', 'портов'
+  const higher = [
+    'бюджет poe', 'блок питания', 'коммутатор', 'аккумулятор',
+    'кол-во портов', 'кол-во портов poe', 'кол-во портов sfp',
+    'интерфейс rj-45 poe watchdog', 'интерфейс sfp',
+    'ёмкость', 'мощность', 'гарантия', 'портов',
+    'габаритные размеры без гермовводов (шхвхг)'
   ];
-  return higherIsBetter.some(keyword => specKey.toLowerCase().includes(keyword));
+  return higher.some(k => specKey.toLowerCase().includes(k));
 }
 
 export default function ComparePage() {
@@ -101,102 +108,86 @@ export default function ComparePage() {
 
   const getBackLink = () => {
     if (compareItems.length === 0) return '/';
-    const firstProduct = mockProducts.find(p => p.id === compareItems[0]?.id);
-    if (!firstProduct) return '/';
-    return `/catalog/${firstProduct.category}/${firstProduct.subcategory}`;
+    const first = mockProducts.find(p => p.id === compareItems[0]?.id);
+    if (!first) return '/';
+    return `/catalog/${first.category}/${first.subcategory}`;
   };
-
   const backLink = getBackLink();
   const formatPrice = (price: number) => new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'RUB', minimumFractionDigits: 0 }).format(price);
 
-  // Сбор нормализованных ключей из всех товаров (сравниваемые + все mockProducts)
   const getNormalizedSpecKeys = () => {
-    const keysSet = new Set<string>();
+    const keys = new Set<string>();
     compareItems.forEach(item => {
-      if (item.specs) {
-        Object.keys(item.specs).forEach(k => keysSet.add(normalizeKey(k)));
-      }
+      if (item.specs) Object.keys(item.specs).forEach(k => keys.add(normalizeKey(k)));
     });
     mockProducts.forEach(product => {
-      if (product.specs) {
-        Object.keys(product.specs).forEach(k => keysSet.add(normalizeKey(k)));
-      }
+      if (product.specs) Object.keys(product.specs).forEach(k => keys.add(normalizeKey(k)));
     });
-    keysSet.add('Бренд');
-    keysSet.add('Наличие');
-    keysSet.add('Гарантия');
-    return Array.from(keysSet).sort();
+    keys.add('Бренд');
+    keys.add('Наличие');
+    keys.add('Гарантия');
+    return Array.from(keys).sort();
   };
 
   const getSpecValue = (item: typeof compareItems[0], normKey: string): string => {
     if (normKey === 'Бренд') return item.brand || '—';
     if (normKey === 'Наличие') {
-      const product = mockProducts.find(p => p.id === item.id);
-      return product?.inStock ? 'В наличии' : 'Нет в наличии';
+      const prod = mockProducts.find(p => p.id === item.id);
+      return prod?.inStock ? 'В наличии' : 'Нет в наличии';
     }
     if (normKey === 'Гарантия') {
-      if (item.brand === 'Dahua') return '48 месяцев';
-      if (item.brand === 'Hikvision') return '36 месяцев';
-      return '12 месяцев';
+      if (item.brand === 'Dahua') return '48 мес.';
+      if (item.brand === 'Hikvision') return '36 мес.';
+      return '12 мес.';
     }
-    // Поиск в specs
     const find = (specs: Record<string, string> | undefined): string | null => {
       if (!specs) return null;
       for (const [orig, val] of Object.entries(specs)) {
-        if (normalizeKey(orig) === normKey) {
-          return val;
-        }
+        if (normalizeKey(orig) === normKey) return val;
       }
       return null;
     };
-    let value = find(item.specs);
-    if (value === null) {
-      const fullProduct = mockProducts.find(p => p.id === item.id);
-      value = find(fullProduct?.specs);
+    let val = find(item.specs);
+    if (val === null) {
+      const full = mockProducts.find(p => p.id === item.id);
+      val = find(full?.specs);
     }
-    const raw = value != null ? String(value) : '—';
+    const raw = val != null ? String(val) : '—';
     return normalizeValue(raw, normKey);
   };
 
-  const getCellClass = (currentValue: string, allValues: string[], specKey: string): string => {
-    // Особый случай: Коммутатор – используем рейтинг
-    if (specKey === 'Коммутатор') {
-      const curRating = getSwitchRating(currentValue);
-      const allRatings = allValues.map(v => getSwitchRating(v));
-      const maxRating = Math.max(...allRatings);
-      const minRating = Math.min(...allRatings);
-      if (curRating === maxRating && maxRating > 0) return 'text-green-400 font-semibold';
-      if (curRating === minRating && allRatings.length > 2 && minRating < maxRating) return 'text-red-400';
+  const getCellClass = (cur: string, all: string[], key: string): string => {
+    const k = key.toLowerCase();
+    if (k === 'гермовводы') {
+      const curCnt = getGlandPortCount(cur);
+      const allCnt = all.map(v => getGlandPortCount(v));
+      const maxCnt = Math.max(...allCnt);
+      if (curCnt === maxCnt && maxCnt > 0) return 'text-green-400 font-semibold';
       return 'text-white';
     }
-
-    if (allValues.length === 1 || allValues.every(v => v === currentValue)) return 'text-white';
-    const currentNum = extractNumber(currentValue);
-    const numericValues = allValues.map(v => extractNumber(v)).filter((n): n is number => n !== null);
-    if (numericValues.length === 0 || currentNum === null) return 'text-white';
-
-    const isPrice = specKey === 'Цена';
-    const betterIsHigher = !isPrice && isBetterWhenHigher(specKey);
-
-    if (isPrice) {
-      const minPrice = Math.min(...numericValues);
-      if (currentNum === minPrice) return 'text-green-400 font-semibold';
-      if (currentNum === Math.max(...numericValues) && numericValues.length > 2) return 'text-red-400';
+    if (k === 'коммутатор') {
+      const curR = getSwitchRating(cur);
+      const allR = all.map(v => getSwitchRating(v));
+      const maxR = Math.max(...allR);
+      if (curR === maxR && maxR > 0) return 'text-green-400 font-semibold';
       return 'text-white';
     }
-
-    if (betterIsHigher) {
-      const maxVal = Math.max(...numericValues);
-      const minVal = Math.min(...numericValues);
-      if (currentNum === maxVal) return 'text-green-400 font-semibold';
-      if (currentNum === minVal && numericValues.length > 2) return 'text-red-400';
+    if (isBetterWhenHigher(key)) {
+      const curNum = extractNumber(cur);
+      const nums = all.map(v => extractNumber(v)).filter((n): n is number => n !== null);
+      if (nums.length === 0 || curNum === null) return 'text-white';
+      const maxNum = Math.max(...nums);
+      if (curNum === maxNum) return 'text-green-400 font-semibold';
       return 'text-white';
     }
-
-    const minVal = Math.min(...numericValues);
-    const maxVal = Math.max(...numericValues);
-    if (currentNum === minVal) return 'text-green-400 font-semibold';
-    if (currentNum === maxVal && numericValues.length > 2) return 'text-red-400';
+    if (key === 'Цена') {
+      const curNum = extractNumber(cur);
+      const nums = all.map(v => extractNumber(v)).filter((n): n is number => n !== null);
+      if (nums.length === 0 || curNum === null) return 'text-white';
+      const minPrice = Math.min(...nums);
+      if (curNum === minPrice) return 'text-green-400 font-semibold';
+      return 'text-white';
+    }
     return 'text-white';
   };
 
@@ -216,76 +207,77 @@ export default function ComparePage() {
 
   const allSpecKeys = getNormalizedSpecKeys();
 
-  // Генерация строк с фильтрацией: показываем только те, у которых есть хотя бы одно непустое значение
-  const headerCells = [];
-  for (const item of compareItems) {
-    headerCells.push(
-      <th key={item.id} className="p-3 text-center relative min-w-[200px] align-top">
-        <button
-          onClick={() => removeFromCompare(item.id)}
-          className="absolute top-2 right-2 w-7 h-7 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center shadow-lg transition-colors z-20"
-          title="Удалить"
-        >
-          <X size={16} className="text-white" />
-        </button>
-        <div className="w-24 h-24 mx-auto bg-white/5 rounded-xl mb-2 flex items-center justify-center mt-2">
-          {item.image ? (
-            <Image src={item.image} alt={item.name} width={80} height={80} className="object-contain p-2" />
-          ) : (
-            <div className="text-xs text-slate-500">Нет фото</div>
-          )}
-        </div>
-        <h3 className="font-bold text-sm line-clamp-2 mt-2">{item.name}</h3>
-        {item.brand && <div className="text-xs text-blue-400 mt-1">{item.brand}</div>}
-      </th>
-    );
-  }
+  // Генерация строк вне JSX для чистоты
+  const headerRow = (
+    <tr className="border-b border-white/10">
+      <th className="p-3 text-left w-48 bg-[#020408] sticky left-0 z-10">Характеристики</th>
+      {compareItems.map((item) => (
+        <th key={item.id} className="p-3 text-center relative min-w-[200px] align-top">
+          <button
+            onClick={() => removeFromCompare(item.id)}
+            className="absolute top-2 right-2 w-7 h-7 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center shadow-lg transition-colors z-20"
+            title="Удалить"
+          >
+            <X size={16} className="text-white" />
+          </button>
+          <div className="w-24 h-24 mx-auto bg-white/5 rounded-xl mb-2 flex items-center justify-center mt-2">
+            {item.image ? (
+              <Image src={item.image} alt={item.name} width={80} height={80} className="object-contain p-2" />
+            ) : (
+              <div className="text-xs text-slate-500">Нет фото</div>
+            )}
+          </div>
+          <h3 className="font-bold text-sm line-clamp-2 mt-2">{item.name}</h3>
+          {item.brand && <div className="text-xs text-blue-400 mt-1">{item.brand}</div>}
+        </th>
+      ))}
+    </tr>
+  );
 
-  const priceCells = [];
-  for (const item of compareItems) {
-    const product = mockProducts.find(p => p.id === item.id);
-    const price = product?.price ?? item.price ?? 0;
-    const allPrices = compareItems.map(i => mockProducts.find(p => p.id === i.id)?.price ?? i.price ?? 0);
-    const priceClass = getCellClass(price.toString(), allPrices.map(p => p.toString()), 'Цена');
-    priceCells.push(
-      <td key={item.id} className="p-3 text-center">
-        <div className={`text-xl font-bold ${priceClass}`}>{formatPrice(price)}</div>
-        {product?.oldPrice && <div className="text-xs text-slate-500 line-through">{formatPrice(product.oldPrice)}</div>}
-        <button
-          onClick={() => {
-            const full = mockProducts.find(p => p.id === item.id);
-            if (full) addToCart(full, 1);
-          }}
-          className="mt-2 w-full flex items-center justify-center gap-1 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 rounded-lg text-xs font-bold"
-        >
-          <ShoppingCart size={12} /> В корзину
-        </button>
-      </td>
-    );
-  }
+  const priceRow = (
+    <tr className="border-b border-white/5 bg-white/5">
+      <td className="p-3 font-bold sticky left-0 bg-[#020408]">Цена</td>
+      {compareItems.map((item) => {
+        const product = mockProducts.find(p => p.id === item.id);
+        const price = product?.price ?? item.price ?? 0;
+        const allPrices = compareItems.map(i => mockProducts.find(p => p.id === i.id)?.price ?? i.price ?? 0);
+        const priceClass = getCellClass(price.toString(), allPrices.map(p => p.toString()), 'Цена');
+        return (
+          <td key={item.id} className="p-3 text-center">
+            <div className={`text-xl font-bold ${priceClass}`}>{formatPrice(price)}</div>
+            {product?.oldPrice && <div className="text-xs text-slate-500 line-through">{formatPrice(product.oldPrice)}</div>}
+            <button
+              onClick={() => {
+                const full = mockProducts.find(p => p.id === item.id);
+                if (full) addToCart(full, 1);
+              }}
+              className="mt-2 w-full flex items-center justify-center gap-1 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 rounded-lg text-xs font-bold"
+            >
+              <ShoppingCart size={12} /> В корзину
+            </button>
+          </td>
+        );
+      })}
+    </tr>
+  );
 
-  const specRows = [];
-  for (const specKey of allSpecKeys) {
-    // Проверяем, есть ли хотя бы одно значение, не равное '—'
-    let hasValue = false;
-    const cells = [];
-    for (const item of compareItems) {
-      const val = getSpecValue(item, specKey);
-      if (val !== '—') hasValue = true;
-      const allVals = compareItems.map(i => getSpecValue(i, specKey));
+  const specRows = allSpecKeys.map((specKey) => {
+    const values = compareItems.map(item => getSpecValue(item, specKey));
+    const hasValue = values.some(v => v !== '—');
+    if (!hasValue) return null;
+    const allVals = values;
+    const cells = compareItems.map((item, idx) => {
+      const val = values[idx];
       const cls = getCellClass(val, allVals, specKey);
-      cells.push(
-        <td key={item.id} className={`p-3 text-center ${cls}`}>{val}</td>
-      );
-    }
-    if (!hasValue) continue; // пропускаем строки, где все значения — прочерки
-    specRows.push(
+      return <td key={item.id} className={`p-3 text-center ${cls}`}>{val}</td>;
+    });
+    return (
       <tr key={specKey} className="border-b border-white/5">
         <td className="p-3 font-bold text-slate-300 sticky left-0 bg-[#020408]">{specKey}</td>
         {cells}
       </tr>
     );
-  }
+  }).filter(row => row !== null);
 
   return (
     <div className="min-h-screen bg-[#020408] text-white">
@@ -304,17 +296,9 @@ export default function ComparePage() {
         </div>
         <div className="overflow-x-auto overflow-visible">
           <table className="w-full border-collapse min-w-[800px]">
-            <thead>
-              <tr className="border-b border-white/10">
-                <th className="p-3 text-left w-48 bg-[#020408] sticky left-0 z-10">Характеристики</th>
-                {headerCells}
-              </tr>
-            </thead>
+            <thead>{headerRow}</thead>
             <tbody>
-              <tr className="border-b border-white/5 bg-white/5">
-                <td className="p-3 font-bold sticky left-0 bg-[#020408]">Цена</td>
-                {priceCells}
-              </tr>
+              {priceRow}
               {specRows}
             </tbody>
           </table>
