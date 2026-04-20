@@ -9,6 +9,7 @@ import { catalogData, type Category } from '@/menu-data';
 import { mockProducts } from '@/app/lib/products';
 import { useStore } from '@/app/context/StoreContext';
 
+// Нормализация для поиска
 function normalize(str: string): string {
   return str.toLowerCase().replace(/[\s-]/g, '');
 }
@@ -25,6 +26,7 @@ export default function Header() {
   const [showDropdown, setShowDropdown] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
 
+  // Дебаунс для поиска
   useEffect(() => {
     const timer = setTimeout(() => {
       if (searchQuery.trim().length === 0) {
@@ -32,6 +34,7 @@ export default function Header() {
         setShowDropdown(false);
         return;
       }
+
       const queryNorm = normalize(searchQuery);
       const filtered = mockProducts.filter((product) => {
         if (normalize(product.name).includes(queryNorm)) return true;
@@ -48,9 +51,11 @@ export default function Header() {
       setSearchResults(filtered.slice(0, 8));
       setShowDropdown(true);
     }, 300);
+
     return () => clearTimeout(timer);
   }, [searchQuery]);
 
+  // Закрытие дропдауна при клике вне
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
@@ -182,7 +187,7 @@ export default function Header() {
           </div>
         </div>
 
-        {/* ПОИСК */}
+        {/* ПОИСК С ВЫПАДАЮЩИМ СПИСКОМ */}
         <div className="flex flex-1 max-w-sm relative" ref={searchRef}>
           <form onSubmit={handleSearchSubmit} className="w-full relative">
             <input
@@ -197,6 +202,7 @@ export default function Header() {
               <Search size={18} />
             </button>
           </form>
+
           {showDropdown && searchResults.length > 0 && (
             <div className="absolute top-full left-0 right-0 mt-2 bg-[#0a0c10] border border-white/10 rounded-xl shadow-2xl z-50 max-h-96 overflow-y-auto">
               {searchResults.map((product) => (
@@ -213,14 +219,18 @@ export default function Header() {
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="font-medium text-white text-sm truncate">{product.name}</div>
+                    {/* Убрали truncate, добавили перенос слов и нормальное отображение полного названия */}
+                    <div className="font-medium text-white text-sm whitespace-normal break-words">{product.name}</div>
                     <div className="text-xs text-slate-400">{product.price.toLocaleString('ru-RU')} ₽</div>
                     {product.brand && <div className="text-xs text-blue-400">{product.brand}</div>}
                   </div>
                 </div>
               ))}
               <div className="p-2 border-t border-white/5">
-                <button onClick={handleSearchSubmit} className="w-full text-center text-xs text-slate-400 hover:text-blue-400 py-1">
+                <button
+                  onClick={handleSearchSubmit}
+                  className="w-full text-center text-xs text-slate-400 hover:text-blue-400 py-1"
+                >
                   Показать все результаты →
                 </button>
               </div>
@@ -228,7 +238,7 @@ export default function Header() {
           )}
         </div>
 
-        {/* ПРАВЫЙ БЛОК */}
+        {/* ПРАВЫЙ БЛОК: ТЕЛЕФОН, СРАВНЕНИЕ, КОРЗИНА */}
         <div className="flex items-center gap-6 font-black">
           <a href="tel:+7 (913) 946-44-60" className="text-lg hover:text-blue-500 transition-colors tracking-tighter">+7 (913) 946-44-60</a>
           <Link href="/compare">
