@@ -1,8 +1,9 @@
+// app/catalog/[category]/[subcategory]/page.tsx
 'use client';
 
 import { useState, use } from 'react';
 import Link from 'next/link';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, ArrowUp, ArrowDown } from 'lucide-react';
 import { catalogData } from '@/menu-data';
 import { mockProducts } from '@/app/lib/products';
 import ProductCard from '@/app/components/ProductCard';
@@ -116,30 +117,22 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
     (decodedSub === 'telemetry') ? telemetryFilters : [];
 
   const toggleGroup = (id: string) => setOpenGroups(prev => prev.includes(id) ? prev.filter(g => g !== id) : [...prev, id]);
-  
-  // Полный createSlug со всеми подкатегориями
+
   const createSlug = (text: string) => {
     const slugMap: Record<string, string> = {
-      // Видеонаблюдение
       'Камеры': 'cameras',
       'Регистраторы': 'recorders',
       'Микрофоны': 'microphones',
       'Монтажные коробки': 'mounting-boxes',
       'Кронштейны': 'brackets',
-      
-      // Тепловизоры
       'Камеры тепловизионные': 'thermal-cameras',
       'Ручные тепловизоры': 'handheld-thermal',
       'Мобильные тепловизоры': 'mobile-thermal',
-      
-      // HDD
       'HDD для видеонаблюдения': 'hdd-for-cctv',
       'HDD для серверов': 'hdd-for-servers',
       'SSD': 'ssd',
       'NAS HDD': 'nas-hdd',
       'Внешние HDD': 'external-hdd',
-      
-      // Сетевое оборудование
       'Коммутаторы': 'switches',
       'Маршрутизаторы': 'routers',
       'Wi-Fi точки': 'wi-fi-access-points',
@@ -147,8 +140,6 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
       'PoE инжекторы': 'poe-injectors',
       'Антенны': 'antennas',
       'Погружная телеметрия': 'telemetry',
-      
-      // СКУД
       'Считыватели': 'readers',
       'Контроллеры': 'controllers',
       'Бесконтактные ключи': 'contactless-keys',
@@ -158,14 +149,10 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
       'Турникеты': 'turnstiles',
       'Шлагбаумы': 'barriers',
       'Интроскопы': 'x-ray-scanners',
-      
-      // Домофония
       'Smart панели': 'smart-panels',
       'Видеомониторы': 'video-monitors',
       'Вызывные панели': 'calling-panels',
       'Аксессуары': 'accessories',
-      
-      // Сигнализация
       'Контроллеры сигнализации': 'alarm-controllers',
       'Источники питания': 'power-supplies',
       'Извещатели': 'detectors',
@@ -175,8 +162,6 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
       'Модули': 'modules',
       'Реле': 'relays',
       'Розетки': 'sockets',
-      
-      // Шкафы
       'Монтажные и оболочки': 'mounting-enclosures',
       'Климатические': 'climate-cabinets',
       'Телекоммуникационные': 'telecommunication-racks',
@@ -184,16 +169,24 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
       'Щиты боксы аптечные': 'medical-cabinets',
       'Аксессуары шкафов': 'cabinet-accessories'
     };
-    
     return slugMap[text] || text.toLowerCase().replace(/ /g, '-');
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const scrollToBottom = () => {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  };
+
   return (
-    <main className="min-h-screen bg-[#020408] relative flex flex-col font-sans text-white">
+    <main className="min-h-screen bg-[#020408] font-sans text-white">
       <Header />
 
-      <div className="flex flex-1 overflow-hidden">
-        <aside className="w-80 shrink-0 border-r border-white/5 bg-[#05070a] flex flex-col h-full overflow-hidden">
+      <div className="flex">
+        {/* Боковая панель фильтров – липкая */}
+        <aside className="w-80 shrink-0 border-r border-white/5 bg-[#05070a] sticky top-0 self-start h-screen overflow-y-auto">
           <div className="h-14 px-8 border-b border-white/5 flex items-center justify-between shrink-0">
             <span className="text-[11px] uppercase font-black tracking-[0.2em] text-white">ФИЛЬТРЫ</span>
             <button className="text-[9px] uppercase font-bold text-white/30 hover:text-white transition-colors">СБРОСИТЬ</button>
@@ -227,7 +220,8 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
           </div>
         </aside>
 
-        <div className="flex-1 overflow-y-auto no-scrollbar bg-[#020408]" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+        {/* Основной контент */}
+        <div className="flex-1 bg-[#020408]">
           <div className="px-12">
             <div className="py-6 border-b border-white/5 sticky top-0 bg-[#020408] z-30">
               <nav className="flex flex-wrap items-center gap-x-8 gap-y-4 text-[11px] uppercase tracking-[0.3em] font-black">
@@ -277,6 +271,24 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
             )}
           </div>
         </div>
+      </div>
+
+      {/* Плавающие кнопки навигации */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+        <button
+          onClick={scrollToTop}
+          className="bg-white/10 backdrop-blur-sm hover:bg-blue-600 p-3 rounded-full transition-all duration-300 shadow-lg border border-white/20"
+          aria-label="Вверх"
+        >
+          <ArrowUp size={24} className="text-white" />
+        </button>
+        <button
+          onClick={scrollToBottom}
+          className="bg-white/10 backdrop-blur-sm hover:bg-blue-600 p-3 rounded-full transition-all duration-300 shadow-lg border border-white/20"
+          aria-label="Вниз"
+        >
+          <ArrowDown size={24} className="text-white" />
+        </button>
       </div>
     </main>
   );
