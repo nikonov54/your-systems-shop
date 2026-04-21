@@ -113,7 +113,7 @@ export default function Header() {
       'Климатические': 'climate-cabinets',
       'Телекоммуникационные': 'telecommunication-racks',
       'Серверные': 'server-racks',
-      'Щиты боксы аптечные': 'medical-cabinets',
+      'Аптечные': 'medical-cabinets',
       'Аксессуары шкафов': 'cabinet-accessories'
     };
     return slugMap[text] || text.toLowerCase().replace(/ /g, '-');

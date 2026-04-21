@@ -1,4 +1,3 @@
-// app/compare/page.tsx
 'use client';
 
 import { useStore } from '@/app/context/StoreContext';
@@ -8,15 +7,14 @@ import Link from 'next/link';
 import { ShoppingCart, Scale, X, Trash2, ArrowLeft } from 'lucide-react';
 import Header from '@/app/components/Header';
 
-// Нормализация ключей
 function normalizeKey(key: string): string {
   const k = key.trim().toLowerCase();
   const map: Record<string, string> = {
     'температурный режим': 'Диапазон рабочих температур',
-    'размер (шхвхг)': 'Габаритные размеры без гермовводов (ШхВхГ)',
-    'размер': 'Габаритные размеры без гермовводов (ШхВхГ)',
-    'цвет': 'Цвет (краска порошковая полиэфирная)',
-    'материал': 'Материал и толщина корпуса, мм',
+    'размер (шхвхг)': 'Габаритные размеры (ШхВхГ)',
+    'размер': 'Габаритные размеры (ШхВхГ)',
+    'цвет': 'Цвет',
+    'материал': 'Материал',
     'защита ip': 'Степень защиты',
     'кол-во портов poe': 'Кол-во портов PoE',
     'кол-во портов sfp': 'Кол-во портов SFP',
@@ -45,21 +43,23 @@ function normalizeKey(key: string): string {
     'вес': 'Масса',
     'климатическое исполнение по гост 15150': 'Климатическое исполнение по ГОСТ 15150',
     'габаритные размеры без гермовводов (шхвхг)': 'Габаритные размеры без гермовводов (ШхВхГ)',
-    'цвет (краска порошковая полиэфирная)': 'Цвет (краска порошковая полиэфирная)',
+    'цвет (краска порошковая полиэфирная)': 'Цвет',
     'степень защиты': 'Степень защиты',
-    'материал и толщина корпуса, мм': 'Материал и толщина корпуса, мм'
+    'материал и толщина корпуса, мм': 'Материал',
+    'габаритные размеры (шхвхг)': 'Габаритные размеры (ШхВхГ)',
+    'материал корпуса': 'Материал',
+    'окно': 'Окно'
   };
   return map[k] || (k.charAt(0).toUpperCase() + k.slice(1));
 }
 
-// Нормализация значений
 function normalizeValue(value: string, specKey: string): string {
   if (!value || value === '—') return value;
-  if (specKey === 'Материал и толщина корпуса, мм') {
+  if (specKey === 'Материал') {
     if (value === 'Металл, 1.5 мм') return 'сталь, 1,5 мм';
     return value;
   }
-  if (specKey === 'Цвет (краска порошковая полиэфирная)') {
+  if (specKey === 'Цвет') {
     if (value === 'RAL 7035 (серый)') return 'RAL 7035 (светло-серый)';
     return value;
   }
@@ -98,7 +98,8 @@ function isBetterWhenHigher(specKey: string): boolean {
     'кол-во портов', 'кол-во портов poe', 'кол-во портов sfp',
     'интерфейс rj-45 poe watchdog', 'интерфейс sfp',
     'ёмкость', 'мощность', 'гарантия', 'портов',
-    'габаритные размеры без гермовводов (шхвхг)'
+    'габаритные размеры без гермовводов (шхвхг)', 'габаритные размеры (шхвхг)',
+    'масса', 'вес', 'мощность обогрева', 'степень защиты'
   ];
   return higher.some(k => specKey.toLowerCase().includes(k));
 }
@@ -196,10 +197,14 @@ export default function ComparePage() {
       <div className="min-h-screen bg-[#020408] text-white">
         <Header />
         <div className="container mx-auto px-6 py-20 text-center">
-          <div className="inline-flex p-6 bg-white/5 rounded-full mb-8"><Scale size={64} className="text-slate-600" /></div>
+          <div className="inline-flex p-6 bg-white/5 rounded-full mb-8">
+            <Scale size={64} className="text-slate-600" />
+          </div>
           <h1 className="text-4xl font-black mb-4">Список сравнения пуст</h1>
           <p className="text-xl text-slate-400 mb-8">Добавьте товары для оформления заказа</p>
-          <Link href="/catalog/videonablyudenie/cameras" className="inline-block px-8 py-3 bg-blue-600 rounded-xl">Перейти в каталог</Link>
+          <Link href="/catalog/videonablyudenie/cameras" className="inline-block px-8 py-3 bg-blue-600 rounded-xl">
+            Перейти в каталог
+          </Link>
         </div>
       </div>
     );
@@ -207,7 +212,6 @@ export default function ComparePage() {
 
   const allSpecKeys = getNormalizedSpecKeys();
 
-  // Генерация строк вне JSX для чистоты
   const headerRow = (
     <tr className="border-b border-white/10">
       <th className="p-3 text-left w-48 bg-[#020408] sticky left-0 z-10">Характеристики</th>
