@@ -1,10 +1,10 @@
-// app/components/ProductCard.tsx
 'use client';
 
 import Link from 'next/link';
 import { ShoppingCart, GitCompare, Minus, Plus } from 'lucide-react';
 import { useStore } from '@/app/context/StoreContext';
 import { useToast } from './Toast';
+import { mockProducts } from '@/app/lib/products';
 
 interface ProductCardProps {
   id: string;
@@ -39,7 +39,7 @@ export default function ProductCard({
 }: ProductCardProps) {
   const { cartItems, addToCart, updateQuantity, isInCompare, addToCompare, removeFromCompare } = useStore();
   const { showToast, ToastComponent } = useToast();
-  
+
   if (price === undefined || price === null) return null;
 
   const cartItem = cartItems.find(item => item.product.id === id);
@@ -51,18 +51,21 @@ export default function ProductCard({
     e.preventDefault();
     e.stopPropagation();
     if (inStock) {
-      addToCart({
-        id,
-        name,
-        price,
-        oldPrice,
-        image,
-        brand: brand || '',
-        sku,
-        inStock,
-        category,
-        subcategory,
-      }, 1);
+      addToCart(
+        {
+          id,
+          name,
+          price,
+          oldPrice,
+          image,
+          brand: brand || '',
+          sku,
+          inStock,
+          category,
+          subcategory,
+        },
+        1
+      );
     }
   };
 
@@ -70,18 +73,21 @@ export default function ProductCard({
     e.preventDefault();
     e.stopPropagation();
     if (inStock) {
-      addToCart({
-        id,
-        name,
-        price,
-        oldPrice,
-        image,
-        brand: brand || '',
-        sku,
-        inStock,
-        category,
-        subcategory,
-      }, 1);
+      addToCart(
+        {
+          id,
+          name,
+          price,
+          oldPrice,
+          image,
+          brand: brand || '',
+          sku,
+          inStock,
+          category,
+          subcategory,
+        },
+        1
+      );
     }
   };
 
@@ -111,26 +117,16 @@ export default function ProductCard({
     if (isInCompare(id)) {
       removeFromCompare(id);
     } else {
-      // Передаём showToast, чтобы при добавлении появилось уведомление
-      addToCompare({
-        id,
-        name,
-        price,
-        oldPrice,
-        image,
-        brand: brand || '',
-        sku,
-        inStock,
-        category,
-        subcategory,
-        specs: {},
-      }, showToast);
+      const fullProduct = mockProducts.find(p => p.id === id);
+      if (fullProduct) {
+        addToCompare(fullProduct, showToast);
+      }
     }
   };
 
   return (
-    <div className="group relative bg-[#0a0c10] border border-white/10 rounded-2xl overflow-hidden hover:border-blue-500/40 transition-all duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.15)] hover:-translate-y-1">
-      <Link href={href} className="block">
+    <div className="group relative bg-[#0a0c10] border border-white/10 rounded-2xl overflow-hidden hover:border-blue-500/40 transition-all duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.15)] hover:-translate-y-1 flex flex-col h-full">
+      <Link href={href} className="block flex-1">
         <div className="relative aspect-square bg-gradient-to-br from-[#0f1217] to-[#05070a] overflow-hidden">
           <div className="absolute top-3 left-3 z-10 flex gap-2">
             {isNew && <span className="bg-green-600 text-white text-xs font-bold px-2 py-1 rounded-lg">Новинка</span>}
@@ -156,15 +152,15 @@ export default function ProductCard({
           )}
         </div>
 
-        <div className="p-5 space-y-3">
+        <div className="p-5 space-y-3 flex flex-col">
           <div className="flex items-center justify-between">
             {brand && <span className="text-[10px] text-white/40 font-mono">{brand}</span>}
             <span className="text-[10px] text-white/30 font-mono">Арт. {sku}</span>
           </div>
-          <h3 className="text-white font-bold text-base leading-tight line-clamp-2 min-h-[48px] group-hover:text-blue-400 transition-colors">
+          <h3 className="text-white font-bold text-base leading-tight line-clamp-3 group-hover:text-blue-400 transition-colors flex-1">
             {name}
           </h3>
-          <div className="space-y-1">
+          <div className="space-y-1 mt-auto">
             <div className="flex items-baseline gap-2 flex-wrap">
               <span className="text-2xl font-black text-white">{price.toLocaleString('ru-RU')} ₽</span>
               {oldPrice && <span className="text-sm text-white/40 line-through">{oldPrice.toLocaleString('ru-RU')} ₽</span>}
