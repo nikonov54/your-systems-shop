@@ -1,9 +1,8 @@
-// app/services/montazh/page.tsx
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Wrench, ShieldCheck, Clock, ThumbsUp, Camera, Lock, Thermometer, Wifi, HardDrive, Home, Building, Users, ChevronDown } from 'lucide-react';
+import { ArrowRight, Wrench, ShieldCheck, Clock, ThumbsUp, Camera, Lock, Thermometer, Wifi, HardDrive, Home, Building, Users, ArrowUp, ArrowDown } from 'lucide-react';
 import Header from '@/app/components/Header';
 
 export default function MontazhPage() {
@@ -19,22 +18,18 @@ export default function MontazhPage() {
       sectionRefs.current[index] = el;
     }
   };
-  
-  // Функция прокрутки к следующему блоку
-  const scrollToNextSection = () => {
-    const nextIndex = activeSection + 1;
-    if (nextIndex < sectionRefs.current.length && sectionRefs.current[nextIndex]) {
-      sectionRefs.current[nextIndex]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setActiveSection(nextIndex);
-    } else {
-      if (sectionRefs.current[0]) {
-        sectionRefs.current[0]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        setActiveSection(0);
-      }
-    }
+
+  // Прокрутка вверх
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Прокрутка вниз
+  const scrollToBottom = () => {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   };
   
-  // Отслеживаем видимый блок при скролле
+  // Отслеживаем видимый блок при скролле (опционально)
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 200;
@@ -155,10 +150,7 @@ export default function MontazhPage() {
           <source src="/montazh-video.mp4" type="video/mp4" />
         </video>
         
-        {/* Затемняющий оверлей */}
         <div className="absolute inset-0 bg-black/50"></div>
-        
-        {/* Градиентный оверлей */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#020408] via-[#020408]/40 to-transparent"></div>
         
         <div className="relative container mx-auto px-6 z-10">
@@ -186,15 +178,6 @@ export default function MontazhPage() {
           </div>
         </div>
       </div>
-
-      {/* Кнопка "Вниз" - фиксированная в правом нижнем углу */}
-      <button
-        onClick={scrollToNextSection}
-        className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
-        aria-label="Прокрутить вниз"
-      >
-        <ChevronDown size={24} className="text-white" />
-      </button>
 
       {/* Услуги */}
       <section 
@@ -291,6 +274,24 @@ export default function MontazhPage() {
           </button>
         </div>
       </section>
+
+      {/* Плавающие кнопки навигации (вверх/вниз) */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+        <button
+          onClick={scrollToTop}
+          className="bg-white/10 backdrop-blur-sm hover:bg-blue-600 p-3 rounded-full transition-all duration-300 shadow-lg border border-white/20"
+          aria-label="Вверх"
+        >
+          <ArrowUp size={24} className="text-white" />
+        </button>
+        <button
+          onClick={scrollToBottom}
+          className="bg-white/10 backdrop-blur-sm hover:bg-blue-600 p-3 rounded-full transition-all duration-300 shadow-lg border border-white/20"
+          aria-label="Вниз"
+        >
+          <ArrowDown size={24} className="text-white" />
+        </button>
+      </div>
     </div>
   );
 }

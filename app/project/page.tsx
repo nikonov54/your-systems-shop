@@ -1,15 +1,14 @@
-// app/project/page.tsx
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle, FileText, Building, HardDrive, ChevronDown } from 'lucide-react';
+import { ArrowRight, CheckCircle, FileText, Building, HardDrive, ArrowUp, ArrowDown } from 'lucide-react';
 import Header from '@/app/components/Header';
 
 export default function ProjectPage() {
   const [activeSection, setActiveSection] = useState(0);
   
-  // Создаем refs для каждого блока
+  // Создаем refs для каждого блока (оставляем для отслеживания активного, но без кнопки навигации)
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
   
   // Функция для установки ref
@@ -19,21 +18,17 @@ export default function ProjectPage() {
     }
   };
   
-  // Функция прокрутки к следующему блоку
-  const scrollToNextSection = () => {
-    const nextIndex = activeSection + 1;
-    if (nextIndex < sectionRefs.current.length && sectionRefs.current[nextIndex]) {
-      sectionRefs.current[nextIndex]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setActiveSection(nextIndex);
-    } else {
-      if (sectionRefs.current[0]) {
-        sectionRefs.current[0]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        setActiveSection(0);
-      }
-    }
+  // Прокрутка вверх
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Прокрутка вниз
+  const scrollToBottom = () => {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   };
   
-  // Отслеживаем видимый блок при скролле
+  // Отслеживаем видимый блок при скролле (опционально, можно убрать, но оставим для возможных будущих индикаторов)
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 200;
@@ -98,14 +93,6 @@ export default function ProjectPage() {
           </div>
         </div>
       </div>
-
-      {/* Кнопка "Вниз" */}
-      <button
-        onClick={scrollToNextSection}
-        className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
-      >
-        <ChevronDown size={24} className="text-white" />
-      </button>
 
       {/* Блок 1: Лицензии и сертификаты */}
       <div ref={setRef(0)} id="licenses" className="container mx-auto px-6 py-16 scroll-mt-20">
@@ -231,6 +218,24 @@ export default function ProjectPage() {
         <button className="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-xl font-bold text-lg transition-all inline-flex items-center gap-2">
           Получить консультацию
           <ArrowRight size={20} />
+        </button>
+      </div>
+
+      {/* Плавающие кнопки навигации (вверх/вниз) */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+        <button
+          onClick={scrollToTop}
+          className="bg-white/10 backdrop-blur-sm hover:bg-blue-600 p-3 rounded-full transition-all duration-300 shadow-lg border border-white/20"
+          aria-label="Вверх"
+        >
+          <ArrowUp size={24} className="text-white" />
+        </button>
+        <button
+          onClick={scrollToBottom}
+          className="bg-white/10 backdrop-blur-sm hover:bg-blue-600 p-3 rounded-full transition-all duration-300 shadow-lg border border-white/20"
+          aria-label="Вниз"
+        >
+          <ArrowDown size={24} className="text-white" />
         </button>
       </div>
     </div>
