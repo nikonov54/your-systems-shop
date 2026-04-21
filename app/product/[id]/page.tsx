@@ -1,7 +1,6 @@
-// app/product/[id]/page.tsx
 'use client';
 
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -12,6 +11,7 @@ import Header from '@/app/components/Header';
 
 export default function ProductPage() {
   const params = useParams();
+  const router = useRouter();
   const id = params.id as string;
   
   const { addToCart, addToCompare, removeFromCompare, isInCompare } = useStore();
@@ -57,6 +57,13 @@ export default function ProductPage() {
       setQuantity(val);
     } else if (e.target.value === '') {
       setQuantity(1);
+    }
+  };
+  
+  const handleAddToCart = () => {
+    if (product.inStock) {
+      addToCart(product, quantity);
+      router.push('/cart');
     }
   };
   
@@ -123,7 +130,7 @@ export default function ProductPage() {
                 </button>
               </div>
               <button
-                onClick={() => addToCart(product, quantity)}
+                onClick={handleAddToCart}
                 disabled={!product.inStock}
                 className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-xl font-bold transition-all disabled:bg-slate-700 disabled:cursor-not-allowed"
               >

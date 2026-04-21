@@ -1,4 +1,3 @@
-// app/components/Header.tsx
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -135,7 +134,7 @@ export default function Header() {
   };
 
   return (
-    <header className="relative z-50 bg-[#05070a] border-b border-white/5">
+    <header className="sticky top-0 z-50 bg-[#05070a] border-b border-white/5">
       <div className="container mx-auto px-6 h-20 flex items-center justify-between gap-8">
         <Link href="/" className="flex items-center gap-3 shrink-0 uppercase tracking-tighter">
           <div className="bg-blue-600 p-2 rounded-xl shadow-[0_0_20px_rgba(37,99,235,0.3)]">
@@ -219,7 +218,6 @@ export default function Header() {
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
-                    {/* Убрали truncate, добавили перенос слов и нормальное отображение полного названия */}
                     <div className="font-medium text-white text-sm whitespace-normal break-words">{product.name}</div>
                     <div className="text-xs text-slate-400">{product.price.toLocaleString('ru-RU')} ₽</div>
                     {product.brand && <div className="text-xs text-blue-400">{product.brand}</div>}
