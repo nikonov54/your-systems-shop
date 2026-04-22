@@ -2097,4 +2097,4 @@ export const mobileThermalFilters = [
     name: 'Вес',
     options: ['около 20 г']
   }
-];
+  ];

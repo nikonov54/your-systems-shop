@@ -77,6 +77,7 @@ export default function Header() {
       'Внешние HDD': 'external-hdd',
       'Коммутаторы': 'switches',
       'Маршрутизаторы': 'routers',
+      'Роутеры Micro-Drive': 'microdrive-routers',
       'Wi-Fi точки': 'wi-fi-access-points',
       'SFP модули': 'sfp-modules',
       'PoE инжекторы': 'poe-injectors',

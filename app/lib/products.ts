@@ -6,6 +6,10 @@ import { mountingEnclosures } from './data/shkafy/mounting-enclosures';
 import { medicalCabinets } from './data/shkafy/medical-cabinets';
 import { telecommunicationRacks } from './data/shkafy/telecommunication-racks';
 import { cabinetAccessories } from './data/shkafy/cabinet-accessories';
+import { microdriveRouters } from './data/setevoe-oborudovanie/microdrive-routers';
+import { poeInjectors } from './data/setevoe-oborudovanie/poe-injectors';
+import { antennas } from './data/setevoe-oborudovanie/antennas';
+import { telemetry } from './data/setevoe-oborudovanie/telemetry';
 
 // Объединяем все товары для поиска, сравнения и каталога
 export const mockProducts = [
@@ -17,6 +21,10 @@ export const mockProducts = [
   ...medicalCabinets,
   ...telecommunicationRacks,
   ...cabinetAccessories,
+  ...microdriveRouters,
+  ...poeInjectors,
+  ...antennas,
+  ...telemetry,
 ];
 
 // Экспорт типа Product для использования в других файлах
