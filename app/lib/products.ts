@@ -5,6 +5,7 @@ import { ver3Cabinets } from './data/shkafy/ver3-cabinets';
 import { mountingEnclosures } from './data/shkafy/mounting-enclosures';
 import { medicalCabinets } from './data/shkafy/medical-cabinets';
 import { telecommunicationRacks } from './data/shkafy/telecommunication-racks';
+import { cabinetAccessories } from './data/shkafy/cabinet-accessories';
 
 // Объединяем все товары для поиска, сравнения и каталога
 export const mockProducts = [
@@ -15,6 +16,7 @@ export const mockProducts = [
   ...mountingEnclosures,
   ...medicalCabinets,
   ...telecommunicationRacks,
+  ...cabinetAccessories,
 ];
 
 // Экспорт типа Product для использования в других файлах

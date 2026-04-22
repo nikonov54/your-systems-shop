@@ -8,7 +8,6 @@ import { catalogData, type Category } from '@/menu-data';
 import { mockProducts } from '@/app/lib/products';
 import { useStore } from '@/app/context/StoreContext';
 
-// Нормализация для поиска
 function normalize(str: string): string {
   return str.toLowerCase().replace(/[\s-]/g, '');
 }
@@ -25,7 +24,6 @@ export default function Header() {
   const [showDropdown, setShowDropdown] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
 
-  // Дебаунс для поиска
   useEffect(() => {
     const timer = setTimeout(() => {
       if (searchQuery.trim().length === 0) {
@@ -33,7 +31,6 @@ export default function Header() {
         setShowDropdown(false);
         return;
       }
-
       const queryNorm = normalize(searchQuery);
       const filtered = mockProducts.filter((product) => {
         if (normalize(product.name).includes(queryNorm)) return true;
@@ -50,11 +47,9 @@ export default function Header() {
       setSearchResults(filtered.slice(0, 8));
       setShowDropdown(true);
     }, 300);
-
     return () => clearTimeout(timer);
   }, [searchQuery]);
 
-  // Закрытие дропдауна при клике вне
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
@@ -146,7 +141,6 @@ export default function Header() {
           </div>
         </Link>
 
-        {/* УСЛУГИ */}
         <div className="relative group" onMouseLeave={() => setActiveService(null)}>
           <button className="flex items-center gap-3 bg-transparent border border-white/20 text-white px-6 py-2.5 rounded-xl text-xs font-bold tracking-[0.2em] hover:bg-blue-600 transition-all uppercase">
             <Menu size={18} className="text-blue-400 group-hover:text-white" /> УСЛУГИ
@@ -158,7 +152,6 @@ export default function Header() {
           </div>
         </div>
 
-        {/* КАТАЛОГ */}
         <div className="relative group" onMouseLeave={() => setActiveCat(null)}>
           <button className="flex items-center gap-3 bg-transparent border border-white/20 text-white px-6 py-2.5 rounded-xl text-xs font-bold tracking-[0.2em] hover:bg-blue-600 transition-all uppercase">
             <Menu size={18} className="text-blue-400 group-hover:text-white" /> КАТАЛОГ
@@ -186,7 +179,6 @@ export default function Header() {
           </div>
         </div>
 
-        {/* ПОИСК С ВЫПАДАЮЩИМ СПИСКОМ */}
         <div className="flex flex-1 max-w-sm relative" ref={searchRef}>
           <form onSubmit={handleSearchSubmit} className="w-full relative">
             <input
@@ -201,21 +193,12 @@ export default function Header() {
               <Search size={18} />
             </button>
           </form>
-
           {showDropdown && searchResults.length > 0 && (
             <div className="absolute top-full left-0 right-0 mt-2 bg-[#0a0c10] border border-white/10 rounded-xl shadow-2xl z-50 max-h-96 overflow-y-auto">
               {searchResults.map((product) => (
-                <div
-                  key={product.id}
-                  onClick={() => handleResultClick(product.id)}
-                  className="flex items-center gap-4 p-3 hover:bg-white/5 cursor-pointer transition-colors border-b border-white/5 last:border-0"
-                >
+                <div key={product.id} onClick={() => handleResultClick(product.id)} className="flex items-center gap-4 p-3 hover:bg-white/5 cursor-pointer transition-colors border-b border-white/5 last:border-0">
                   <div className="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center overflow-hidden shrink-0">
-                    {product.image ? (
-                      <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
-                    ) : (
-                      <div className="text-white/20 text-xs">Нет фото</div>
-                    )}
+                    {product.image ? <img src={product.image} alt={product.name} className="w-full h-full object-contain" /> : <div className="text-white/20 text-xs">Нет фото</div>}
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="font-medium text-white text-sm whitespace-normal break-words">{product.name}</div>
@@ -225,34 +208,18 @@ export default function Header() {
                 </div>
               ))}
               <div className="p-2 border-t border-white/5">
-                <button
-                  onClick={handleSearchSubmit}
-                  className="w-full text-center text-xs text-slate-400 hover:text-blue-400 py-1"
-                >
-                  Показать все результаты →
-                </button>
+                <button onClick={handleSearchSubmit} className="w-full text-center text-xs text-slate-400 hover:text-blue-400 py-1">Показать все результаты →</button>
               </div>
             </div>
           )}
         </div>
 
-        {/* ПРАВЫЙ БЛОК: ТЕЛЕФОН, СРАВНЕНИЕ, КОРЗИНА */}
         <div className="flex items-center gap-6 font-black">
           <a href="tel:+7 (913) 946-44-60" className="text-lg hover:text-blue-500 transition-colors tracking-tighter">+7 (913) 946-44-60</a>
-          <Link href="/compare">
-            <button className="p-3 rounded-xl transition-all hover:bg-blue-600">
-              <Scale size={20} className="text-white/60 hover:text-white transition-colors" />
-            </button>
-          </Link>
+          <Link href="/compare"><button className="p-3 rounded-xl transition-all hover:bg-blue-600"><Scale size={20} className="text-white/60 hover:text-white transition-colors" /></button></Link>
           <Link href="/cart" className="relative">
-            <button className="p-3 rounded-xl transition-all hover:bg-blue-600">
-              <ShoppingCart size={20} className="text-white/60 hover:text-white transition-colors" />
-            </button>
-            {cartCount > 0 && (
-              <span className="absolute -top-1 -right-1 bg-white text-blue-600 text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
-                {cartCount}
-              </span>
-            )}
+            <button className="p-3 rounded-xl transition-all hover:bg-blue-600"><ShoppingCart size={20} className="text-white/60 hover:text-white transition-colors" /></button>
+            {cartCount > 0 && <span className="absolute -top-1 -right-1 bg-white text-blue-600 text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">{cartCount}</span>}
           </Link>
         </div>
       </div>

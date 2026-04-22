@@ -171,20 +171,13 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
     return slugMap[text] || text.toLowerCase().replace(/ /g, '-');
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const scrollToBottom = () => {
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  const scrollToBottom = () => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 
   return (
     <main className="min-h-screen bg-[#020408] font-sans text-white">
       <Header />
-
       <div className="flex">
-        {/* Боковая панель фильтров – фиксированная */}
         <aside className="fixed w-80 left-0 top-[80px] h-[calc(100vh-80px)] border-r border-white/5 bg-[#05070a] overflow-y-auto z-30">
           <div className="h-14 px-8 border-b border-white/5 flex items-center justify-between shrink-0">
             <span className="text-[11px] uppercase font-black tracking-[0.2em] text-white">ФИЛЬТРЫ</span>
@@ -204,9 +197,7 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
                       {group.options.map((option) => (
                         <label key={option} className="flex items-center gap-3 cursor-pointer group/label">
                           <input type="checkbox" className="w-4 h-4 border border-white/10 rounded bg-white/5 checked:bg-blue-600 transition-all shrink-0" />
-                          <span className="text-[12px] font-bold text-white/60 group-hover/label:text-white transition-colors">
-                            {option}
-                          </span>
+                          <span className="text-[12px] font-bold text-white/60 group-hover/label:text-white transition-colors">{option}</span>
                         </label>
                       ))}
                     </div>
@@ -219,7 +210,6 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
           </div>
         </aside>
 
-        {/* Основной контент с отступом слева */}
         <div className="ml-80 bg-[#020408]">
           <div className="px-12">
             <div className="py-6 border-b border-white/5 sticky top-[80px] bg-[#020408] z-40">
@@ -238,7 +228,6 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
                 })}
               </nav>
             </div>
-            
             {filteredProducts.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-12">
                 {filteredProducts.map((product) => (
@@ -271,23 +260,9 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
           </div>
         </div>
       </div>
-
-      {/* Плавающие кнопки навигации */}
       <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
-        <button
-          onClick={scrollToTop}
-          className="bg-white/10 backdrop-blur-sm hover:bg-blue-600 p-3 rounded-full transition-all duration-300 shadow-lg border border-white/20"
-          aria-label="Вверх"
-        >
-          <ArrowUp size={24} className="text-white" />
-        </button>
-        <button
-          onClick={scrollToBottom}
-          className="bg-white/10 backdrop-blur-sm hover:bg-blue-600 p-3 rounded-full transition-all duration-300 shadow-lg border border-white/20"
-          aria-label="Вниз"
-        >
-          <ArrowDown size={24} className="text-white" />
-        </button>
+        <button onClick={scrollToTop} className="bg-white/10 backdrop-blur-sm hover:bg-blue-600 p-3 rounded-full transition-all duration-300 shadow-lg border border-white/20" aria-label="Вверх"><ArrowUp size={24} className="text-white" /></button>
+        <button onClick={scrollToBottom} className="bg-white/10 backdrop-blur-sm hover:bg-blue-600 p-3 rounded-full transition-all duration-300 shadow-lg border border-white/20" aria-label="Вниз"><ArrowDown size={24} className="text-white" /></button>
       </div>
     </main>
   );
