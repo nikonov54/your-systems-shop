@@ -1,18 +1,18 @@
 import type { Product } from '@/app/context/StoreContext';
 
 export const microdriveRouters: Product[] = [
-  // 1. Tandem-4GX-5
+  // 1. Tandem 4GХ-51 (Cat.4, с блоком питания)
   {
     id: 'md-router-001',
     name: '4G роутер Micro-Drive Tandem-4GX-5 с поддержкой PoE',
-    price: 0,
+    price: 13217,
     image: '/images/setevoe-oborudovanie/routers/microdrive-tandem-4gx-5-router.jpg',
     brand: 'Micro-Drive',
-    sku: 'Tandem-4GX-5',
+    sku: 'Tandem-4GX-51',
     inStock: true,
     category: 'setevoe-oborudovanie',
     subcategory: 'microdrive-routers',
-    description: 'Профессиональный роутер Tandem-4GX-5 предназначен для обеспечения беспроводного доступа в интернет через LAN порты или Wi-Fi с помощью встроенного промышленного LTE модуля Cat.4. Поддерживает мобильные сети 4G/3G/2G. Работает под управлением ОС на ядре Linux. Имеет 2 Ethernet порта, поддержку Passive PoE, Wi-Fi 2.4 ГГц.',
+    description: 'Профессиональный роутер Tandem-4GX-51 с LTE Cat.4, 2x Ethernet, PoE, Wi-Fi. В комплекте блок питания. Скорость до 150 Мбит/с.',
     specs: {
       'LTE категория': 'Cat.4 (150/50 Мбит/с)',
       'Слоты SIM': '2 (Mini SIM)',
@@ -36,18 +36,53 @@ export const microdriveRouters: Product[] = [
       { name: 'Комплектация', url: '' }
     ]
   },
-  // 2. Tandem-4GX-6
+  // 2. Tandem 4GХ-52 (Cat.4, без блока питания)
   {
     id: 'md-router-002',
-    name: '4G роутер Micro-Drive Tandem-4GX-6 LTE Cat.6',
-    price: 0,
-    image: '/images/setevoe-oborudovanie/routers/microdrive-tandem-4gx-6-router.jpg',
+    name: '4G роутер Micro-Drive Tandem-4GX-5 без блока питания',
+    price: 12569,
+    image: '/images/setevoe-oborudovanie/routers/microdrive-tandem-4gx-5-router.jpg',
     brand: 'Micro-Drive',
-    sku: 'Tandem-4GX-6',
+    sku: 'Tandem-4GX-52',
     inStock: true,
     category: 'setevoe-oborudovanie',
     subcategory: 'microdrive-routers',
-    description: 'Профессиональный роутер Tandem-4GX-6 с LTE Cat.6, агрегацией каналов, 2x Ethernet, PoE, Wi-Fi. Скорость до 300 Мбит/с.',
+    description: 'Профессиональный роутер Tandem-4GX-52 с LTE Cat.4, 2x Ethernet, PoE, Wi-Fi. Без блока питания в комплекте. Скорость до 150 Мбит/с.',
+    specs: {
+      'LTE категория': 'Cat.4 (150/50 Мбит/с)',
+      'Слоты SIM': '2 (Mini SIM)',
+      'Ethernet порты': '2x 10/100 Мбит/с (1 с PoE)',
+      'Wi-Fi': '2.4 ГГц, 802.11b/g/n, до 150 Мбит/с',
+      'Антенные разъемы': '2x SMA (LTE), 1x RP-SMA (Wi-Fi)',
+      'Питание': '9-36 В DC или Passive PoE (24-36 В)',
+      'Потребляемая мощность': '≤5 Вт',
+      'Рабочая температура': '-40…+60 °C',
+      'Материал корпуса': 'анодированный алюминий',
+      'Габариты': '13,5 x 10,5 x 5,5 см',
+      'Вес': '180 г',
+      'Гарантия': '12 мес.'
+    },
+    docs: [
+      { name: 'Паспорт изделия', url: '/docs/pasport-microdrive-tandem-4gx-5-router.pdf' },
+      { name: 'Руководство пользователя', url: '' },
+      { name: 'Руководство по WEB интерфейсу', url: '' },
+      { name: 'Декларация соответствия', url: '/docs/declaration-microdrive-routers.pdf' },
+      { name: '3D модель (STEP)', url: '' },
+      { name: 'Комплектация', url: '' }
+    ]
+  },
+  // 3. Tandem 4GХ-61 (Cat.6, с блоком питания)
+  {
+    id: 'md-router-003',
+    name: '4G роутер Micro-Drive Tandem-4GX-6 LTE Cat.6',
+    price: 15890,
+    image: '/images/setevoe-oborudovanie/routers/microdrive-tandem-4gx-6-router.jpg',
+    brand: 'Micro-Drive',
+    sku: 'Tandem-4GX-61',
+    inStock: true,
+    category: 'setevoe-oborudovanie',
+    subcategory: 'microdrive-routers',
+    description: 'Профессиональный роутер Tandem-4GX-61 с LTE Cat.6, агрегацией каналов, 2x Ethernet, PoE, Wi-Fi. Скорость до 300 Мбит/с.',
     specs: {
       'LTE категория': 'Cat.6 (300/50 Мбит/с)',
       'Слоты SIM': '2 (Mini SIM)',
@@ -71,18 +106,53 @@ export const microdriveRouters: Product[] = [
       { name: 'Комплектация', url: '' }
     ]
   },
-  // 3. TR-600
+  // 4. Tandem 4GХ-62 (Cat.6, без блока питания)
   {
-    id: 'md-router-003',
+    id: 'md-router-004',
+    name: '4G роутер Micro-Drive Tandem-4GX-6 без блока питания',
+    price: 14796,
+    image: '/images/setevoe-oborudovanie/routers/microdrive-tandem-4gx-6-router.jpg',
+    brand: 'Micro-Drive',
+    sku: 'Tandem-4GX-62',
+    inStock: true,
+    category: 'setevoe-oborudovanie',
+    subcategory: 'microdrive-routers',
+    description: 'Профессиональный роутер Tandem-4GX-62 с LTE Cat.6, агрегацией каналов, 2x Ethernet, PoE, Wi-Fi. Без блока питания в комплекте.',
+    specs: {
+      'LTE категория': 'Cat.6 (300/50 Мбит/с)',
+      'Слоты SIM': '2 (Mini SIM)',
+      'Ethernet порты': '2x 10/100 Мбит/с (1 с PoE)',
+      'Wi-Fi': '2.4 ГГц, 802.11b/g/n, до 150 Мбит/с',
+      'Антенные разъемы': '2x SMA (LTE), 1x RP-SMA (Wi-Fi)',
+      'Питание': '9-36 В DC или Passive PoE (24-36 В)',
+      'Потребляемая мощность': '≤6 Вт',
+      'Рабочая температура': '-40…+60 °C',
+      'Материал корпуса': 'анодированный алюминий',
+      'Габариты': '13,5 x 10,5 x 5,5 см',
+      'Вес': '180 г',
+      'Гарантия': '12 мес.'
+    },
+    docs: [
+      { name: 'Паспорт изделия', url: '/docs/pasport-microdrive-tandem-4gx-6-router.pdf' },
+      { name: 'Руководство пользователя', url: '' },
+      { name: 'Руководство по WEB интерфейсу', url: '' },
+      { name: 'Декларация соответствия', url: '/docs/declaration-microdrive-routers.pdf' },
+      { name: '3D модель (STEP)', url: '' },
+      { name: 'Комплектация', url: '' }
+    ]
+  },
+  // 5. TR-600
+  {
+    id: 'md-router-005',
     name: '4G роутер Micro-Drive TR-600',
-    price: 0,
+    price: 20318,
     image: '/images/setevoe-oborudovanie/routers/microdrive-tr-600-router.jpg',
     brand: 'Micro-Drive',
     sku: 'TR-600',
     inStock: true,
     category: 'setevoe-oborudovanie',
     subcategory: 'microdrive-routers',
-    description: 'Профессиональный роутер TR-600 с LTE Cat.6, 5 портов Ethernet, PoE OUT (802.3at/af), Wi-Fi. Подходит для промышленного применения.',
+    description: 'Профессиональный роутер TR-600 с LTE Cat.6, 5 портов Ethernet, PoE OUT (802.3at/af), Wi-Fi.',
     specs: {
       'LTE категория': 'Cat.6 (300/50 Мбит/с)',
       'Слоты SIM': '2 (Mini SIM)',
@@ -107,11 +177,11 @@ export const microdriveRouters: Product[] = [
       { name: 'Комплектация', url: '' }
     ]
   },
-  // 4. TR-601
+  // 6. TR-601
   {
-    id: 'md-router-004',
+    id: 'md-router-006',
     name: '4G роутер Micro-Drive TR-601',
-    price: 0,
+    price: 17280,
     image: '/images/setevoe-oborudovanie/routers/microdrive-tr-601-router.jpg',
     brand: 'Micro-Drive',
     sku: 'TR-601',
@@ -143,11 +213,11 @@ export const microdriveRouters: Product[] = [
       { name: 'Комплектация', url: '' }
     ]
   },
-  // 5. NR-400
+  // 7. NR-400
   {
-    id: 'md-router-005',
+    id: 'md-router-007',
     name: 'Уличный 4G роутер Micro-Drive NR-400',
-    price: 0,
+    price: 13460,
     image: '/images/setevoe-oborudovanie/routers/microdrive-nr-400-router.jpg',
     brand: 'Micro-Drive',
     sku: 'NR-400',
@@ -176,11 +246,11 @@ export const microdriveRouters: Product[] = [
       { name: 'Комплектация', url: '' }
     ]
   },
-  // 6. NR-410
+  // 8. NR-410
   {
-    id: 'md-router-006',
+    id: 'md-router-008',
     name: 'Уличный 4G роутер Micro-Drive NR-410',
-    price: 0,
+    price: 16200,
     image: '/images/setevoe-oborudovanie/routers/microdrive-nr-410-router.jpg',
     brand: 'Micro-Drive',
     sku: 'NR-410',
@@ -209,11 +279,11 @@ export const microdriveRouters: Product[] = [
       { name: 'Комплектация', url: '' }
     ]
   },
-  // 7. NR-412
+  // 9. NR-412
   {
-    id: 'md-router-007',
+    id: 'md-router-009',
     name: 'Уличный 4G роутер Micro-Drive NR-412',
-    price: 0,
+    price: 17780,
     image: '/images/setevoe-oborudovanie/routers/microdrive-nr-412-router.jpg',
     brand: 'Micro-Drive',
     sku: 'NR-412',
@@ -243,11 +313,11 @@ export const microdriveRouters: Product[] = [
       { name: 'Комплектация', url: '' }
     ]
   },
-  // 8. NR-420
+  // 10. NR-420
   {
-    id: 'md-router-008',
+    id: 'md-router-010',
     name: 'Уличный 4G роутер Micro-Drive NR-420',
-    price: 0,
+    price: 10665,
     image: '/images/setevoe-oborudovanie/routers/microdrive-nr-420-router.jpg',
     brand: 'Micro-Drive',
     sku: 'NR-420',
@@ -276,11 +346,11 @@ export const microdriveRouters: Product[] = [
       { name: 'Комплектация', url: '' }
     ]
   },
-  // 9. NR-600
+  // 11. NR-600
   {
-    id: 'md-router-009',
+    id: 'md-router-011',
     name: 'Уличный 4G роутер Micro-Drive NR-600',
-    price: 0,
+    price: 15012,
     image: '/images/setevoe-oborudovanie/routers/microdrive-nr-600-router.jpg',
     brand: 'Micro-Drive',
     sku: 'NR-600',
@@ -310,11 +380,11 @@ export const microdriveRouters: Product[] = [
       { name: 'Комплектация', url: '' }
     ]
   },
-  // 10. NR-612
+  // 12. NR-612
   {
-    id: 'md-router-010',
+    id: 'md-router-012',
     name: 'Уличный 4G роутер Micro-Drive NR-612',
-    price: 0,
+    price: 20250,
     image: '/images/setevoe-oborudovanie/routers/microdrive-nr-612-router.jpg',
     brand: 'Micro-Drive',
     sku: 'NR-612',
@@ -344,11 +414,11 @@ export const microdriveRouters: Product[] = [
       { name: 'Комплектация', url: '' }
     ]
   },
-  // 11. NR-615
+  // 13. NR-615
   {
-    id: 'md-router-011',
+    id: 'md-router-013',
     name: 'Уличный 4G роутер Micro-Drive NR-615',
-    price: 0,
+    price: 23328,
     image: '/images/setevoe-oborudovanie/routers/microdrive-nr-615-router.jpg',
     brand: 'Micro-Drive',
     sku: 'NR-615',
@@ -378,11 +448,11 @@ export const microdriveRouters: Product[] = [
       { name: 'Комплектация', url: '' }
     ]
   },
-  // 12. NR-712
+  // 14. NR-712
   {
-    id: 'md-router-012',
+    id: 'md-router-014',
     name: 'Уличный 4G роутер Micro-Drive NR-712',
-    price: 0,
+    price: 24211,
     image: '/images/setevoe-oborudovanie/routers/microdrive-nr-712-router.jpg',
     brand: 'Micro-Drive',
     sku: 'NR-712',
@@ -410,81 +480,20 @@ export const microdriveRouters: Product[] = [
       { name: 'Комплектация', url: '' }
     ]
   },
-  // 13. Tandem-4GL-OEM-11
-  {
-    id: 'md-router-013',
-    name: '4G роутер Micro-Drive Tandem-4GL-OEM-11',
-    price: 0,
-    image: '/images/setevoe-oborudovanie/routers/microdrive-tandem-4gl-oem-11-router.jpg',
-    brand: 'Micro-Drive',
-    sku: 'Tandem-4GL-OEM-11',
-    inStock: true,
-    category: 'setevoe-oborudovanie',
-    subcategory: 'microdrive-routers',
-    description: 'OEM-версия роутера Tandem-4GX с LTE Cat.4, 2x Ethernet, Wi-Fi, поддержкой PoE. Компактный корпус для встраивания.',
-    specs: {
-      'LTE категория': 'Cat.4 (150/50 Мбит/с)',
-      'Слоты SIM': '2 (Mini SIM)',
-      'Ethernet порты': '2x 10/100 Мбит/с (1 с PoE)',
-      'Wi-Fi': '2.4 ГГц, 802.11b/g/n',
-      'Питание': '9-36 В DC или Passive PoE',
-      'Рабочая температура': '-40…+60 °C',
-      'Гарантия': '12 мес.'
-    },
-    docs: [
-      { name: 'Паспорт изделия', url: '' },
-      { name: 'Руководство пользователя', url: '' },
-      { name: 'Руководство по WEB интерфейсу', url: '' },
-      { name: 'Декларация соответствия', url: '/docs/declaration-microdrive-routers.pdf' },
-      { name: '3D модель (STEP)', url: '' },
-      { name: 'Комплектация', url: '' }
-    ]
-  },
-  // 14. Tandem-4GS-OEM-11
-  {
-    id: 'md-router-014',
-    name: '4G роутер Micro-Drive Tandem-4GS-OEM-11',
-    price: 0,
-    image: '/images/setevoe-oborudovanie/routers/microdrive-tandem-4gs-oem-11-router.jpg',
-    brand: 'Micro-Drive',
-    sku: 'Tandem-4GS-OEM-11',
-    inStock: true,
-    category: 'setevoe-oborudovanie',
-    subcategory: 'microdrive-routers',
-    description: 'OEM-версия роутера с последовательным портом RS-232/485.',
-    specs: {
-      'LTE категория': 'Cat.4 (150/50 Мбит/с)',
-      'Слоты SIM': '2 (Mini SIM)',
-      'Ethernet порты': '1x 10/100 Мбит/с',
-      'Последовательные порты': 'RS-232, RS-485',
-      'Wi-Fi': '2.4 ГГц, 802.11b/g/n',
-      'Питание': '9-36 В DC',
-      'Рабочая температура': '-40…+60 °C',
-      'Гарантия': '12 мес.'
-    },
-    docs: [
-      { name: 'Паспорт изделия', url: '' },
-      { name: 'Руководство пользователя', url: '' },
-      { name: 'Руководство по WEB интерфейсу', url: '' },
-      { name: 'Декларация соответствия', url: '/docs/declaration-microdrive-routers.pdf' },
-      { name: '3D модель (STEP)', url: '' },
-      { name: 'Комплектация', url: '' }
-    ]
-  },
   // 15. Tandem-4GT-OEM-11
   {
     id: 'md-router-015',
     name: '4G роутер Micro-Drive Tandem-4GT-OEM-11',
-    price: 0,
+    price: 14688,
     image: '/images/setevoe-oborudovanie/routers/microdrive-tandem-4gt-oem-11-router.jpg',
     brand: 'Micro-Drive',
     sku: 'Tandem-4GT-OEM-11',
     inStock: true,
     category: 'setevoe-oborudovanie',
     subcategory: 'microdrive-routers',
-    description: 'OEM-роутер с поддержкой GPS и последовательным портом.',
+    description: 'OEM-роутер с LTE Cat.6, поддержкой GPS и последовательным портом.',
     specs: {
-      'LTE категория': 'Cat.4 (150/50 Мбит/с)',
+      'LTE категория': 'Cat.6 (300/50 Мбит/с)',
       'Слоты SIM': '2 (Mini SIM)',
       'Ethernet порты': '1x 10/100 Мбит/с',
       'GPS': 'да',
@@ -507,7 +516,7 @@ export const microdriveRouters: Product[] = [
   {
     id: 'md-router-016',
     name: '4G роутер Micro-Drive Tandem-4G6-OEM-4G',
-    price: 0,
+    price: 13325,
     image: '/images/setevoe-oborudovanie/routers/microdrive-tandem-4g6-oem-4g-router.jpg',
     brand: 'Micro-Drive',
     sku: 'Tandem-4G6-OEM-4G',
@@ -537,7 +546,7 @@ export const microdriveRouters: Product[] = [
   {
     id: 'md-router-017',
     name: '4G роутер Micro-Drive Tandem-4GT2-OEM-1',
-    price: 0,
+    price: 15093,
     image: '/images/setevoe-oborudovanie/routers/microdrive-tandem-4gt2-oem-1-router.jpg',
     brand: 'Micro-Drive',
     sku: 'Tandem-4GT2-OEM-1',
@@ -546,9 +555,9 @@ export const microdriveRouters: Product[] = [
     subcategory: 'microdrive-routers',
     description: 'OEM-роутер с двумя SIM, GPS, последовательным портом.',
     specs: {
-      'LTE категория': 'Cat.4 (150/50 Мбит/с)',
+      'LTE категория': 'Cat.6 (300/50 Мбит/с)',
       'Слоты SIM': '2 (Mini SIM)',
-      'Ethernet порты': '1x 10/100 Мбит/с',
+      'Ethernet порты': '2x 10/100 Мбит/с',
       'GPS': 'да',
       'Последовательные порты': 'RS-232, RS-485',
       'Wi-Fi': '2.4 ГГц, 802.11b/g/n',
@@ -569,7 +578,7 @@ export const microdriveRouters: Product[] = [
   {
     id: 'md-router-018',
     name: '4G роутер Micro-Drive Tandem-4G12-OEM-1',
-    price: 0,
+    price: 18266,
     image: '/images/setevoe-oborudovanie/routers/microdrive-tandem-4g12-oem-1-router.jpg',
     brand: 'Micro-Drive',
     sku: 'Tandem-4G12-OEM-1',
@@ -583,6 +592,67 @@ export const microdriveRouters: Product[] = [
       'Ethernet порты': '1x 10/100/1000 Мбит/с',
       'GPS': 'да',
       'Питание': '9-36 В DC или PoE',
+      'Рабочая температура': '-40…+60 °C',
+      'Гарантия': '12 мес.'
+    },
+    docs: [
+      { name: 'Паспорт изделия', url: '' },
+      { name: 'Руководство пользователя', url: '' },
+      { name: 'Руководство по WEB интерфейсу', url: '' },
+      { name: 'Декларация соответствия', url: '/docs/declaration-microdrive-routers.pdf' },
+      { name: '3D модель (STEP)', url: '' },
+      { name: 'Комплектация', url: '' }
+    ]
+  },
+  // 19. Tandem-4GL-OEM-11
+  {
+    id: 'md-router-019',
+    name: '4G роутер Micro-Drive Tandem-4GL-OEM-11',
+    price: 7142,
+    image: '/images/setevoe-oborudovanie/routers/microdrive-tandem-4gl-oem-11-router.jpg',
+    brand: 'Micro-Drive',
+    sku: 'Tandem-4GL-OEM-11',
+    inStock: true,
+    category: 'setevoe-oborudovanie',
+    subcategory: 'microdrive-routers',
+    description: 'OEM-роутер с LTE Cat.4, 2x Ethernet, Wi-Fi, поддержкой PoE. Компактный корпус для встраивания.',
+    specs: {
+      'LTE категория': 'Cat.4 (150/50 Мбит/с)',
+      'Слоты SIM': '1 (Mini SIM)',
+      'Ethernet порты': '2x 10/100 Мбит/с (1 с PoE)',
+      'Wi-Fi': '2.4 ГГц, 802.11b/g/n',
+      'Питание': '9-36 В DC или Passive PoE',
+      'Рабочая температура': '-40…+60 °C',
+      'Гарантия': '12 мес.'
+    },
+    docs: [
+      { name: 'Паспорт изделия', url: '' },
+      { name: 'Руководство пользователя', url: '' },
+      { name: 'Руководство по WEB интерфейсу', url: '' },
+      { name: 'Декларация соответствия', url: '/docs/declaration-microdrive-routers.pdf' },
+      { name: '3D модель (STEP)', url: '' },
+      { name: 'Комплектация', url: '' }
+    ]
+  },
+  // 20. Tandem-4GS-OEM-11
+  {
+    id: 'md-router-020',
+    name: '4G роутер Micro-Drive Tandem-4GS-OEM-11',
+    price: 9950,
+    image: '/images/setevoe-oborudovanie/routers/microdrive-tandem-4gs-oem-11-router.jpg',
+    brand: 'Micro-Drive',
+    sku: 'Tandem-4GS-OEM-11',
+    inStock: true,
+    category: 'setevoe-oborudovanie',
+    subcategory: 'microdrive-routers',
+    description: 'OEM-версия роутера с последовательным портом RS-232/485.',
+    specs: {
+      'LTE категория': 'Cat.4 (150/50 Мбит/с)',
+      'Слоты SIM': '2 (Mini SIM)',
+      'Ethernet порты': '1x 10/100 Мбит/с',
+      'Последовательные порты': 'RS-232, RS-485',
+      'Wi-Fi': '2.4 ГГц, 802.11b/g/n',
+      'Питание': '9-36 В DC',
       'Рабочая температура': '-40…+60 °C',
       'Гарантия': '12 мес.'
     },
