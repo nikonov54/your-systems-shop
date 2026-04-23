@@ -5,7 +5,7 @@ export const poeInjectors: Product[] = [
   {
     id: 'poe-001',
     name: 'PoE инжектор Micro-Drive MD101-24V-1A',
-    price: 0,
+    price: 1121,
     image: '/images/setevoe-oborudovanie/poe-injectors/microdrive-md101-24v-1a-poe-injector.jpg',
     brand: 'Micro-Drive',
     sku: 'MD101-24V-1A',
@@ -34,7 +34,7 @@ export const poeInjectors: Product[] = [
   {
     id: 'poe-002',
     name: 'PoE инжектор Micro-Drive MD102-48V-0.5A',
-    price: 0,
+    price: 1121,
     image: '/images/setevoe-oborudovanie/poe-injectors/microdrive-md102-48v-0-5a-poe-injector.jpg',
     brand: 'Micro-Drive',
     sku: 'MD102-48V-0.5A',
@@ -63,7 +63,7 @@ export const poeInjectors: Product[] = [
   {
     id: 'poe-003',
     name: 'PoE инжектор Micro-Drive MD1000-48V-0.5A гигабитный',
-    price: 0,
+    price: 1121,
     image: '/images/setevoe-oborudovanie/poe-injectors/microdrive-md1000-48v-0-5a-poe-injector.jpg',
     brand: 'Micro-Drive',
     sku: 'MD1000-48V-0.5A',

@@ -5,7 +5,7 @@ export const antennas: Product[] = [
   {
     id: 'ant-001',
     name: 'Антенна Micro-Drive A-300LTE',
-    price: 0,
+    price: 648,
     image: '/images/setevoe-oborudovanie/antennas/microdrive-a-300lte-antenna.jpg',
     brand: 'Micro-Drive',
     sku: 'A-300LTE',
@@ -31,7 +31,7 @@ export const antennas: Product[] = [
   {
     id: 'ant-002',
     name: 'Антенна Micro-Drive A-500LTE',
-    price: 0,
+    price: 446,
     image: '/images/setevoe-oborudovanie/antennas/microdrive-a-500lte-antenna.jpg',
     brand: 'Micro-Drive',
     sku: 'A-500LTE',
@@ -57,7 +57,7 @@ export const antennas: Product[] = [
   {
     id: 'ant-003',
     name: 'Антенна Micro-Drive A-600LTE',
-    price: 0,
+    price: 1276,
     image: '/images/setevoe-oborudovanie/antennas/microdrive-a-600lte-antenna.jpg',
     brand: 'Micro-Drive',
     sku: 'A-600LTE',
