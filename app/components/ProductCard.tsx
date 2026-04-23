@@ -5,6 +5,7 @@ import { ShoppingCart, GitCompare, Minus, Plus } from 'lucide-react';
 import { useStore } from '@/app/context/StoreContext';
 import { useToast } from './Toast';
 import { mockProducts } from '@/app/lib/products';
+import { useState } from 'react';
 
 interface ProductCardProps {
   id: string;
@@ -39,6 +40,7 @@ export default function ProductCard({
 }: ProductCardProps) {
   const { cartItems, addToCart, updateQuantity, isInCompare, addToCompare, removeFromCompare } = useStore();
   const { showToast, ToastComponent } = useToast();
+  const [imgSrc, setImgSrc] = useState(image);
 
   if (price === undefined || price === null) return null;
 
@@ -124,6 +126,11 @@ export default function ProductCard({
     }
   };
 
+  const handleImageError = () => {
+    // Если изображение не загрузилось, показываем заглушку
+    setImgSrc('/images/placeholder.jpg');
+  };
+
   return (
     <div className="group relative bg-[#0a0c10] border border-white/10 rounded-2xl overflow-hidden hover:border-blue-500/40 transition-all duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.15)] hover:-translate-y-1 flex flex-col h-full">
       <Link href={href} className="block flex-1">
@@ -134,16 +141,12 @@ export default function ProductCard({
             {discount > 0 && <span className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-lg">-{discount}%</span>}
           </div>
           <div className="w-full h-full flex items-center justify-center p-6">
-            {image ? (
-              <img src={image} alt={name} className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
-            ) : (
-              <div className="text-white/10">
-                <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                <p className="text-xs text-center mt-2">Нет фото</p>
-              </div>
-            )}
+            <img
+              src={imgSrc}
+              alt={name}
+              className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+              onError={handleImageError}
+            />
           </div>
           {!inStock && (
             <div className="absolute inset-0 bg-black/60 flex items-center justify-center backdrop-blur-sm">

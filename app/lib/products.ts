@@ -1,3 +1,4 @@
+// app/lib/products.ts
 import { climateCabinets } from './data/shkafy/climate-cabinets';
 import { switches } from './data/setevoe-oborudovanie/switches';
 import { ver2Cabinets } from './data/shkafy/ver2-cabinets';
@@ -10,6 +11,7 @@ import { microdriveRouters } from './data/setevoe-oborudovanie/microdrive-router
 import { poeInjectors } from './data/setevoe-oborudovanie/poe-injectors';
 import { antennas } from './data/setevoe-oborudovanie/antennas';
 import { telemetry } from './data/setevoe-oborudovanie/telemetry';
+import { dahuaSwitches } from './data/setevoe-oborudovanie/switches-dahua';
 
 export const mockProducts = [
   ...climateCabinets,
@@ -24,6 +26,7 @@ export const mockProducts = [
   ...poeInjectors,
   ...antennas,
   ...telemetry,
+  ...dahuaSwitches,
 ];
 
 export type { Product } from '@/app/context/StoreContext';
