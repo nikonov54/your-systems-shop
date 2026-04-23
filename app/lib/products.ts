@@ -6,8 +6,10 @@ import { mountingEnclosures } from './data/shkafy/mounting-enclosures';
 import { medicalCabinets } from './data/shkafy/medical-cabinets';
 import { telecommunicationRacks } from './data/shkafy/telecommunication-racks';
 import { cabinetAccessories } from './data/shkafy/cabinet-accessories';
-// Этот импорт обязательно должен быть!
 import { microdriveRouters } from './data/setevoe-oborudovanie/microdrive-routers';
+import { poeInjectors } from './data/setevoe-oborudovanie/poe-injectors';
+import { antennas } from './data/setevoe-oborudovanie/antennas';
+import { telemetry } from './data/setevoe-oborudovanie/telemetry';
 
 export const mockProducts = [
   ...climateCabinets,
@@ -18,7 +20,10 @@ export const mockProducts = [
   ...medicalCabinets,
   ...telecommunicationRacks,
   ...cabinetAccessories,
-  ...microdriveRouters, // <-- Убедись, что эта строка есть
+  ...microdriveRouters,
+  ...poeInjectors,
+  ...antennas,
+  ...telemetry,
 ];
 
 export type { Product } from '@/app/context/StoreContext';
