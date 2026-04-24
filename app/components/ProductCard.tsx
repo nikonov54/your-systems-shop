@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { ShoppingCart, GitCompare, Minus, Plus } from 'lucide-react';
 import { useStore } from '@/app/context/StoreContext';
 import { useToast } from './Toast';
@@ -127,7 +128,6 @@ export default function ProductCard({
   };
 
   const handleImageError = () => {
-    // Если изображение не загрузилось, показываем заглушку
     setImgSrc('/images/placeholder.jpg');
   };
 
@@ -141,11 +141,15 @@ export default function ProductCard({
             {discount > 0 && <span className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-lg">-{discount}%</span>}
           </div>
           <div className="w-full h-full flex items-center justify-center p-6">
-            <img
+            <Image
               src={imgSrc}
               alt={name}
+              width={200}
+              height={200}
               className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
               onError={handleImageError}
+              style={{ width: 'auto', height: 'auto' }}
+              priority={false}
             />
           </div>
           {!inStock && (
