@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
 import { ShoppingCart, GitCompare, Minus, Plus } from 'lucide-react';
 import { useStore } from '@/app/context/StoreContext';
@@ -22,6 +21,7 @@ interface ProductCardProps {
   isHit?: boolean;
   category: string;
   subcategory: string;
+  onCardClick?: () => void;
 }
 
 export default function ProductCard({
@@ -38,6 +38,7 @@ export default function ProductCard({
   isHit,
   category,
   subcategory,
+  onCardClick,
 }: ProductCardProps) {
   const { cartItems, addToCart, updateQuantity, isInCompare, addToCompare, removeFromCompare } = useStore();
   const { showToast, ToastComponent } = useToast();
@@ -132,50 +133,51 @@ export default function ProductCard({
   };
 
   return (
-    <div className="group relative bg-[#0a0c10] border border-white/10 rounded-2xl overflow-hidden hover:border-blue-500/40 transition-all duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.15)] hover:-translate-y-1 flex flex-col h-full">
-      <Link href={href} className="block flex-1">
-        <div className="relative aspect-square bg-gradient-to-br from-[#0f1217] to-[#05070a] overflow-hidden">
-          <div className="absolute top-3 left-3 z-10 flex gap-2">
-            {isNew && <span className="bg-green-600 text-white text-xs font-bold px-2 py-1 rounded-lg">Новинка</span>}
-            {isHit && <span className="bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded-lg">Хит</span>}
-            {discount > 0 && <span className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-lg">-{discount}%</span>}
-          </div>
-          <div className="w-full h-full flex items-center justify-center p-6">
-            <Image
-              src={imgSrc}
-              alt={name}
-              width={200}
-              height={200}
-              className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
-              onError={handleImageError}
-              style={{ width: 'auto', height: 'auto' }}
-              priority={false}
-            />
-          </div>
-          {!inStock && (
-            <div className="absolute inset-0 bg-black/60 flex items-center justify-center backdrop-blur-sm">
-              <span className="text-white font-bold text-sm px-3 py-1 bg-red-600/80 rounded-full">Нет в наличии</span>
-            </div>
-          )}
+    <div
+      onClick={onCardClick}
+      className="group relative bg-[#0a0c10] border border-white/10 rounded-2xl overflow-hidden hover:border-blue-500/40 transition-all duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.15)] hover:-translate-y-1 flex flex-col h-full cursor-pointer"
+    >
+      <div className="relative aspect-square bg-gradient-to-br from-[#0f1217] to-[#05070a] overflow-hidden">
+        <div className="absolute top-3 left-3 z-10 flex gap-2">
+          {isNew && <span className="bg-green-600 text-white text-xs font-bold px-2 py-1 rounded-lg">Новинка</span>}
+          {isHit && <span className="bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded-lg">Хит</span>}
+          {discount > 0 && <span className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-lg">-{discount}%</span>}
         </div>
+        <div className="w-full h-full flex items-center justify-center p-6">
+          <Image
+            src={imgSrc}
+            alt={name}
+            width={200}
+            height={200}
+            className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+            onError={handleImageError}
+            style={{ width: 'auto', height: 'auto' }}
+            priority={false}
+          />
+        </div>
+        {!inStock && (
+          <div className="absolute inset-0 bg-black/60 flex items-center justify-center backdrop-blur-sm">
+            <span className="text-white font-bold text-sm px-3 py-1 bg-red-600/80 rounded-full">Нет в наличии</span>
+          </div>
+        )}
+      </div>
 
-        <div className="p-5 space-y-3 flex flex-col">
-          <div className="flex items-center justify-between">
-            {brand && <span className="text-[10px] text-white/40 font-mono">{brand}</span>}
-            <span className="text-[10px] text-white/30 font-mono">Арт. {sku}</span>
-          </div>
-          <h3 className="text-white font-bold text-base leading-tight line-clamp-3 group-hover:text-blue-400 transition-colors flex-1">
-            {name}
-          </h3>
-          <div className="space-y-1 mt-auto">
-            <div className="flex items-baseline gap-2 flex-wrap">
-              <span className="text-2xl font-black text-white">{price.toLocaleString('ru-RU')} ₽</span>
-              {oldPrice && <span className="text-sm text-white/40 line-through">{oldPrice.toLocaleString('ru-RU')} ₽</span>}
-            </div>
-            <div className="text-[10px] text-white/30">Цена за 1 шт</div>
-          </div>
+      <div className="p-5 space-y-3 flex flex-col">
+        <div className="flex items-center justify-between">
+          {brand && <span className="text-[10px] text-white/40 font-mono">{brand}</span>}
+          <span className="text-[10px] text-white/30 font-mono">Арт. {sku}</span>
         </div>
-      </Link>
+        <h3 className="text-white font-bold text-base leading-tight line-clamp-3 group-hover:text-blue-400 transition-colors flex-1">
+          {name}
+        </h3>
+        <div className="space-y-1 mt-auto">
+          <div className="flex items-baseline gap-2 flex-wrap">
+            <span className="text-2xl font-black text-white">{price.toLocaleString('ru-RU')} ₽</span>
+            {oldPrice && <span className="text-sm text-white/40 line-through">{oldPrice.toLocaleString('ru-RU')} ₽</span>}
+          </div>
+          <div className="text-[10px] text-white/30">Цена за 1 шт</div>
+        </div>
+      </div>
 
       <div className="px-5 pb-5 pt-0">
         <div className="flex flex-col gap-2">
@@ -235,13 +237,12 @@ export default function ProductCard({
           </div>
 
           {quantity > 0 && (
-            <Link
-              href="/cart"
-              className="text-center text-xs text-blue-400 hover:text-blue-300 transition-colors"
+            <div
               onClick={(e) => e.stopPropagation()}
+              className="text-center text-xs text-blue-400 hover:text-blue-300 transition-colors cursor-pointer"
             >
-              Перейти в корзину →
-            </Link>
+              <span onClick={() => (window.location.href = '/cart')}>Перейти в корзину →</span>
+            </div>
           )}
         </div>
       </div>

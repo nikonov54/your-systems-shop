@@ -1,6 +1,6 @@
 'use client';
 
-import { useParams, useRouter } from 'next/navigation';
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -12,15 +12,18 @@ import Header from '@/app/components/Header';
 export default function ProductPage() {
   const params = useParams();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const id = params.id as string;
   
   const { addToCart, addToCompare, removeFromCompare, isInCompare } = useStore();
   
   const product = mockProducts.find(p => p.id === id);
   const [activeTab, setActiveTab] = useState<'description' | 'specs' | 'download'>('description');
-  
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  
+  // Получаем сохранённую позицию прокрутки из URL
+  const fromScroll = searchParams.get('fromScroll');
   
   if (!product) {
     return (
@@ -28,9 +31,7 @@ export default function ProductPage() {
         <Header />
         <div className="container mx-auto px-6 py-20 text-center">
           <h1 className="text-2xl font-bold mb-4">Товар не найден</h1>
-          <Link href="/" className="text-blue-500 hover:underline">
-            Вернуться на главную
-          </Link>
+          <Link href="/" className="text-blue-500 hover:underline">Вернуться на главную</Link>
         </div>
       </div>
     );
@@ -67,18 +68,22 @@ export default function ProductPage() {
     }
   };
   
+  // Формируем URL для кнопки "Назад", передавая параметр прокрутки
+  const backUrl = `/catalog/${product.category}/${product.subcategory}${fromScroll ? `?scroll=${fromScroll}` : ''}`;
+  
   return (
     <div className="min-h-screen bg-[#020408] text-white">
       <Header />
       
       <main className="container mx-auto px-6 py-8">
         <div className="mb-6">
-          <Link href={`/catalog/${product.category}/${product.subcategory}`} className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-blue-400 transition-colors">
+          <Link href={backUrl} className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-blue-400 transition-colors">
             <ArrowLeftIcon size={14} />
             Назад в каталог
           </Link>
         </div>
         
+        {/* остальная часть страницы товара без изменений */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-12">
           <div className="relative bg-white/5 rounded-2xl overflow-hidden flex items-center justify-center" style={{ height: '400px' }}>
             {images[selectedImage] ? (
@@ -166,6 +171,7 @@ export default function ProductPage() {
           </div>
         </div>
         
+        {/* Табы и другое содержимое страницы товара остаётся без изменений */}
         <div className="mt-8">
           <div className="flex border-b border-white/10">
             <button
@@ -198,7 +204,7 @@ export default function ProductPage() {
             {activeTab === 'description' && (
               <div className="prose prose-invert max-w-none">
                 <p className="text-slate-300 leading-relaxed">
-                  {product.description || 'Описание временно отсутствует. Пожалуйста, обратитесь к менеджеру за подробной информацией.'}
+                  {product.description || 'Описание временно отсутствует.'}
                 </p>
               </div>
             )}

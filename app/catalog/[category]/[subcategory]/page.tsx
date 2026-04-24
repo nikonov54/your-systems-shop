@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, use } from 'react';
+import { useState, use, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { ChevronDown, ArrowUp, ArrowDown } from 'lucide-react';
 import { catalogData } from '@/menu-data';
@@ -8,51 +9,26 @@ import { mockProducts } from '@/app/lib/products';
 import ProductCard from '@/app/components/ProductCard';
 import Header from '@/app/components/Header';
 import { 
-  cameraFilters, 
-  recorderFilters, 
-  microphoneFilters,
-  mountingBoxFilters,
-  bracketFilters,
-  switchFilters,
-  routerFilters,
-  accessPointFilters,
-  sfpFilters,
-  poeInjectorFilters,
-  antennaFilters,
-  telemetryFilters,
-  scudReaderFilters,
-  controllerFilters,
-  contactlessKeyFilters,
-  lockFilters,
-  closerFilters,
-  metalDetectorFilters,
-  turnstileFilters,
-  barrierFilters,
-  smartPanelFilters,
-  callingPanelFilters,
-  videoMonitorFilters,
-  accessoriesFilters,
-  securityControllerFilters,
-  alarmPowerSupplyFilters,
-  detectorFilters,
-  remoteControlFilters,
-  repeaterFilters,
-  sensorFilters,
-  moduleFilters,
-  relayFilters,
-  socketFilters,
-  mountingCabinetFilters,
-  climateCabinetFilters,
-  rackCabinetFilters,
-  cabinetAccessoriesFilters,
-  enclosureMedicalFilters,
-  hddFilters,
-  thermalCameraFilters,
-  handheldThermalFilters,
-  mobileThermalFilters
+  cameraFilters, recorderFilters, microphoneFilters,
+  mountingBoxFilters, bracketFilters, switchFilters,
+  routerFilters, accessPointFilters, sfpFilters,
+  poeInjectorFilters, antennaFilters, telemetryFilters,
+  scudReaderFilters, controllerFilters, contactlessKeyFilters,
+  lockFilters, closerFilters, metalDetectorFilters,
+  turnstileFilters, barrierFilters, smartPanelFilters,
+  callingPanelFilters, videoMonitorFilters, accessoriesFilters,
+  securityControllerFilters, alarmPowerSupplyFilters,
+  detectorFilters, remoteControlFilters, repeaterFilters,
+  sensorFilters, moduleFilters, relayFilters, socketFilters,
+  mountingCabinetFilters, climateCabinetFilters,
+  rackCabinetFilters, cabinetAccessoriesFilters,
+  enclosureMedicalFilters, hddFilters,
+  thermalCameraFilters, handheldThermalFilters, mobileThermalFilters
 } from '@/app/catalog/filters-config';
 
 export default function SubcategoryPage({ params }: { params: Promise<{ category: string, subcategory: string }> }) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const { subcategory, category } = use(params);
   const decodedSub = decodeURIComponent(subcategory).toLowerCase();
   const decodedCat = decodeURIComponent(category).toLowerCase();
@@ -65,6 +41,22 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
     product.category === decodedCat && 
     product.subcategory === decodedSub
   );
+
+  // Восстановление прокрутки при возврате из карточки товара
+  useEffect(() => {
+    const scrollParam = searchParams.get('scroll');
+    if (scrollParam) {
+      const scrollY = parseInt(scrollParam, 10);
+      if (!isNaN(scrollY)) {
+        // Даём время на рендер сетки товаров
+        setTimeout(() => {
+          window.scrollTo({ top: scrollY, behavior: 'auto' });
+        }, 150);
+        // Удаляем параметр из URL без перезагрузки страницы
+        router.replace(window.location.pathname, { scroll: false });
+      }
+    }
+  }, [searchParams, router]);
 
   const activeFilters = 
     (decodedSub === 'cameras') ? cameraFilters :
@@ -119,61 +111,37 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
 
   const createSlug = (text: string) => {
     const slugMap: Record<string, string> = {
-      'Камеры': 'cameras',
-      'Регистраторы': 'recorders',
-      'Микрофоны': 'microphones',
-      'Монтажные коробки': 'mounting-boxes',
-      'Кронштейны': 'brackets',
-      'Камеры тепловизионные': 'thermal-cameras',
-      'Ручные тепловизоры': 'handheld-thermal',
-      'Мобильные тепловизоры': 'mobile-thermal',
-      'HDD для видеонаблюдения': 'hdd-for-cctv',
-      'HDD для серверов': 'hdd-for-servers',
-      'SSD': 'ssd',
-      'NAS HDD': 'nas-hdd',
-      'Внешние HDD': 'external-hdd',
-      'Коммутаторы': 'switches',
-      'Маршрутизаторы': 'routers',
-      'Роутеры Micro-Drive': 'microdrive-routers',
-      'Wi-Fi точки': 'wi-fi-access-points',
-      'SFP модули': 'sfp-modules',
-      'PoE инжекторы': 'poe-injectors',
-      'Антенны': 'antennas',
-      'Погружная телеметрия': 'telemetry',
-      'Считыватели': 'readers',
-      'Контроллеры': 'controllers',
-      'Бесконтактные ключи': 'contactless-keys',
-      'Замки': 'locks',
-      'Доводчики': 'door-closers',
-      'Металлодетекторы': 'metal-detectors',
-      'Турникеты': 'turnstiles',
-      'Шлагбаумы': 'barriers',
-      'Интроскопы': 'x-ray-scanners',
-      'Smart панели': 'smart-panels',
-      'Видеомониторы': 'video-monitors',
-      'Вызывные панели': 'calling-panels',
-      'Аксессуары': 'accessories',
-      'Контроллеры сигнализации': 'alarm-controllers',
-      'Источники питания': 'power-supplies',
-      'Извещатели': 'detectors',
-      'Пульты управления': 'remote-controls',
-      'Ретрансляторы': 'repeaters',
-      'Датчики': 'sensors',
-      'Модули': 'modules',
-      'Реле': 'relays',
-      'Розетки': 'sockets',
-      'Монтажные и оболочки': 'mounting-enclosures',
-      'Климатические': 'climate-cabinets',
-      'Телекоммуникационные': 'telecommunication-racks',
-      'Серверные': 'server-racks',
-      'Аптечные': 'medical-cabinets',
-      'Аксессуары шкафов': 'cabinet-accessories'
+      'Камеры': 'cameras', 'Регистраторы': 'recorders', 'Микрофоны': 'microphones',
+      'Монтажные коробки': 'mounting-boxes', 'Кронштейны': 'brackets',
+      'Камеры тепловизионные': 'thermal-cameras', 'Ручные тепловизоры': 'handheld-thermal',
+      'Мобильные тепловизоры': 'mobile-thermal', 'HDD для видеонаблюдения': 'hdd-for-cctv',
+      'HDD для серверов': 'hdd-for-servers', 'SSD': 'ssd', 'NAS HDD': 'nas-hdd',
+      'Внешние HDD': 'external-hdd', 'Коммутаторы': 'switches', 'Маршрутизаторы': 'routers',
+      'Роутеры Micro-Drive': 'microdrive-routers', 'Wi-Fi точки': 'wi-fi-access-points',
+      'SFP модули': 'sfp-modules', 'PoE инжекторы': 'poe-injectors', 'Антенны': 'antennas',
+      'Погружная телеметрия': 'telemetry', 'Считыватели': 'readers', 'Контроллеры': 'controllers',
+      'Бесконтактные ключи': 'contactless-keys', 'Замки': 'locks', 'Доводчики': 'door-closers',
+      'Металлодетекторы': 'metal-detectors', 'Турникеты': 'turnstiles', 'Шлагбаумы': 'barriers',
+      'Интроскопы': 'x-ray-scanners', 'Smart панели': 'smart-panels', 'Видеомониторы': 'video-monitors',
+      'Вызывные панели': 'calling-panels', 'Аксессуары': 'accessories',
+      'Контроллеры сигнализации': 'alarm-controllers', 'Источники питания': 'power-supplies',
+      'Извещатели': 'detectors', 'Пульты управления': 'remote-controls', 'Ретрансляторы': 'repeaters',
+      'Датчики': 'sensors', 'Модули': 'modules', 'Реле': 'relays', 'Розетки': 'sockets',
+      'Монтажные и оболочки': 'mounting-enclosures', 'Климатические': 'climate-cabinets',
+      'Телекоммуникационные': 'telecommunication-racks', 'Серверные': 'server-racks',
+      'Аптечные': 'medical-cabinets', 'Аксессуары шкафов': 'cabinet-accessories'
     };
     return slugMap[text] || text.toLowerCase().replace(/ /g, '-');
   };
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   const scrollToBottom = () => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+
+  // Сохраняем позицию прокрутки перед уходом на карточку
+  const handleCardClick = (productId: string) => {
+    const scrollY = window.scrollY;
+    router.push(`/product/${productId}?fromScroll=${scrollY}`);
+  };
 
   return (
     <main className="min-h-screen bg-[#020408] font-sans text-white">
@@ -247,6 +215,7 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
                     subcategory={product.subcategory}
                     isNew={false}
                     isHit={false}
+                    onCardClick={() => handleCardClick(product.id)}
                   />
                 ))}
               </div>
