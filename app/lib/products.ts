@@ -11,12 +11,14 @@ import { microdriveRouters } from './data/setevoe-oborudovanie/microdrive-router
 import { poeInjectors } from './data/setevoe-oborudovanie/poe-injectors';
 import { antennas } from './data/setevoe-oborudovanie/antennas';
 import { telemetry } from './data/setevoe-oborudovanie/telemetry';
-import { dahuaSwitches } from './data/setevoe-oborudovanie/switches-dahua';  // <-- ДОБАВЛЕНО
+import { dahuaSwitches } from './data/setevoe-oborudovanie/switches-dahua';
+import { dahuaSfpModules } from './data/setevoe-oborudovanie/sfp-modules-dahua';
+import { dahuaAccessories } from './data/setevoe-oborudovanie/accessories-dahua';
 
 export const mockProducts = [
   ...climateCabinets,
   ...switches,
-  ...dahuaSwitches,      // <-- ДОБАВЛЕНО
+  ...dahuaSwitches,
   ...ver2Cabinets,
   ...ver3Cabinets,
   ...mountingEnclosures,
@@ -27,6 +29,8 @@ export const mockProducts = [
   ...poeInjectors,
   ...antennas,
   ...telemetry,
+  ...dahuaSfpModules,
+  ...dahuaAccessories,   // <-- ВАЖНО: добавляем новые 9 устройств
 ];
 
 export type { Product } from '@/app/context/StoreContext';

@@ -1,5 +1,4 @@
 // menu-data.ts
-
 export interface Category {
   id: number;
   name: string;
@@ -30,7 +29,16 @@ export const catalogData: Category[] = [
     id: 4,
     name: "Сетевое оборудование",
     slug: "setevoe-oborudovanie",
-    sub: ["Коммутаторы", "Маршрутизаторы", "Роутеры Micro-Drive", "Wi-Fi точки", "SFP модули", "PoE инжекторы", "Антенны", "Погружная телеметрия"]
+    sub: [
+      "Коммутаторы",
+      "Маршрутизаторы",
+      "Роутеры Micro-Drive",
+      "Wi-Fi точки",
+      "SFP модули",
+      "Аксессуары",          // ← переименовано
+      "Антенны",
+      "Погружная телеметрия"
+    ]
   },
   {
     id: 5,

@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, use, useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { ChevronDown, ArrowUp, ArrowDown } from 'lucide-react';
 import { catalogData } from '@/menu-data';
 import { mockProducts } from '@/app/lib/products';
@@ -35,7 +35,7 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
 
   const [openGroups, setOpenGroups] = useState<string[]>([]);
   const currentCategoryData = catalogData.find(c => c.slug === decodedCat);
-  const subcategories = currentCategoryData?.sub || [];
+  const subcategories: string[] = currentCategoryData?.sub || [];
 
   const filteredProducts = mockProducts.filter(product => 
     product.category === decodedCat && 
@@ -48,11 +48,9 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
     if (scrollParam) {
       const scrollY = parseInt(scrollParam, 10);
       if (!isNaN(scrollY)) {
-        // Даём время на рендер сетки товаров
         setTimeout(() => {
           window.scrollTo({ top: scrollY, behavior: 'auto' });
         }, 150);
-        // Удаляем параметр из URL без перезагрузки страницы
         router.replace(window.location.pathname, { scroll: false });
       }
     }
@@ -103,7 +101,8 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
     (decodedSub === 'routers') ? routerFilters :
     (decodedSub === 'wi-fi-access-points') ? accessPointFilters :
     (decodedSub === 'sfp-modules') ? sfpFilters :
-    (decodedSub === 'poe-injectors') ? poeInjectorFilters :
+    (decodedSub === 'accessories') ? poeInjectorFilters :   // ← для slug 'accessories' используем те же фильтры
+    (decodedSub === 'poe-injectors') ? poeInjectorFilters : // обратная совместимость
     (decodedSub === 'antennas') ? antennaFilters :
     (decodedSub === 'telemetry') ? telemetryFilters : [];
 
@@ -111,25 +110,56 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
 
   const createSlug = (text: string) => {
     const slugMap: Record<string, string> = {
-      'Камеры': 'cameras', 'Регистраторы': 'recorders', 'Микрофоны': 'microphones',
-      'Монтажные коробки': 'mounting-boxes', 'Кронштейны': 'brackets',
-      'Камеры тепловизионные': 'thermal-cameras', 'Ручные тепловизоры': 'handheld-thermal',
-      'Мобильные тепловизоры': 'mobile-thermal', 'HDD для видеонаблюдения': 'hdd-for-cctv',
-      'HDD для серверов': 'hdd-for-servers', 'SSD': 'ssd', 'NAS HDD': 'nas-hdd',
-      'Внешние HDD': 'external-hdd', 'Коммутаторы': 'switches', 'Маршрутизаторы': 'routers',
-      'Роутеры Micro-Drive': 'microdrive-routers', 'Wi-Fi точки': 'wi-fi-access-points',
-      'SFP модули': 'sfp-modules', 'PoE инжекторы': 'poe-injectors', 'Антенны': 'antennas',
-      'Погружная телеметрия': 'telemetry', 'Считыватели': 'readers', 'Контроллеры': 'controllers',
-      'Бесконтактные ключи': 'contactless-keys', 'Замки': 'locks', 'Доводчики': 'door-closers',
-      'Металлодетекторы': 'metal-detectors', 'Турникеты': 'turnstiles', 'Шлагбаумы': 'barriers',
-      'Интроскопы': 'x-ray-scanners', 'Smart панели': 'smart-panels', 'Видеомониторы': 'video-monitors',
-      'Вызывные панели': 'calling-panels', 'Аксессуары': 'accessories',
-      'Контроллеры сигнализации': 'alarm-controllers', 'Источники питания': 'power-supplies',
-      'Извещатели': 'detectors', 'Пульты управления': 'remote-controls', 'Ретрансляторы': 'repeaters',
-      'Датчики': 'sensors', 'Модули': 'modules', 'Реле': 'relays', 'Розетки': 'sockets',
-      'Монтажные и оболочки': 'mounting-enclosures', 'Климатические': 'climate-cabinets',
-      'Телекоммуникационные': 'telecommunication-racks', 'Серверные': 'server-racks',
-      'Аптечные': 'medical-cabinets', 'Аксессуары шкафов': 'cabinet-accessories'
+      'Камеры': 'cameras',
+      'Регистраторы': 'recorders',
+      'Микрофоны': 'microphones',
+      'Монтажные коробки': 'mounting-boxes',
+      'Кронштейны': 'brackets',
+      'Камеры тепловизионные': 'thermal-cameras',
+      'Ручные тепловизоры': 'handheld-thermal',
+      'Мобильные тепловизоры': 'mobile-thermal',
+      'HDD для видеонаблюдения': 'hdd-for-cctv',
+      'HDD для серверов': 'hdd-for-servers',
+      'SSD': 'ssd',
+      'NAS HDD': 'nas-hdd',
+      'Внешние HDD': 'external-hdd',
+      'Коммутаторы': 'switches',
+      'Маршрутизаторы': 'routers',
+      'Роутеры Micro-Drive': 'microdrive-routers',
+      'Wi-Fi точки': 'wi-fi-access-points',
+      'SFP модули': 'sfp-modules',
+      'PoE инжекторы': 'poe-injectors',
+      'Аксессуары': 'accessories',      // ← новое правило
+      'Антенны': 'antennas',
+      'Погружная телеметрия': 'telemetry',
+      'Считыватели': 'readers',
+      'Контроллеры': 'controllers',
+      'Бесконтактные ключи': 'contactless-keys',
+      'Замки': 'locks',
+      'Доводчики': 'door-closers',
+      'Металлодетекторы': 'metal-detectors',
+      'Турникеты': 'turnstiles',
+      'Шлагбаумы': 'barriers',
+      'Интроскопы': 'x-ray-scanners',
+      'Smart панели': 'smart-panels',
+      'Видеомониторы': 'video-monitors',
+      'Вызывные панели': 'calling-panels',
+      'Аксессуары (домофония)': 'accessories',
+      'Контроллеры сигнализации': 'alarm-controllers',
+      'Источники питания': 'power-supplies',
+      'Извещатели': 'detectors',
+      'Пульты управления': 'remote-controls',
+      'Ретрансляторы': 'repeaters',
+      'Датчики': 'sensors',
+      'Модули': 'modules',
+      'Реле': 'relays',
+      'Розетки': 'sockets',
+      'Монтажные и оболочки': 'mounting-enclosures',
+      'Климатические': 'climate-cabinets',
+      'Телекоммуникационные': 'telecommunication-racks',
+      'Серверные': 'server-racks',
+      'Аптечные': 'medical-cabinets',
+      'Аксессуары шкафов': 'cabinet-accessories'
     };
     return slugMap[text] || text.toLowerCase().replace(/ /g, '-');
   };
@@ -137,7 +167,6 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   const scrollToBottom = () => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 
-  // Сохраняем позицию прокрутки перед уходом на карточку
   const handleCardClick = (productId: string) => {
     const scrollY = window.scrollY;
     router.push(`/product/${productId}?fromScroll=${scrollY}`);

@@ -1,3 +1,4 @@
+// app/lib/data/setevoe-oborudovanie/poe-injectors.ts
 import type { Product } from '@/app/context/StoreContext';
 
 export const poeInjectors: Product[] = [
@@ -11,7 +12,7 @@ export const poeInjectors: Product[] = [
     sku: 'MD101-24V-1A',
     inStock: true,
     category: 'setevoe-oborudovanie',
-    subcategory: 'poe-injectors',
+    subcategory: 'accessories',   // ← исправлено и заменено
     description: 'Пассивный PoE инжектор, выходное напряжение 24 В, ток 1 А. Используется для питания устройств по витой паре (контакты 4,5,7,8). Компактный корпус, защита от перегрузки и короткого замыкания.',
     specs: {
       'Напряжение': '24 В DC',
@@ -40,7 +41,7 @@ export const poeInjectors: Product[] = [
     sku: 'MD102-48V-0.5A',
     inStock: true,
     category: 'setevoe-oborudovanie',
-    subcategory: 'poe-injectors',
+    subcategory: 'accessories',
     description: 'Пассивный PoE инжектор, выходное напряжение 48 В, ток 0.5 А (24 Вт). Предназначен для питания устройств по технологии Passive PoE (контакты 4,5,7,8). Встроенный блок питания, защита от перегрузки.',
     specs: {
       'Напряжение': '48 В DC',
@@ -69,7 +70,7 @@ export const poeInjectors: Product[] = [
     sku: 'MD1000-48V-0.5A',
     inStock: true,
     category: 'setevoe-oborudovanie',
-    subcategory: 'poe-injectors',
+    subcategory: 'accessories',
     description: 'Гигабитный пассивный PoE инжектор, выходное напряжение 48 В, ток 0.5 А (24 Вт). Поддерживает скорость передачи данных до 1000 Мбит/с. Питание подается на контакты 4,5,7,8. Встроенный блок питания, защита от короткого замыкания.',
     specs: {
       'Напряжение': '48 В DC',
@@ -99,7 +100,7 @@ export const poeInjectors: Product[] = [
     sku: 'NDR-120-48',
     inStock: true,
     category: 'setevoe-oborudovanie',
-    subcategory: 'poe-injectors',
+    subcategory: 'accessories',
     description: 'Промышленный блок питания Mean Well NDR-120-48, выходное напряжение 48 В, мощность 120 Вт. Устанавливается на DIN-рейку. Используется для питания PoE инжекторов и другого оборудования. Компактный, с защитой от перегрузки и короткого замыкания.',
     specs: {
       'Напряжение': '48 В DC',
@@ -119,3 +120,5 @@ export const poeInjectors: Product[] = [
     ]
   }
 ];
+
+export default poeInjectors;

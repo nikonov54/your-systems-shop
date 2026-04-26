@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { ShoppingCart, GitCompare, Minus, Plus } from 'lucide-react';
 import { useStore } from '@/app/context/StoreContext';
 import { useToast } from './Toast';
-import { mockProducts } from '@/app/lib/products';
+import { mockProducts, type Product } from '@/app/lib/products';
 import { useState } from 'react';
 
 interface ProductCardProps {
@@ -46,7 +46,7 @@ export default function ProductCard({
 
   if (price === undefined || price === null) return null;
 
-  const cartItem = cartItems.find(item => item.product.id === id);
+  const cartItem = cartItems.find((item) => item.product.id === id);
   const quantity = cartItem?.quantity || 0;
 
   const discount = oldPrice ? Math.round(((oldPrice - price) / oldPrice) * 100) : 0;
@@ -67,7 +67,7 @@ export default function ProductCard({
           inStock,
           category,
           subcategory,
-        },
+        } as Product,
         1
       );
     }
@@ -89,7 +89,7 @@ export default function ProductCard({
           inStock,
           category,
           subcategory,
-        },
+        } as Product,
         1
       );
     }
@@ -121,7 +121,7 @@ export default function ProductCard({
     if (isInCompare(id)) {
       removeFromCompare(id);
     } else {
-      const fullProduct = mockProducts.find(p => p.id === id);
+      const fullProduct = mockProducts.find((p) => p.id === id);
       if (fullProduct) {
         addToCompare(fullProduct, showToast);
       }
@@ -143,16 +143,15 @@ export default function ProductCard({
           {isHit && <span className="bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded-lg">Хит</span>}
           {discount > 0 && <span className="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-lg">-{discount}%</span>}
         </div>
-        <div className="w-full h-full flex items-center justify-center p-6">
+        <div className="relative w-full h-full flex items-center justify-center p-6">
           <Image
             src={imgSrc}
             alt={name}
-            width={200}
-            height={200}
-            className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+            fill
+            className="object-contain transition-transform duration-500 group-hover:scale-105"
             onError={handleImageError}
-            style={{ width: 'auto', height: 'auto' }}
-            priority={false}
+            sizes="(max-width: 768px) 100vw, 33vw"
+            loading="eager"
           />
         </div>
         {!inStock && (
