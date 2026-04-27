@@ -20,7 +20,10 @@ import { dahuaPowerSupplies } from './data/signalizatsiya/power-supplies-dahua';
 import { dahuaDetectors } from './data/signalizatsiya/detectors-dahua';
 import { dahuaRemoteControls } from './data/signalizatsiya/remote-controls-dahua';
 import { dahuaRepeaters } from './data/signalizatsiya/repeaters-dahua';
-import { dahuaSensors } from './data/signalizatsiya/sensors-dahua';   // <-- импорт
+import { dahuaSensors } from './data/signalizatsiya/sensors-dahua';
+import { dahuaModules } from './data/signalizatsiya/modules-dahua';
+import { dahuaRelays } from './data/signalizatsiya/relays-dahua';
+import { dahuaSockets } from './data/signalizatsiya/sockets-dahua';   // <-- импорт
 
 export const mockProducts = [
   ...climateCabinets,
@@ -44,7 +47,10 @@ export const mockProducts = [
   ...dahuaDetectors,
   ...dahuaRemoteControls,
   ...dahuaRepeaters,
-  ...dahuaSensors,     // <-- добавлено
+  ...dahuaSensors,
+  ...dahuaModules,
+  ...dahuaRelays,
+  ...dahuaSockets,     // <-- добавлено
 ];
 
 export type { Product } from '@/app/context/StoreContext';
