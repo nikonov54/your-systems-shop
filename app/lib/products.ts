@@ -25,7 +25,7 @@ import { dahuaModules } from './data/signalizatsiya/modules-dahua';
 import { dahuaRelays } from './data/signalizatsiya/relays-dahua';
 import { dahuaSockets } from './data/signalizatsiya/sockets-dahua';
 import { dahuaSmartPanels } from './data/domofoniya/smart-panels-dahua';
-import { dahuaVideoMonitors } from './data/domofoniya/video-monitors-dahua';   // <-- импорт
+import { dahuaVideoMonitors } from './data/domofoniya/video-monitors-dahua'; // <-- импорт
 
 export const mockProducts = [
   ...climateCabinets,
@@ -54,7 +54,7 @@ export const mockProducts = [
   ...dahuaRelays,
   ...dahuaSockets,
   ...dahuaSmartPanels,
-  ...dahuaVideoMonitors,     // <-- добавлено
+  ...dahuaVideoMonitors,// <-- добавлено
 ];
 
 export type { Product } from '@/app/context/StoreContext';
