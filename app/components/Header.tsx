@@ -39,7 +39,7 @@ export default function Header() {
         if (normalize(product.description || '').includes(queryNorm)) return true;
         if (product.specs) {
           for (const val of Object.values(product.specs)) {
-            if (normalize(val).includes(queryNorm)) return true;
+            if (normalize(val as string).includes(queryNorm)) return true;
           }
         }
         return false;
@@ -95,6 +95,7 @@ export default function Header() {
       'Smart панели': 'smart-panels',
       'Видеомониторы': 'video-monitors',
       'Вызывные панели': 'calling-panels',
+      'Комплекты': 'kits',
       'Аксессуары': 'accessories',
       'Контроллеры сигнализации': 'alarm-controllers',
       'Источники питания': 'power-supplies',

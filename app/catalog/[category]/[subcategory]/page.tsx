@@ -145,6 +145,7 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
       'Видеомониторы': 'video-monitors',
       'Вызывные панели': 'calling-panels',
       'Аксессуары (домофония)': 'accessories',
+      'Комплекты': 'kits',
       'Контроллеры сигнализации': 'alarm-controllers',
       'Источники питания': 'power-supplies',
       'Извещатели': 'detectors',

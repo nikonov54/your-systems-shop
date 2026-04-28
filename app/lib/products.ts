@@ -25,7 +25,10 @@ import { dahuaModules } from './data/signalizatsiya/modules-dahua';
 import { dahuaRelays } from './data/signalizatsiya/relays-dahua';
 import { dahuaSockets } from './data/signalizatsiya/sockets-dahua';
 import { dahuaSmartPanels } from './data/domofoniya/smart-panels-dahua';
-import { dahuaVideoMonitors } from './data/domofoniya/video-monitors-dahua'; // <-- импорт
+import { dahuaVideoMonitors } from './data/domofoniya/video-monitors-dahua';
+import { dahuaCallingPanels } from './data/domofoniya/calling-panels-dahua';
+import { domofoniyaAccessories } from './data/domofoniya/accessories-dahua';
+import { dahuaKits } from './data/domofoniya/kits-dahua'; // <-- импорт
 
 export const mockProducts = [
   ...climateCabinets,
@@ -42,7 +45,7 @@ export const mockProducts = [
   ...antennas,
   ...telemetry,
   ...dahuaSfpModules,
-  ...dahuaAccessories,
+  ...dahuaAccessories,            // ← сетевые аксессуары (оставить)
   ...dahuaWirelessBridges,
   ...dahuaControllers,
   ...dahuaPowerSupplies,
@@ -54,7 +57,8 @@ export const mockProducts = [
   ...dahuaRelays,
   ...dahuaSockets,
   ...dahuaSmartPanels,
-  ...dahuaVideoMonitors,// <-- добавлено
+  ...dahuaVideoMonitors,
+  ...dahuaCallingPanels,
+  ...domofoniyaAccessories,
+  ...dahuaKits,       // ← добавить аксессуары домофонии (вместо дубликата)
 ];
-
-export type { Product } from '@/app/context/StoreContext';

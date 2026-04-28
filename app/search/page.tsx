@@ -24,7 +24,7 @@ export default function SearchPage() {
     if (normalize(product.description || '').includes(query)) return true;
     if (product.specs) {
       for (const val of Object.values(product.specs)) {
-        if (normalize(val).includes(query)) return true;
+        if (normalize(val as string).includes(query)) return true;
       }
     }
     return false;
