@@ -28,7 +28,8 @@ import { dahuaSmartPanels } from './data/domofoniya/smart-panels-dahua';
 import { dahuaVideoMonitors } from './data/domofoniya/video-monitors-dahua';
 import { dahuaCallingPanels } from './data/domofoniya/calling-panels-dahua';
 import { domofoniyaAccessories } from './data/domofoniya/accessories-dahua';
-import { dahuaKits } from './data/domofoniya/kits-dahua'; // <-- импорт
+import { dahuaKits } from './data/domofoniya/kits-dahua';
+import { dahuaTurnstiles } from './data/skud/turnstiles'; // <-- импорт
 
 export const mockProducts = [
   ...climateCabinets,
@@ -60,5 +61,6 @@ export const mockProducts = [
   ...dahuaVideoMonitors,
   ...dahuaCallingPanels,
   ...domofoniyaAccessories,
-  ...dahuaKits,       // ← добавить аксессуары домофонии (вместо дубликата)
+  ...dahuaKits,
+  ...dahuaTurnstiles,       // ← добавить аксессуары домофонии (вместо дубликата)
 ];
