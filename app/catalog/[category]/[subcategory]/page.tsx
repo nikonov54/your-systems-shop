@@ -135,6 +135,7 @@ export default function SubcategoryPage({ params }: { params: Promise<{ category
       'Считыватели': 'readers',
       'Контроллеры': 'controllers',
       'Терминалы': 'terminals',
+      'Кнопки выхода': 'exit-buttons',
       'Бесконтактные ключи': 'contactless-keys',
       'Замки': 'locks',
       'Доводчики': 'door-closers',

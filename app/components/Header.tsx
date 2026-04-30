@@ -86,6 +86,7 @@ export default function Header() {
       'Считыватели': 'readers',
       'Контроллеры': 'controllers',
       'Терминалы': 'terminals',
+      'Кнопки выхода': 'exit-buttons',
       'Бесконтактные ключи': 'contactless-keys',
       'Замки': 'locks',
       'Доводчики': 'door-closers',
