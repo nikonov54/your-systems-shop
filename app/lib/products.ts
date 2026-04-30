@@ -36,7 +36,8 @@ import { dahuaReaders } from './data/skud/readers-dahua';
 import { dahuaLocks } from './data/skud/locks-dahua';
 import { dahuaDoorClosers } from './data/skud/door-closers-dahua';
 import { dahuaExitButtons } from './data/skud/exit-buttons-dahua';
-import { dahuaContactlessKeys } from './data/skud/contactless-keys-dahua'; // <-- импорт
+import { dahuaContactlessKeys } from './data/skud/contactless-keys-dahua';
+import { dahuaCameras } from './data/videonablyudenie/cameras-dahua'; // <-- импорт
 
 export const mockProducts = [
   ...climateCabinets,
@@ -76,5 +77,6 @@ export const mockProducts = [
   ...dahuaLocks,
   ...dahuaDoorClosers,
   ...dahuaExitButtons,
-  ...dahuaContactlessKeys,       // ← добавить аксессуары домофонии (вместо дубликата)
+  ...dahuaContactlessKeys,
+  ...dahuaCameras,       // ← добавить аксессуары домофонии (вместо дубликата)
 ];
