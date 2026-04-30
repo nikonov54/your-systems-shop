@@ -85,6 +85,7 @@ export default function Header() {
       'Погружная телеметрия': 'telemetry',
       'Считыватели': 'readers',
       'Контроллеры': 'controllers',
+      'Терминалы': 'terminals',
       'Бесконтактные ключи': 'contactless-keys',
       'Замки': 'locks',
       'Доводчики': 'door-closers',
