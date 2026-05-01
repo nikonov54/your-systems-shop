@@ -4,7 +4,8 @@ import Image from 'next/image';
 import { ShoppingCart, GitCompare, Minus, Plus } from 'lucide-react';
 import { useStore } from '@/app/context/StoreContext';
 import { useToast } from './Toast';
-import { mockProducts, type Product } from '@/app/lib/products';
+import { mockProducts } from '@/app/lib/products';
+import type { Product } from '@/app/context/StoreContext';
 import { useState } from 'react';
 
 interface ProductCardProps {
